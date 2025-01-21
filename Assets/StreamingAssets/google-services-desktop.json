@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "470348418514",
+    "firebase_url": "https://ip-holohands-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ip-holohands",
+    "storage_bucket": "ip-holohands.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470348418514:android:ef6b97ce5b180060088c0b",
+        "android_client_info": {
+          "package_name": "com.Holohands.IP"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXIFk44UR-2siXFHZnh9iwsBydKid86hY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
