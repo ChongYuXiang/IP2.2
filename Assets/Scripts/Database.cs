@@ -113,8 +113,8 @@ public class Database : MonoBehaviour
             newHighscore = newScore;
         }
         Dictionary<string, object> childUpdates = new Dictionary<string, object>();
-        childUpdates[uuid + "/score"] = score;
-        childUpdates[uuid + "/highscore"] = highscore;
+        childUpdates[uuid + "/score"] = newScore;
+        childUpdates[uuid + "/highscore"] = newHighscore;
         FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
         ReadPlayerData();
     }
