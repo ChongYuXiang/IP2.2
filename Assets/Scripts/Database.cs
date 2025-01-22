@@ -23,9 +23,9 @@ public class Database : MonoBehaviour
     [SerializeField]
     private GameObject UiManager;
 
-    public string email;
-    public string password;
-    public string uuid;
+    private string email;
+    private string password;
+    private string uuid;
 
     // User data
     public long score;
@@ -61,7 +61,7 @@ public class Database : MonoBehaviour
         dataRef = FirebaseDatabase.DefaultInstance.RootReference;
         auth = FirebaseAuth.DefaultInstance;
 
-        ReadPlayerData();
+        //ReadPlayerData();
     }
 
     // Create player data
@@ -144,7 +144,7 @@ public class Database : MonoBehaviour
                 Debug.LogFormat("User logged in successfully: {0} {1}", result.User.Email, result.User.UserId);
                 errorText.SetActive(false);
                 uuid = result.User.UserId;
-                ReadPlayerData();
+                //ReadPlayerData();
             }
         });
     }
@@ -173,7 +173,7 @@ public class Database : MonoBehaviour
                 Debug.LogFormat("Firebase user created successfully: {0} {1}", result.User.Email, result.User.UserId);
                 errorText.SetActive(false);
                 uuid = result.User.UserId;
-                WriteNewPlayer(0, 0, username);
+                //WriteNewPlayer(0, 0, username);
             }
         });
     }
