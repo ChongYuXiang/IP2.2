@@ -14,6 +14,9 @@ using UnityEngine.SocialPlatforms.Impl;
 using System.Threading.Tasks;
 using Firebase.Auth;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
+using UnityEngine.UI;
+using System;
 
 public class Database : MonoBehaviour
 {
@@ -28,15 +31,21 @@ public class Database : MonoBehaviour
     private string uuid;
 
     // User data
-    public long score;
-    public long highscore;
     public string username;
+    public string gender;
+    public string race;
 
     // Input fields
+    [SerializeField]
+    private TMP_InputField inputName;
     [SerializeField]
     private TMP_InputField inputEmail;
     [SerializeField]
     private TMP_InputField inputPassword;
+    [SerializeField]
+    private TMP_Dropdown inputGender;
+    [SerializeField]
+    private TMP_Dropdown inputRace;
 
     // UI Objects
     public GameObject errorText;
@@ -65,12 +74,25 @@ public class Database : MonoBehaviour
     }
 
     // Create player data
-    public void WriteNewPlayer(int score, int highscore, string username)
+    public void WriteNewPlayer(string username, string email, string gender, string race, bool active_status)
     {
-        Player player = new Player(score, highscore, username);
+        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+        Player player = new Player(username, email, gender, race, active_status, timestamp, timestamp);
         string json = JsonUtility.ToJson(player);
         dataRef.Child("players").Child(uuid).SetRawJsonValueAsync(json);
         Debug.Log(json);
+
+        AlphabetGame alphabetgame = new AlphabetGame(0, 0, 0, 0, 0);
+        json = JsonUtility.ToJson(alphabetgame);
+        dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
+
+        WordGame wordgame = new WordGame(0, 0, 0, 0, 0);
+        json = JsonUtility.ToJson(wordgame);
+        dataRef.Child("word_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
+
         ReadPlayerData();
     }
 
@@ -92,14 +114,15 @@ public class Database : MonoBehaviour
                 Debug.Log("raw json data of player" + playerDetails);
 
                 Player p = JsonUtility.FromJson<Player>(playerDetails);
-                score = p.score;
-                highscore = p.highscore;
                 username = p.username;
-                Debug.LogFormat("Player data of {0}: score:{1} highscore:{2}", username, score, highscore);
+                email = p.email;
+                gender = p.gender;
+                Debug.LogFormat("Player data of {0}: email:{1} gender:{2} race:{3} status:{4}", username, email, gender, race, p.active_status);
             }
         });
     }
 
+    /*
     public void IncreaseScore(int scoreChange)
     {
         // Increase score when fruit is clicked
@@ -118,6 +141,7 @@ public class Database : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
         ReadPlayerData();
     }
+    */
 
 
     public void Login()
@@ -125,7 +149,7 @@ public class Database : MonoBehaviour
         // Retrieve input values
         email = inputEmail.text;
         password = inputPassword.text;
-        Debug.LogFormat("Sign in values: {0} {1}", email, password);
+        Debug.LogFormat("Log in values: {0} {1}", email, password);
 
         // Reset input fields
         inputEmail.text = "";
@@ -144,7 +168,7 @@ public class Database : MonoBehaviour
                 Debug.LogFormat("User logged in successfully: {0} {1}", result.User.Email, result.User.UserId);
                 errorText.SetActive(false);
                 uuid = result.User.UserId;
-                //ReadPlayerData();
+                ReadPlayerData();
             }
         });
     }
@@ -152,11 +176,15 @@ public class Database : MonoBehaviour
     public void SignUp()
     {
         // Retrieve input values
+        username = inputName.text;
         email = inputEmail.text;
         password = inputPassword.text;
-        Debug.LogFormat("Sign up values: {0} {1}", email, password);
+        gender = inputGender.options[inputGender.value].text;
+        race = inputRace.options[inputRace.value].text;
+        Debug.LogFormat("Sign in values: {0} {1} {2} {3} {4}", username, email, password, gender, race);
 
         // Reset input fields
+        inputName.text = "";
         inputEmail.text = "";
         inputPassword.text = "";
 
@@ -173,7 +201,7 @@ public class Database : MonoBehaviour
                 Debug.LogFormat("Firebase user created successfully: {0} {1}", result.User.Email, result.User.UserId);
                 errorText.SetActive(false);
                 uuid = result.User.UserId;
-                //WriteNewPlayer(0, 0, username);
+                WriteNewPlayer(username, email, gender, race, true);
             }
         });
     }

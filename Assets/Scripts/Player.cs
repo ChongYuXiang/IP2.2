@@ -1,6 +1,6 @@
 /* Author: Chong Yu Xiang  
  * Filename: Player
- * Descriptions: Class for player
+ * Descriptions: Class for players
  */
 
 using System.Collections;
@@ -9,14 +9,22 @@ using UnityEngine;
 
 public class Player
 {
-    public int score;
-    public int highscore;
     public string username;
+    public string email;
+    public string gender;
+    public string race;
+    public bool active_status;
+    public string account_creation_date;
+    public string last_logged_in_time;
 
-    public Player(int score, int highscore, string username)
+    public Player(string username, string email, string gender, string race, bool active_status, string account_creation_date, string last_logged_in_time)
     {
-        this.score = score;
-        this.highscore = highscore;
         this.username = username;
+        this.email = email;
+        this.gender = gender;
+        this.race = race;
+        this.active_status = active_status;
+        this.account_creation_date = account_creation_date;
+        this.last_logged_in_time = last_logged_in_time;
     }
 }
