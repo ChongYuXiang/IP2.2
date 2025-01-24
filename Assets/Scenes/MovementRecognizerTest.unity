@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSource: 5
-  inputButton: 2
+  inputButton: 1
   inputThreshold: 0.1
   movementSource: {fileID: 0}
   newPositionThresholdDistance: 0.05

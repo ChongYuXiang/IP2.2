@@ -190,7 +190,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &70837396
 GameObject:
@@ -243,7 +263,7 @@ MonoBehaviour:
   m_GesturePerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 498598921}
+      - m_Target: {fileID: 498598919}
         m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 5
@@ -260,7 +280,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &71653914
 GameObject:
@@ -330,7 +370,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &80144572
 GameObject:
@@ -450,6 +510,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &80573245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 80573247}
+  - component: {fileID: 80573246}
+  m_Layer: 0
+  m_Name: Tt (L)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &80573246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80573245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 536865519}
+  m_HandShapeOrPose: {fileID: 11400000, guid: df1697180aab6634a88a9e7d1bde256f, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 498598921}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tt (L)
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
+  m_Highlight: {fileID: 0}
+--- !u!4 &80573247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80573245}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 536865518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104321739
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +668,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &140101027
 GameObject:
@@ -621,7 +791,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &208962853
 GameObject:
@@ -691,7 +881,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &276303969
 GameObject:
@@ -761,7 +971,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &280628495
 GameObject:
@@ -831,7 +1061,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &315995041
 GameObject:
@@ -901,7 +1151,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &394499016
 GameObject:
@@ -971,7 +1241,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &395660759
 GameObject:
@@ -1041,7 +1331,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &408778999
 GameObject:
@@ -1111,7 +1421,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &421308108
 GameObject:
@@ -1181,7 +1511,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &466784359
 GameObject:
@@ -1251,7 +1601,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &498598919
 GameObject:
@@ -1431,6 +1801,7 @@ Transform:
   - {fileID: 1674795843}
   - {fileID: 1749387346}
   - {fileID: 807963509}
+  - {fileID: 80573247}
   - {fileID: 408779000}
   - {fileID: 394499017}
   - {fileID: 1362178193}
@@ -1535,7 +1906,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &759147426
 GameObject:
@@ -1605,7 +1996,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &767429708
 GameObject:
@@ -1675,7 +2086,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &769888896
 GameObject:
@@ -1745,7 +2176,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &807963508
 GameObject:
@@ -1815,7 +2266,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &860773684
 GameObject:
@@ -1885,7 +2356,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &949148698
 GameObject:
@@ -1955,7 +2446,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1013890667
 GameObject:
@@ -2025,7 +2536,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1069698776
 GameObject:
@@ -2187,7 +2718,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1164825165
 GameObject:
@@ -2257,7 +2808,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1172148720
 GameObject:
@@ -2327,7 +2898,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1231355902
 GameObject:
@@ -2397,7 +2988,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1001 &1304590749
 PrefabInstance:
@@ -2645,7 +3256,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1362178192
 GameObject:
@@ -2715,7 +3346,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1429787651
 GameObject:
@@ -2872,7 +3523,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1502485127
 GameObject:
@@ -2942,7 +3613,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1506402079
 GameObject:
@@ -3066,6 +3757,96 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.2875001}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1510906417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510906419}
+  - component: {fileID: 1510906418}
+  m_Layer: 0
+  m_Name: Tt (R)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1510906418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510906417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf93899325d5df74eb9176e097ee3d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandTrackingEvents: {fileID: 1706264211}
+  m_HandShapeOrPose: {fileID: 11400000, guid: df1697180aab6634a88a9e7d1bde256f, type: 2}
+  m_TargetTransform: {fileID: 0}
+  m_Background: {fileID: 0}
+  m_GesturePerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 498598921}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tt (R)
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_GestureEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_MinimumHoldTime: 0.2
+  m_GestureDetectionInterval: 0.1
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
+  m_Highlight: {fileID: 0}
+--- !u!4 &1510906419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510906417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1706264210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554416521
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,7 +3915,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1674795842
 GameObject:
@@ -3204,7 +4005,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1690126151
 GameObject:
@@ -3274,7 +4095,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1706264209
 GameObject:
@@ -3320,6 +4161,7 @@ Transform:
   - {fileID: 759147427}
   - {fileID: 1164825166}
   - {fileID: 205109320}
+  - {fileID: 1510906419}
   - {fileID: 860773685}
   - {fileID: 1554416522}
   - {fileID: 1013890668}
@@ -3424,7 +4266,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1815011822
 GameObject:
@@ -3494,7 +4356,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 71653916}
+  - {fileID: 767429710}
+  - {fileID: 276303971}
+  - {fileID: 1815011824}
+  - {fileID: 1172148722}
+  - {fileID: 395660761}
+  - {fileID: 421308110}
+  - {fileID: 1502485129}
+  - {fileID: 545152131}
+  - {fileID: 1690126153}
+  - {fileID: 280628497}
+  - {fileID: 1674795844}
+  - {fileID: 1749387347}
+  - {fileID: 807963510}
+  - {fileID: 80573246}
+  - {fileID: 408779001}
+  - {fileID: 394499018}
+  - {fileID: 1362178194}
+  - {fileID: 208962855}
+  - {fileID: 466784361}
   m_Highlight: {fileID: 0}
 --- !u!1 &1817830604
 GameObject:
@@ -3564,7 +4446,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &1977219740
 GameObject:
@@ -3634,7 +4536,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1 &2089169639
 GameObject:
@@ -3704,7 +4626,27 @@ MonoBehaviour:
       m_Calls: []
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
-  m_StaticGestures: []
+  m_StaticGestures:
+  - {fileID: 1231355904}
+  - {fileID: 70837398}
+  - {fileID: 949148700}
+  - {fileID: 44420042}
+  - {fileID: 2089169641}
+  - {fileID: 1151271223}
+  - {fileID: 1977219742}
+  - {fileID: 1443171094}
+  - {fileID: 104321741}
+  - {fileID: 769888898}
+  - {fileID: 1817830606}
+  - {fileID: 759147428}
+  - {fileID: 1164825167}
+  - {fileID: 205109321}
+  - {fileID: 1510906418}
+  - {fileID: 860773686}
+  - {fileID: 1554416523}
+  - {fileID: 1013890669}
+  - {fileID: 315995043}
+  - {fileID: 1330911853}
   m_Highlight: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
