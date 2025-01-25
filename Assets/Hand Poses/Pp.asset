@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 740f51a1ac4b42088297287229057627, type: 3}
-  m_Name: Yy
+  m_Name: Pp
   m_EditorClassIdentifier: 
-  m_HandShape: {fileID: 11400000, guid: 079abd002002b2e4abd13006c22483db, type: 2}
+  m_HandShape: {fileID: 11400000, guid: c6fb7272cb41df6408e1a0e7ebd5404a, type: 2}
   m_RelativeOrientation:
     m_UserConditions:
     - m_HandAxis: 0
       m_AlignmentCondition: 0
-      m_ReferenceDirection: 2
-      m_AngleTolerance: 45
+      m_ReferenceDirection: 3
+      m_AngleTolerance: 30
       m_IgnorePositionY: 0
     m_TargetConditions: []
