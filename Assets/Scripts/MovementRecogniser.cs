@@ -2,44 +2,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Hands;
+using UnityEngine.XR.Hands.Gestures;
 
 public class MovementRecogniser : MonoBehaviour
 {
-    public XRNode inputSource;
-    public InputHelpers.Button inputButton;
-    public float inputThreshold = 0.1f;
+    public XRNode inputSource; // Specify LeftHand or RightHand
     public Transform movementSource;
-
-    public float newPositionThresholdDistance = 0.05f;
     public GameObject debugCubePrefab;
 
+    public XRHandPose requiredPose; // Reference to the XRHandPose asset
+    public float newPositionThresholdDistance = 0.05f;
+
+    private XRHandSubsystem handSubsystem; // Hand tracking subsystem
     private bool isMoving = false;
     private List<Vector3> positionsList = new List<Vector3>();
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // Initialize the XRHandSubsystem
+        var subsystems = new List<XRHandSubsystem>();
+        SubsystemManager.GetInstances(subsystems);
+        if (subsystems.Count > 0)
+        {
+            handSubsystem = subsystems[0];
+            // Subscribe to the updatedHands event
+            handSubsystem.updatedHands += OnHandsUpdated;
+        }
+        else
+        {
+            Debug.LogWarning("No XRHandSubsystem found!");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDestroy()
     {
-        InputHelpers.IsPressed(InputDevices.GetDeviceAtXRNode(inputSource), inputButton, out bool isPressed, inputThreshold);
+        if (handSubsystem != null)
+        {
+            // Unsubscribe from the updatedHands event to avoid memory leaks
+            handSubsystem.updatedHands -= OnHandsUpdated;
+        }
+    }
 
-        //Start Movement
-        if (isPressed && !isMoving)
+    // Correct method signature to match the event delegate
+    private void OnHandsUpdated(XRHandSubsystem handSubsystem, XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateType updateType)
+    {
+        if (requiredPose == null)
+            return;
+
+        // Retrieve the correct hand data (left or right) from the handSubsystem
+        XRHand hand = (inputSource == XRNode.LeftHand) ? handSubsystem.leftHand : handSubsystem.rightHand;
+
+        // Ensure the hand is tracked
+        if (hand == null || !hand.isTracked)
+            return;
+
+        // Now use the hand directly to check conditions
+        var handJointsUpdatedEventArgs = new XRHandJointsUpdatedEventArgs();
+        handJointsUpdatedEventArgs.hand = hand;
+        bool matchesPose = requiredPose.CheckConditions(handJointsUpdatedEventArgs);
+
+        if (matchesPose && !isMoving)
         {
             StartMovement();
         }
-        //End Movement
-        else if (!isPressed && isMoving)
+        else if (!matchesPose && isMoving)
         {
             EndMovement();
         }
-        else if (isPressed && isMoving)
+        else if (matchesPose && isMoving)
         {
             UpdateMovement();
         }
@@ -51,8 +82,9 @@ public class MovementRecogniser : MonoBehaviour
         Debug.Log("Start Moving");
         positionsList.Clear();
         positionsList.Add(movementSource.position);
-        if(debugCubePrefab){
-            
+
+        if (debugCubePrefab)
+        {
             Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
         }
     }
@@ -65,12 +97,14 @@ public class MovementRecogniser : MonoBehaviour
 
     private void UpdateMovement()
     {
-        Debug.Log("Update");
+        Debug.Log("Update Movement");
         Vector3 lastPosition = positionsList[positionsList.Count - 1];
-        if(Vector3.Distance(movementSource.position,lastPosition) > newPositionThresholdDistance)
+        if (Vector3.Distance(movementSource.position, lastPosition) > newPositionThresholdDistance)
         {
             positionsList.Add(movementSource.position);
-            if(debugCubePrefab){
+
+            if (debugCubePrefab)
+            {
                 Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
             }
         }

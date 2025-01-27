@@ -3032,7 +3032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 1706264211}
-  m_HandShapeOrPose: {fileID: 11400000, guid: ec1de781d71964c79b9a29bcef28236b, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 91cc52faa6a72884abd2f70c40956681, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 0}
   m_GesturePerformed:
