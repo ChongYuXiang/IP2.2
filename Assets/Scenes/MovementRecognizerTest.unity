@@ -273,6 +273,12 @@ MonoBehaviour:
   movementSource: {fileID: 1304590752}
   debugCubePrefab: {fileID: 7650415500823833707, guid: 2b585172b9f59475b9ca5fa239d1bab1,
     type: 3}
+  creationMode: 0
+  newGestureName: 
+  recognitionThreshold: 0.9
+  OnGestureRecognised:
+    m_PersistentCalls:
+      m_Calls: []
   requiredPose: {fileID: 11400000, guid: 8ecb1b2f675de454c8d5a427d3311887, type: 2}
   newPositionThresholdDistance: 0.05
 --- !u!4 &1018880398
