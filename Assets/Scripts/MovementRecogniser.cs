@@ -95,7 +95,7 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
-    private void StartMovement()
+    void StartMovement()
     {
         isMoving = true;
         Debug.Log("Start Moving");
@@ -108,12 +108,31 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
+    private void UpdateMovement()
+    {
+        Debug.Log("Update Movement");
+        Vector3 lastPosition = positionsList[positionsList.Count - 1];
+        float distance = Vector3.Distance(movementSource.position, lastPosition);
+        Debug.Log($"Movement Distance: {distance}");
+
+        if (distance > newPositionThresholdDistance)
+        {
+            positionsList.Add(movementSource.position);
+            Debug.Log($"New Position Added: {movementSource.position}");
+
+            if (debugCubePrefab)
+            {
+                Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
+            }
+        }
+    }
+
     private void EndMovement()
     {
         isMoving = false;
         Debug.Log("End moving");
 
-        //Create Gesture From Position
+        // Create Gesture From Position
         Point[] pointArray = new Point[positionsList.Count];
         for (int i = 0; i < positionsList.Count; i++)
         {
@@ -123,39 +142,23 @@ public class MovementRecogniser : MonoBehaviour
 
         Gesture newGesture = new Gesture(pointArray);
 
-        //Add New Gesture to Training Set
         if (creationMode)
         {
             newGesture.Name = newGestureName;
             trainingSet.Add(newGesture);
 
-            //Save Training Set
+            // Save Training Set
             string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
+            Debug.Log($"Gesture Saved: {fileName}");
         }
-        //Recognise Gesture
         else
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
-            Debug.Log("Gesture Recognised: " + result.GestureClass + " " + result.Score);
+            Debug.Log($"Gesture Recognised: {result.GestureClass}, Score: {result.Score}");
             if (result.Score > recognitionThreshold)
             {
                 OnGestureRecognised.Invoke(result.GestureClass);
-            }
-        }
-    }
-
-    private void UpdateMovement()
-    {
-        Debug.Log("Update Movement");
-        Vector3 lastPosition = positionsList[positionsList.Count - 1];
-        if (Vector3.Distance(movementSource.position, lastPosition) > newPositionThresholdDistance)
-        {
-            positionsList.Add(movementSource.position);
-
-            if (debugCubePrefab)
-            {
-                Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
             }
         }
     }
