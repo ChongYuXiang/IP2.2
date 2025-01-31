@@ -30,7 +30,7 @@ public class AlphabetGame : MonoBehaviour
     public TextMeshProUGUI letterDisplay;  // Reference to the UI text component that will display the letter
     public TextMeshProUGUI scoreDisplay;   // Reference to the UI text component that will display the score
     public TextMeshProUGUI feedbackDisplay; // For displaying feedback (correct/incorrect)
-
+    public TextMeshProUGUI inputDisplay;  // For displaying the player's input
     private float startTime;  // Time when the letter was shown
 
     void Start()
@@ -56,7 +56,7 @@ public class AlphabetGame : MonoBehaviour
 
     void CheckLetterInput()
     {
-        if (Input.inputString.ToUpper() == currentLetter.ToString())  // Check if the player typed the correct letter
+        if (inputDisplay.text == currentLetter.ToString())  // Check if the player typed the correct letter
         {
             correct++;  // Increase the correct count
             feedbackDisplay.text = "Correct!";
@@ -79,4 +79,5 @@ public class AlphabetGame : MonoBehaviour
         time_taken = (int)(Time.time - startTime);
         average_time_per_letter = correct > 0 ? time_taken / correct : 0;
     }
+    
 }
