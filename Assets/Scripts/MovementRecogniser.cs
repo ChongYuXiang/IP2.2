@@ -15,7 +15,7 @@ public class MovementRecogniser : MonoBehaviour
     public GameObject debugCubePrefab;
     public bool creationMode = false;
     public string newGestureName;
-    
+
     public float recognitionThreshold = 0.9f;
 
     [System.Serializable]
@@ -23,7 +23,7 @@ public class MovementRecogniser : MonoBehaviour
     public UnityStringEvent OnGestureRecognised;
 
     public XRHandPose requiredPose; // Reference to the XRHandPose asset
-    public float newPositionThresholdDistance = 0.05f;
+    public float newPositionThresholdDistance = 0.01f; // Reduced threshold to detect smaller movements
 
     private List<Gesture> trainingSet = new List<Gesture>();
     private XRHandSubsystem handSubsystem; // Hand tracking subsystem
@@ -45,7 +45,6 @@ public class MovementRecogniser : MonoBehaviour
         if (subsystems.Count > 0)
         {
             handSubsystem = subsystems[0];
-            // Subscribe to the updatedHands event
             handSubsystem.updatedHands += OnHandsUpdated;
         }
         else
@@ -58,25 +57,30 @@ public class MovementRecogniser : MonoBehaviour
     {
         if (handSubsystem != null)
         {
-            // Unsubscribe from the updatedHands event to avoid memory leaks
             handSubsystem.updatedHands -= OnHandsUpdated;
         }
     }
 
-    // Correct method signature to match the event delegate
     private void OnHandsUpdated(XRHandSubsystem handSubsystem, XRHandSubsystem.UpdateSuccessFlags successFlags, XRHandSubsystem.UpdateType updateType)
     {
-        if (requiredPose == null)
-            return;
+        Debug.Log("OnHandsUpdated called");
 
-        // Retrieve the correct hand data (left or right) from the handSubsystem
+        if (requiredPose == null)
+        {
+            Debug.LogWarning("No requiredPose assigned!");
+            return;
+        }
+
         XRHand hand = (inputSource == XRNode.LeftHand) ? handSubsystem.leftHand : handSubsystem.rightHand;
 
-        // Ensure the hand is tracked
         if (hand == null || !hand.isTracked)
+        {
+            Debug.LogWarning($"Hand is not tracked! Hand: {inputSource}");
             return;
+        }
 
-        // Now use the hand directly to check conditions
+        Debug.Log($"Hand {inputSource} is tracked.");
+
         var handJointsUpdatedEventArgs = new XRHandJointsUpdatedEventArgs();
         handJointsUpdatedEventArgs.hand = hand;
         bool matchesPose = requiredPose.CheckConditions(handJointsUpdatedEventArgs);
@@ -102,6 +106,8 @@ public class MovementRecogniser : MonoBehaviour
         positionsList.Clear();
         positionsList.Add(movementSource.position);
 
+        Debug.Log($"Starting Position: {movementSource.position}");
+
         if (debugCubePrefab)
         {
             Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
@@ -111,9 +117,17 @@ public class MovementRecogniser : MonoBehaviour
     private void UpdateMovement()
     {
         Debug.Log("Update Movement");
+
+        if (positionsList.Count == 0)
+        {
+            Debug.LogWarning("positionsList is empty, can't calculate distance!");
+            return;
+        }
+
         Vector3 lastPosition = positionsList[positionsList.Count - 1];
         float distance = Vector3.Distance(movementSource.position, lastPosition);
-        Debug.Log($"Movement Distance: {distance}");
+
+        Debug.Log($"Last Position: {lastPosition}, Current Position: {movementSource.position}, Movement Distance: {distance}");
 
         if (distance > newPositionThresholdDistance)
         {
@@ -125,12 +139,22 @@ public class MovementRecogniser : MonoBehaviour
                 Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
             }
         }
+        else
+        {
+            Debug.Log($"Movement too small: {distance} (Threshold: {newPositionThresholdDistance})");
+        }
     }
 
     private void EndMovement()
     {
         isMoving = false;
-        Debug.Log("End moving");
+        Debug.Log("End Moving");
+
+        if (positionsList.Count == 0)
+        {
+            Debug.LogWarning("No movement data recorded!");
+            return;
+        }
 
         // Create Gesture From Position
         Point[] pointArray = new Point[positionsList.Count];
@@ -147,7 +171,6 @@ public class MovementRecogniser : MonoBehaviour
             newGesture.Name = newGestureName;
             trainingSet.Add(newGesture);
 
-            // Save Training Set
             string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
             Debug.Log($"Gesture Saved: {fileName}");
@@ -156,6 +179,7 @@ public class MovementRecogniser : MonoBehaviour
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
             Debug.Log($"Gesture Recognised: {result.GestureClass}, Score: {result.Score}");
+
             if (result.Score > recognitionThreshold)
             {
                 OnGestureRecognised.Invoke(result.GestureClass);
