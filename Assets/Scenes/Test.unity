@@ -387,6 +387,12 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!4 &1095470356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8332032916379377560, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1248804059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1248804059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,8 +564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53969f7ef70c4627b06868663a6572c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSource: 4
-  movementSource: {fileID: 1620618468}
+  inputSource: 5
+  movementSource: {fileID: 1095470356}
   debugCubePrefab: {fileID: 7650415500823833707, guid: 2b585172b9f59475b9ca5fa239d1bab1,
     type: 3}
   creationMode: 0
@@ -588,12 +594,6 @@ Transform:
 --- !u!4 &1538070588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7990873191126656719, guid: 5eccbf4be2c00e94689ee8062e4e7276,
-    type: 3}
-  m_PrefabInstance: {fileID: 1248804059}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1620618468 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3922381200696386636, guid: 5eccbf4be2c00e94689ee8062e4e7276,
     type: 3}
   m_PrefabInstance: {fileID: 1248804059}
   m_PrefabAsset: {fileID: 0}
