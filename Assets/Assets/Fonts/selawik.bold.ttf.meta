@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c83b8de6c9ef0b4cb8ade16e5b8d248
+guid: cb0c29e64a3e81b42b258806cc41f3c1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Cheyenne Sans
+  - Selawik
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
