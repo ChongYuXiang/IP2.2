@@ -27,10 +27,10 @@ public class AlphabetGame : MonoBehaviour
     }
 
     private char currentLetter;  // The current random letter
-    public TextMeshProUGUI letterDisplay;  // Reference to the UI text component that will display the letter
-    public TextMeshProUGUI scoreDisplay;   // Reference to the UI text component that will display the score
-    public TextMeshProUGUI feedbackDisplay; // For displaying feedback (correct/incorrect)
-    public TextMeshProUGUI inputDisplay;  // For displaying the player's input
+    public TextMeshPro letterDisplay;  // Reference to the UI text component that will display the letter
+    public TextMeshPro scoreDisplay;   // Reference to the UI text component that will display the score
+    public TextMeshPro feedbackDisplay; // For displaying feedback (correct/incorrect)
+    public TextMeshPro inputDisplay;  // For displaying the player's input
     private float startTime;  // Time when the letter was shown
 
     void Start()
