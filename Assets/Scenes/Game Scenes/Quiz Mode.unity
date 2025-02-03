@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 599137192}
   - component: {fileID: 599137191}
   m_Layer: 0
-  m_Name: Alphabet game manager
+  m_Name: Alphabet Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
