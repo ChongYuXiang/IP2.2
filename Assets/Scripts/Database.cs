@@ -17,6 +17,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 using System;
+using System.Net.Mail;
 
 public class Database : MonoBehaviour
 {
@@ -39,16 +40,24 @@ public class Database : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputName;
     [SerializeField]
-    private TMP_InputField inputEmail;
+    private TMP_InputField inputEmail1;
     [SerializeField]
-    private TMP_InputField inputPassword;
+    private TMP_InputField inputPassword1;
+    [SerializeField]
+    private TMP_InputField inputEmail2;
+    [SerializeField]
+    private TMP_InputField inputPassword2;
+    [SerializeField]
+    private TMP_InputField inputEmailReset;
     [SerializeField]
     private TMP_Dropdown inputGender;
     [SerializeField]
     private TMP_Dropdown inputRace;
 
     // UI Objects
-    public GameObject errorText;
+    public TextMeshProUGUI errorText1;
+    public TextMeshProUGUI errorText2;
+    public TextMeshProUGUI resetText;
 
     // Instance
     public static Database instance;
@@ -147,26 +156,26 @@ public class Database : MonoBehaviour
     public void Login()
     {
         // Retrieve input values
-        email = inputEmail.text;
-        password = inputPassword.text;
+        email = inputEmail1.text;
+        password = inputPassword1.text;
         Debug.LogFormat("Log in values: {0} {1}", email, password);
 
         // Reset input fields
-        inputEmail.text = "";
-        inputPassword.text = "";
+        inputEmail1.text = "";
+        inputPassword1.text = "";
 
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
                 Debug.Log("SignInilAndPasswordAsync error " + task.Exception);
-                errorText.SetActive(true);
+                errorText1.text = "Error: Check that email and password are input correctly";
             }
             if (task.IsCompleted)
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("User logged in successfully: {0} {1}", result.User.Email, result.User.UserId);
-                errorText.SetActive(false);
+                errorText1.text = "";
                 uuid = result.User.UserId;
                 ReadPlayerData();
             }
@@ -177,29 +186,29 @@ public class Database : MonoBehaviour
     {
         // Retrieve input values
         username = inputName.text;
-        email = inputEmail.text;
-        password = inputPassword.text;
+        email = inputEmail2.text;
+        password = inputPassword2.text;
         gender = inputGender.options[inputGender.value].text;
         race = inputRace.options[inputRace.value].text;
         Debug.LogFormat("Sign in values: {0} {1} {2} {3} {4}", username, email, password, gender, race);
 
         // Reset input fields
         inputName.text = "";
-        inputEmail.text = "";
-        inputPassword.text = "";
+        inputEmail2.text = "";
+        inputPassword2.text = "";
 
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
             if (task.IsFaulted)
             {
                 Debug.LogFormat("CreateUserWithEmailAndPasswordAsync error " + task.Exception);
-                errorText.SetActive(true);
+                errorText2.text = "Error: Check that all fields have been input correctly";
             }
             else if (task.IsCompleted)
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("Firebase user created successfully: {0} {1}", result.User.Email, result.User.UserId);
-                errorText.SetActive(false);
+                errorText2.text = "";
                 uuid = result.User.UserId;
                 WriteNewPlayer(username, email, gender, race, true);
             }
@@ -210,5 +219,25 @@ public class Database : MonoBehaviour
     {
         auth.SignOut();
         Debug.Log("Signed out");
+    }
+
+    public void forgotPassword()
+    {
+        email = inputEmailReset.text;
+
+        auth.SendPasswordResetEmailAsync(email).ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SendPasswordResetEmailAsync was canceled.");
+                resetText.text = "Error: Email not found";
+            }
+            else if (task.IsFaulted)
+            {
+                Debug.LogError("SendPasswordResetEmailAsync encountered an error: " + task.Exception);
+                resetText.text = "Email sent successfully";
+            }
+
+            Debug.Log("Password reset email sent successfully");
+        });
     }
 }
