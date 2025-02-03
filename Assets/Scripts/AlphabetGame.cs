@@ -1,7 +1,7 @@
 /* Author: Chong Yu Xiang  
- * Filename: AlphabetGame
- * Descriptions: Class for alphabet_game
- */
+* Filename: AlphabetGame
+* Descriptions: Class for alphabet_game
+*/
 
 using System.Collections;
 using System.Collections.Generic;
