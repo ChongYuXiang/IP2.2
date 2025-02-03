@@ -4320,6 +4320,7 @@ GameObject:
   - component: {fileID: 392956686}
   - component: {fileID: 392956685}
   - component: {fileID: 392956684}
+  - component: {fileID: 392956687}
   m_Layer: 5
   m_Name: Password Input 1
   m_TagString: Untagged
@@ -4484,6 +4485,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392956682}
   m_CullTransparentMesh: 1
+--- !u!114 &392956687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392956682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 392956684}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &398679930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5278,6 +5311,7 @@ GameObject:
   - component: {fileID: 484902805}
   - component: {fileID: 484902804}
   - component: {fileID: 484902803}
+  - component: {fileID: 484902806}
   m_Layer: 5
   m_Name: Email Input 1
   m_TagString: Untagged
@@ -5442,6 +5476,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484902801}
   m_CullTransparentMesh: 1
+--- !u!114 &484902806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484902801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 484902803}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &488694572
 GameObject:
   m_ObjectHideFlags: 0
@@ -12202,6 +12268,7 @@ GameObject:
   - component: {fileID: 1137162696}
   - component: {fileID: 1137162695}
   - component: {fileID: 1137162694}
+  - component: {fileID: 1137162697}
   m_Layer: 5
   m_Name: Username Input
   m_TagString: Untagged
@@ -12366,6 +12433,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137162692}
   m_CullTransparentMesh: 1
+--- !u!114 &1137162697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137162692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 1137162694}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1141174739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15617,17 +15716,17 @@ MonoBehaviour:
   username: 
   gender: 
   race: 
-  inputName: {fileID: 0}
-  inputEmail1: {fileID: 0}
-  inputPassword1: {fileID: 0}
-  inputEmail2: {fileID: 0}
-  inputPassword2: {fileID: 0}
-  inputEmailReset: {fileID: 0}
-  inputGender: {fileID: 0}
-  inputRace: {fileID: 0}
-  errorText1: {fileID: 0}
-  errorText2: {fileID: 0}
-  resetText: {fileID: 0}
+  inputName: {fileID: 1137162694}
+  inputEmail1: {fileID: 484902803}
+  inputPassword1: {fileID: 392956684}
+  inputEmail2: {fileID: 2113807636}
+  inputPassword2: {fileID: 1749667902}
+  inputEmailReset: {fileID: 1869769348}
+  inputGender: {fileID: 159308131}
+  inputRace: {fileID: 332923882}
+  errorText1: {fileID: 608850838}
+  errorText2: {fileID: 1741028886}
+  resetText: {fileID: 1278932194}
 --- !u!4 &1441274708
 Transform:
   m_ObjectHideFlags: 0
@@ -19871,6 +19970,7 @@ GameObject:
   - component: {fileID: 1749667904}
   - component: {fileID: 1749667903}
   - component: {fileID: 1749667902}
+  - component: {fileID: 1749667905}
   m_Layer: 5
   m_Name: Password Input 2
   m_TagString: Untagged
@@ -20035,6 +20135,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749667900}
   m_CullTransparentMesh: 1
+--- !u!114 &1749667905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749667900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 1749667902}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1768458488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0563ba967fb0ac74cb4bd4272c4b47a2,
@@ -21489,6 +21621,7 @@ GameObject:
   - component: {fileID: 1869769350}
   - component: {fileID: 1869769349}
   - component: {fileID: 1869769348}
+  - component: {fileID: 1869769351}
   m_Layer: 5
   m_Name: Email Input Reset
   m_TagString: Untagged
@@ -21653,6 +21786,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869769346}
   m_CullTransparentMesh: 1
+--- !u!114 &1869769351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869769346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 1869769348}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1869769703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23479,6 +23644,7 @@ GameObject:
   - component: {fileID: 2113807638}
   - component: {fileID: 2113807637}
   - component: {fileID: 2113807636}
+  - component: {fileID: 2113807639}
   m_Layer: 5
   m_Name: Email Input 2
   m_TagString: Untagged
@@ -23643,6 +23809,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113807634}
   m_CullTransparentMesh: 1
+--- !u!114 &2113807639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113807634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2317ceab4d3d38419fe16eebc1c0cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InputField: {fileID: 2113807636}
+  m_Keyboard: {fileID: 0}
+  m_UseSceneKeyboard: 0
+  m_UpdateOnKeyPress: 1
+  m_AlwaysObserveKeyboard: 0
+  m_MonitorInputFieldCharacterLimit: 0
+  m_ClearTextOnSubmit: 0
+  m_ClearTextOnOpen: 0
+  m_OnTextSubmitted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardClosed:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnKeyboardFocusChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2117241666
 GameObject:
   m_ObjectHideFlags: 0
