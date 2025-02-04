@@ -17,14 +17,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 using System;
+using System.Net.Mail;
 
 public class Database : MonoBehaviour
 {
     DatabaseReference dataRef;
     FirebaseAuth auth;
-
-    [SerializeField]
-    private GameObject UiManager;
 
     private string email;
     private string password;
@@ -39,16 +37,24 @@ public class Database : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputName;
     [SerializeField]
-    private TMP_InputField inputEmail;
+    private TMP_InputField inputEmail1;
     [SerializeField]
-    private TMP_InputField inputPassword;
+    private TMP_InputField inputPassword1;
+    [SerializeField]
+    private TMP_InputField inputEmail2;
+    [SerializeField]
+    private TMP_InputField inputPassword2;
+    [SerializeField]
+    private TMP_InputField inputEmailReset;
     [SerializeField]
     private TMP_Dropdown inputGender;
     [SerializeField]
     private TMP_Dropdown inputRace;
 
     // UI Objects
-    public GameObject errorText;
+    public TextMeshProUGUI errorText1;
+    public TextMeshProUGUI errorText2;
+    public TextMeshProUGUI resetText;
 
     // Instance
     public static Database instance;
@@ -83,6 +89,7 @@ public class Database : MonoBehaviour
         dataRef.Child("players").Child(uuid).SetRawJsonValueAsync(json);
         Debug.Log(json);
 
+        /*
         AlphabetGame alphabetgame = new AlphabetGame(0, 0, 0, 0, 0);
         json = JsonUtility.ToJson(alphabetgame);
         dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
@@ -92,6 +99,7 @@ public class Database : MonoBehaviour
         json = JsonUtility.ToJson(wordgame);
         dataRef.Child("word_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
         Debug.Log(json);
+        */
 
         ReadPlayerData();
     }
@@ -101,19 +109,20 @@ public class Database : MonoBehaviour
     {
         FirebaseDatabase.DefaultInstance.GetReference("players/" + uuid).GetValueAsync().ContinueWithOnMainThread(task =>
         {
-            if (task.IsFaulted)
+            if (task.IsFaulted) // If read fails
             {
                 Debug.Log("error");
                 return;
             }
-            else if (task.IsCompleted)
+            else if (task.IsCompleted) // If read successfull
             {
-                DataSnapshot snapshot = task.Result;
+                DataSnapshot snapshot = task.Result; // Take snapshot of data
 
-                string playerDetails = snapshot.GetRawJsonValue();
+                string playerDetails = snapshot.GetRawJsonValue(); // Convert snapshot to json
                 Debug.Log("raw json data of player" + playerDetails);
 
                 Player p = JsonUtility.FromJson<Player>(playerDetails);
+                // Save data
                 username = p.username;
                 email = p.email;
                 gender = p.gender;
@@ -147,28 +156,28 @@ public class Database : MonoBehaviour
     public void Login()
     {
         // Retrieve input values
-        email = inputEmail.text;
-        password = inputPassword.text;
+        email = inputEmail1.text;
+        password = inputPassword1.text;
         Debug.LogFormat("Log in values: {0} {1}", email, password);
 
         // Reset input fields
-        inputEmail.text = "";
-        inputPassword.text = "";
+        inputEmail1.text = "";
+        inputPassword1.text = "";
 
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
-            if (task.IsFaulted)
+            if (task.IsFaulted) // If log in fails
             {
                 Debug.Log("SignInilAndPasswordAsync error " + task.Exception);
-                errorText.SetActive(true);
+                errorText1.text = "Error: Check that email and password are input correctly"; // Display error text
             }
-            if (task.IsCompleted)
+            if (task.IsCompleted) // If lon in is successfull
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("User logged in successfully: {0} {1}", result.User.Email, result.User.UserId);
-                errorText.SetActive(false);
-                uuid = result.User.UserId;
-                ReadPlayerData();
+                errorText1.text = ""; // Hide error text
+                uuid = result.User.UserId; // Save uuid
+                ReadPlayerData(); // Read to retrieve data
             }
         });
     }
@@ -177,38 +186,62 @@ public class Database : MonoBehaviour
     {
         // Retrieve input values
         username = inputName.text;
-        email = inputEmail.text;
-        password = inputPassword.text;
+        email = inputEmail2.text;
+        password = inputPassword2.text;
         gender = inputGender.options[inputGender.value].text;
         race = inputRace.options[inputRace.value].text;
         Debug.LogFormat("Sign in values: {0} {1} {2} {3} {4}", username, email, password, gender, race);
 
         // Reset input fields
         inputName.text = "";
-        inputEmail.text = "";
-        inputPassword.text = "";
+        inputEmail2.text = "";
+        inputPassword2.text = "";
 
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
-            if (task.IsFaulted)
+            if (task.IsFaulted) // If account creation failed
             {
                 Debug.LogFormat("CreateUserWithEmailAndPasswordAsync error " + task.Exception);
-                errorText.SetActive(true);
+                errorText2.text = "Error: Check that all fields have been input correctly"; // Display error text
             }
-            else if (task.IsCompleted)
+            else if (task.IsCompleted) // If account creation is successfull
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("Firebase user created successfully: {0} {1}", result.User.Email, result.User.UserId);
-                errorText.SetActive(false);
-                uuid = result.User.UserId;
-                WriteNewPlayer(username, email, gender, race, true);
+                errorText2.text = ""; // Hide error text
+                uuid = result.User.UserId; // Save uuid
+                WriteNewPlayer(username, email, gender, race, true); // Write player with sign up data
             }
         });
     }
 
     public void SignOutPlayer()
     {
-        auth.SignOut();
+        // Set player's status to not active
+        Dictionary<string, object> childUpdates = new Dictionary<string, object>();
+        childUpdates[uuid + "/active_status"] = false;
+        FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
+
+        auth.SignOut(); // Sign out user
+
         Debug.Log("Signed out");
+    }
+
+    public void forgotPassword()
+    {
+        email = inputEmailReset.text; // Retrieve email from input field
+
+        auth.SendPasswordResetEmailAsync(email).ContinueWith(task => {
+            if (task.IsFaulted) // If email cannot be sent
+            {
+                Debug.LogError("SendPasswordResetEmailAsync encountered an error: " + task.Exception);
+                resetText.text = "Error: Email not found"; // Display error text
+            }
+            else if (task.IsCompleted) // If email is sent successfully
+            {
+                Debug.Log("Password reset email sent successfully");
+                resetText.text = "Email sent successfully"; // Display confirmation text
+            }
+        });
     }
 }
