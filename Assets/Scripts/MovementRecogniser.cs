@@ -1,3 +1,8 @@
+/* Author: Wang Johnathan Zhiwen  
+* Filename: MovementRecogniser
+* Descriptions: Function for Gesture movement recogniser
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

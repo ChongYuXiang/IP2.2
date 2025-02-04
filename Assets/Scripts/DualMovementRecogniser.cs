@@ -1,3 +1,8 @@
+/* Author: Wang Johnathan Zhiwen  
+* Filename: DualMovementRecogniser
+* Descriptions: Function for two handed Gesture movement recogniser
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
