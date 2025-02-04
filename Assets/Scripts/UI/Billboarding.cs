@@ -1,6 +1,6 @@
 /*
 * Author: https://www.youtube.com/watch?v=eiGvVgwtJ8k
-* Date: 02/01/2024
+* Date: 02/01/2025
 * Description: This script is to handle billboarding of all the UI
 * */
 
