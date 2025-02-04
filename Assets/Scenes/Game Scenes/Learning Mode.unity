@@ -2018,10 +2018,6 @@ MonoBehaviour:
   wrong: 0
   time_taken: 0
   average_time_per_letter: 0
-  letterDisplay: {fileID: 1196585691}
-  scoreDisplay: {fileID: 188056946}
-  feedbackDisplay: {fileID: 0}
-  inputDisplay: {fileID: 0}
 --- !u!4 &599137192
 Transform:
   m_ObjectHideFlags: 0
