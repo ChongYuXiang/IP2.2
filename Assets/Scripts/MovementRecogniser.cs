@@ -8,12 +8,14 @@ using PDollarGestureRecognizer;
 using System.IO;
 using UnityEngine.Events;
 using UnityEngine.XR.Management;
+using TMPro;
 
 public class MovementRecogniser : MonoBehaviour
 {
     public XRNode inputSource; // Specify LeftHand or RightHand
     public Transform movementSource;
-    public GameObject debugCubePrefab;
+    public GameObject debugCubePrefab; // For debugging purposes
+    public TMP_InputField inputDisplay;
     public bool creationMode = false;
     public string newGestureName;
 
@@ -142,5 +144,10 @@ public class MovementRecogniser : MonoBehaviour
                 Debug.LogWarning("Gesture recognition score below threshold.");
             }
         }
+    }
+
+    public void RecogniseGesture(string gestureName)
+    {
+        inputDisplay.text = gestureName;
     }
 }
