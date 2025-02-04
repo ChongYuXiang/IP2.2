@@ -866,3 +866,6 @@ Packages/manifest.json
 Packages/packages-lock.json
 ProjectSettings/EditorBuildSettings.asset
 ProjectSettings/GraphicsSettings.asset
+Assets/HDRPDefaultResources.meta
+Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset.meta
+ProjectSettings/GraphicsSettings.asset
