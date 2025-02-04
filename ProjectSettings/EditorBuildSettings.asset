@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/Living Room.unity
     guid: ade12e1df376f2646966617413aa3de6
   - enabled: 1
-    path: Assets/Scenes/Game Scenes/Alphabet Game.unity
+    path: Assets/Scenes/Game Scenes/Quiz Mode.unity
     guid: 8d807d4f4c704ec41b6a47ea12e62136
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a1e2181e9db8c40019c749c4fa654ba1,
