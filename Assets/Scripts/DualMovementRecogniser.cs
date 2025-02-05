@@ -138,6 +138,7 @@ public class DualMovementRecognizer : MonoBehaviour
         Gesture newGesture = new Gesture(combinedPoints.ToArray());
         if (creationMode)
         {
+            Debug.Log($"Saving new gesture: {newGestureName}");
             newGesture.Name = newGestureName;
             trainingSet.Add(newGesture);
             string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
@@ -146,6 +147,8 @@ public class DualMovementRecognizer : MonoBehaviour
         else
         {
             Result result = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
+            Debug.Log($"Classification result: Score = {result.Score}, Gesture = {result.GestureClass}");
+
             if (result.Score > recognitionThreshold)
             {
                 OnGestureRecognised.Invoke(result.GestureClass);
