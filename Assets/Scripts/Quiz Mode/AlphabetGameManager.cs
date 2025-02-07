@@ -10,82 +10,119 @@ using TMPro;
 public class AlphabetGameManager : MonoBehaviour
 {
     public int highscore;
-    public int correct;
+    public int score;
     public int wrong;
     public int time_taken;
     public int average_time_per_letter;
 
-    private char currentLetter;  // The current random letter
-    public TextMeshPro letterDisplay;  // UI text component that will display the letter
-    public TextMeshPro scoreDisplay;   // UI text component that will display the score
-    public TextMeshPro feedbackDisplay; // For displaying feedback (correct/incorrect)
-    public TMP_InputField inputDisplay;  // Input field for player's input
-    public TextMeshPro timerDisplay; // UI text component to display the timer
+    private char currentLetter = 'A';
+    public TextMeshPro letterDisplay;
+    public TextMeshPro scoreDisplay;
+    public TextMeshPro feedbackDisplay;
+    public TMP_InputField inputDisplay;
+    public TextMeshPro timerDisplay;
 
-    private float timeRemaining = 60f;  // Start timer with 60 seconds
+    private float timeRemaining = 60f;
     private bool isGameOver = false;
+    public bool isSequential = true; // Toggle between sequential and random mode
 
     void Start()
     {
-        GenerateRandomLetter();  // Start with a random letter
-        inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); }); // Listen for input changes
+        GenerateLetter();
+        inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
     }
 
     void Update()
     {
         if (!isGameOver)
         {
-            // Update the timer and display it
             timeRemaining -= Time.deltaTime;
-
-            // Display remaining time (round to 0 decimals)
             timerDisplay.text = "Time: " + Mathf.Ceil(timeRemaining).ToString() + "s";
 
-            // Check if time is up
             if (timeRemaining <= 0f)
             {
-                isGameOver = true;  // End the game
+                isGameOver = true;
                 timeRemaining = 0f;
                 EndGame();
             }
         }
     }
 
+    public void SwitchMode()
+    {
+        if (isSequential)
+        {
+            isSequential = false;
+            GenerateLetter();
+        }
+        else
+        {
+            isSequential = true;
+            GenerateLetter();
+        }
+    }
+
+    void GenerateLetter()
+    {
+        if (isSequential)
+        {
+            GenerateNextLetter();
+        }
+        else
+        {
+            GenerateRandomLetter();
+        }
+    }
+
+    void GenerateNextLetter()
+    {
+        if (currentLetter < 'Z')
+        {
+            currentLetter++;
+        }
+        else
+        {
+            currentLetter = 'A';
+        }
+        letterDisplay.text = currentLetter.ToString();
+    }
+
     void GenerateRandomLetter()
     {
-        // Generate a random letter between A and Z
-        currentLetter = (char)Random.Range(65, 91); // ASCII 65 = 'A', 91 is exclusive
-        letterDisplay.text = currentLetter.ToString(); // Display the letter
+        currentLetter = (char)Random.Range(65, 91);
+        letterDisplay.text = currentLetter.ToString();
     }
 
     void CheckLetterInput()
     {
-        if (inputDisplay.text.Length > 0 && !isGameOver) // Ensure there's input before checking and the game is not over
+        if (inputDisplay.text.Length > 0 && !isGameOver)
         {
-            char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1]; // Get the last entered character
+            char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1];
 
-            if (char.ToUpper(enteredChar) == currentLetter)  // Check if the player typed the correct letter
+            if (char.ToUpper(enteredChar) == currentLetter)
             {
-                correct++;  // Increase the correct count
-                highscore += 10;
+                score += 10;
                 feedbackDisplay.text = "Correct!";
-                GenerateRandomLetter();  // Generate a new random letter
+                GenerateLetter();
             }
             else
             {
-                wrong++;  // Increase the wrong count
+                wrong++;
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
-            // Update the score display
-            scoreDisplay.text = "Correct: " + correct + "\nWrong: " + wrong;
+            scoreDisplay.text = "Correct: " + score + "\nWrong: " + wrong;
         }
     }
 
     void EndGame()
     {
-        // Show the final score or a message when the game ends
         feedbackDisplay.text = "Time's up! Game over!";
-        scoreDisplay.text = "Final Score: " + highscore;
+        scoreDisplay.text = "Final Score: " + score;
+        if (score > highscore)
+        {
+            highscore = score;
+        }
     }
 }
+
