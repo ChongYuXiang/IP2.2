@@ -9,7 +9,12 @@ public class ApplyTextureToPanel : MonoBehaviour
     public string imageUrl = ""; // Replace with your image URL
     public Image targetImage; // Assign the Panel's Image component here
 
-    private async void Start()
+    public void Start()
+    {
+        Display();
+    }
+
+    private async void Display()
     {
         if (targetImage == null)
         {
