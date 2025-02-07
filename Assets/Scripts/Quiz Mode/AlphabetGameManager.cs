@@ -67,6 +67,7 @@ public class AlphabetGameManager : MonoBehaviour
             if (char.ToUpper(enteredChar) == currentLetter)  // Check if the player typed the correct letter
             {
                 correct++;  // Increase the correct count
+                highscore += 10;
                 feedbackDisplay.text = "Correct!";
                 GenerateRandomLetter();  // Generate a new random letter
             }
@@ -85,6 +86,6 @@ public class AlphabetGameManager : MonoBehaviour
     {
         // Show the final score or a message when the game ends
         feedbackDisplay.text = "Time's up! Game over!";
-        scoreDisplay.text = "Final Score:\nCorrect: " + correct + "\nWrong: " + wrong;
+        scoreDisplay.text = "Final Score: " + highscore;
     }
 }
