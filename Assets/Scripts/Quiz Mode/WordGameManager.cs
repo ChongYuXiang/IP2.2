@@ -1,4 +1,4 @@
-/* Author: Wang Johnathan Zhiwen 
+/* Author: Wang Johnathan Zhiwen
 * Filename: WordGameManager
 * Description: Manages a word quiz game with randomized words.
 */
@@ -12,13 +12,15 @@ public class WordQuiz : MonoBehaviour
     public int highscore;
     public TMP_InputField inputField;
     public TextMeshProUGUI feedbackText;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI wordDisplayText; // UI to show the current word
+    public TextMeshProUGUI wordDisplayText;
+    public TextMeshProUGUI timerText; // Added: UI for displaying remaining time
     public List<string> wordList;
 
-    private HashSet<string> usedWords = new HashSet<string>(); // Track used words
+    private HashSet<string> usedWords = new HashSet<string>();
     private string currentWord = "";
     private int score = 0;
+    private float timeRemaining = 60f;
+    private bool isGameOver = false;
 
     void Start()
     {
@@ -28,14 +30,29 @@ public class WordQuiz : MonoBehaviour
             return;
         }
 
-        inputField.onEndEdit.AddListener(delegate { ValidateWord(); });
+        inputField.onSubmit.AddListener(delegate { ValidateWord(); });
         GetNewWord();
-        UpdateScoreUI();
+    }
+
+    void Update()
+    {
+        if (!isGameOver)
+        {
+            timeRemaining -= Time.deltaTime;
+            timerText.text = "Time: " + Mathf.CeilToInt(timeRemaining); // Added: Update UI timer
+
+            if (timeRemaining <= 0f)
+            {
+                timeRemaining = 0f;
+                isGameOver = true;
+                EndGame();
+            }
+        }
     }
 
     void GetNewWord()
     {
-        if (usedWords.Count >= wordList.Count) // Reset if all words are used
+        if (usedWords.Count >= wordList.Count)
         {
             usedWords.Clear();
         }
@@ -46,7 +63,7 @@ public class WordQuiz : MonoBehaviour
         if (availableWords.Count > 0)
         {
             currentWord = availableWords[Random.Range(0, availableWords.Count)];
-            wordDisplayText.text = currentWord; // Show word on screen
+            wordDisplayText.text = currentWord;
             usedWords.Add(currentWord);
         }
         else
@@ -57,10 +74,11 @@ public class WordQuiz : MonoBehaviour
 
     public void ValidateWord()
     {
+        if (isGameOver) return; // Added: Prevent input after game ends
+
         string inputText = inputField.text.Trim();
 
-        if (string.IsNullOrEmpty(inputText))
-            return;
+        if (string.IsNullOrEmpty(inputText)) return;
 
         if (inputText.Equals(currentWord, System.StringComparison.OrdinalIgnoreCase))
         {
@@ -72,19 +90,19 @@ public class WordQuiz : MonoBehaviour
                 highscore = score;
             }
 
-            GetNewWord(); // Move to the next word
+            GetNewWord();
         }
         else
         {
             feedbackText.text = "Incorrect. Try again!";
         }
 
-        inputField.text = ""; // Clear input field
-        UpdateScoreUI();
+        inputField.text = ""; // Added: Clear input field
+        inputField.ActivateInputField(); // Added: Refocus on input field
     }
 
-    private void UpdateScoreUI()
+    void EndGame()
     {
-        scoreText.text = $"Score: {score}  Highscore: {highscore}";
+        feedbackText.text = "Game Over! Final Score: " + score;
     }
 }
