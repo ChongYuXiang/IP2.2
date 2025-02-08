@@ -1,8 +1,3 @@
-/* Author: Wang Johnathan Zhiwen 
-* Filename: AlphabetGameManager
-* Descriptions: functions for alphabet_game
-*/
-
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -78,18 +73,28 @@ public class AlphabetGameManager : MonoBehaviour
     {
         if (currentLetter < 'Z')
         {
-            currentLetter++;
+            do
+            {
+                currentLetter++;
+            }
+            while (currentLetter == 'J' || currentLetter == 'R'); // Skip 'J' and 'R'
         }
         else
         {
             currentLetter = 'A';
         }
+
         letterDisplay.text = currentLetter.ToString();
     }
 
     void GenerateRandomLetter()
     {
-        currentLetter = (char)Random.Range(65, 91);
+        currentLetter = (char)Random.Range(65, 91); // Random letter between A and Z
+        while (currentLetter == 'J' || currentLetter == 'R') // Skip 'J' and 'R'
+        {
+            currentLetter = (char)Random.Range(65, 91);
+        }
+
         letterDisplay.text = currentLetter.ToString();
     }
 
@@ -125,4 +130,3 @@ public class AlphabetGameManager : MonoBehaviour
         }
     }
 }
-

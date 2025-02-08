@@ -3577,7 +3577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highscore: 0
-  correct: 0
+  score: 0
   wrong: 0
   time_taken: 0
   average_time_per_letter: 0
@@ -3586,6 +3586,7 @@ MonoBehaviour:
   feedbackDisplay: {fileID: 866891809}
   inputDisplay: {fileID: 1548854728}
   timerDisplay: {fileID: 1757073894}
+  isSequential: 1
 --- !u!1 &653332387
 GameObject:
   m_ObjectHideFlags: 0
@@ -11104,6 +11105,7 @@ GameObject:
   - component: {fileID: 1825456062}
   - component: {fileID: 1825456061}
   - component: {fileID: 1825456060}
+  - component: {fileID: 1825456063}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -11184,7 +11186,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1903596541}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -11197,6 +11199,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1825456063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825456058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1001 &1838732671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12069,6 +12090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117470414517990388, guid: 259d8e9add14248c59d587cad572daa5,
+        type: 3}
+      propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9123570833314088211, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
@@ -12958,6 +12984,12 @@ MonoBehaviour:
 --- !u!1 &1903596540 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4484697999509251641, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1903596536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1903596541 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7990873191231833673, guid: 5eccbf4be2c00e94689ee8062e4e7276,
     type: 3}
   m_PrefabInstance: {fileID: 1903596536}
   m_PrefabAsset: {fileID: 0}
