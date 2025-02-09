@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "Flag">
+	<Stroke>
+		<Point X = "0.2635022" Y = "0.8920262" T = "0" Pressure = "0" />
+	</Stroke>
+	<Stroke>
+		<Point X = "0.2348486" Y = "1.200206" T = "0" Pressure = "0" />
+		<Point X = "0.2422682" Y = "1.190369" T = "0" Pressure = "0" />
+		<Point X = "0.2341744" Y = "1.186293" T = "0" Pressure = "0" />
+		<Point X = "0.223117" Y = "1.190871" T = "0" Pressure = "0" />
+		<Point X = "0.2110049" Y = "1.198132" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

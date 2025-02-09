@@ -1516,7 +1516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &844762301
 Transform:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ MonoBehaviour:
           m_StringArgument: Ground
           m_BoolArgument: 0
         m_CallState: 2
-  leftHandPose: {fileID: 11400000, guid: 40037ba519ce79c4cb10271dc6f7b5b1, type: 2}
+  leftHandPose: {fileID: 11400000, guid: a6b635b55462b3148a34c2c84c8dd6b9, type: 2}
   rightHandPose: {fileID: 11400000, guid: 40037ba519ce79c4cb10271dc6f7b5b1, type: 2}
   newPositionThresholdDistance: 0.01
 --- !u!1 &1038904029
@@ -2169,6 +2169,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 773450146}
   prefabList:
   - {fileID: 8452157970811025740, guid: da70fb8beb021024292aa6adef156bd3, type: 3}
+  - {fileID: 2388050560968303086, guid: 4053c5b5e25285b478410e1afe5697d1, type: 3}
 --- !u!4 &1087009425
 Transform:
   m_ObjectHideFlags: 0
