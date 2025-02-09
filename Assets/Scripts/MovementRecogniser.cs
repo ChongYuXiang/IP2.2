@@ -39,7 +39,7 @@ public class MovementRecogniser : MonoBehaviour
 
     void Start()
     {
-        string[] gestureFiles = Directory.GetFiles(Application.persistentDataPath, "*.xml");
+        string[] gestureFiles = Resources.Load("Gestures").ToString().Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         Debug.Log("Gesture files found: " + string.Join(", ", gestureFiles));
 
         foreach (var file in gestureFiles)
