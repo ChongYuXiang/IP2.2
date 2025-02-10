@@ -44,7 +44,7 @@ public class MovementRecogniser : MonoBehaviour
 
         foreach (var file in gestureFiles)
         {
-            trainingSet.Add(GestureIO.ReadGestureFromFile(file));
+            trainingSet.Add(GestureIO.ReadGestureFromXML(file));
         }
     }
 

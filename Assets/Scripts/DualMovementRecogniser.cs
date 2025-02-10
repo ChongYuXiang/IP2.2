@@ -40,12 +40,13 @@ public class DualMovementRecognizer : MonoBehaviour
 
     void Start()
     {
-        string[] gestureFiles = Directory.GetFiles(Application.persistentDataPath, "*.xml");
-        Debug.Log("Gesture files found: " + string.Join(", ", gestureFiles));
+        TextAsset[] gestureFiles = Resources.LoadAll<TextAsset>("Gestures");
 
-        foreach (var file in gestureFiles)
+        foreach (TextAsset file in gestureFiles)
         {
-            trainingSet.Add(GestureIO.ReadGestureFromFile(file));
+            Gesture gesture = GestureIO.ReadGestureFromXML(file.text);
+            trainingSet.Add(gesture);
+            Debug.Log($"Loaded {trainingSet.Count} gestures from {file.name}");
         }
     }
 
