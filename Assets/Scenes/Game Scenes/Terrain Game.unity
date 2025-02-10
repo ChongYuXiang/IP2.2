@@ -124,6 +124,719 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &29092051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Rain
+      objectReference: {fileID: 0}
+    - target: {fileID: 73546612193022916, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 113701395901582132, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: movementSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 165977730687016329, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Statue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003976494924455852, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952291343672736475, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790113712736841494, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Temple
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879095647948085221, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Flag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876484243523665185, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094501994418678295, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_Name
+      value: Movement recognition
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228951598665386738, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Day
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992789589640435532, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862586231740223051, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3614397
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210892779844935355, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: inputDisplay
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: leftHandSource
+      value: 
+      objectReference: {fileID: 1903596541}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: rightHandSource
+      value: 
+      objectReference: {fileID: 1903596537}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1548854728}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_InputField, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Night
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989696303479412337, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: OnGestureRecognised.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f8904105434584142a2b37f4e3459fd2, type: 3}
 --- !u!1 &47905201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +2567,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190729096}
   m_CullTransparentMesh: 1
+--- !u!1 &191700097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191700098}
+  m_Layer: 0
+  m_Name: Obj Spawn Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &191700098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191700097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.733, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &219665383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2577,6 +3321,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 235321993}
+    - targetCorrespondingSourceObject: {fileID: -2268493968148393607, guid: 365fa10f1d5a3de419d5605ff15aedae,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1647326110}
     - targetCorrespondingSourceObject: {fileID: -2899080776352273211, guid: 365fa10f1d5a3de419d5605ff15aedae,
         type: 3}
       insertIndex: -1
@@ -4401,7 +5149,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &599137191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8717,38 +9465,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363652668}
   m_CullTransparentMesh: 1
---- !u!1 &1372603159
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1372603160}
-  m_Layer: 0
-  m_Name: Movement Recognition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1372603160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372603159}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15248074, y: 1.0955582, z: 0.64291877}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1674873598}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377320639
 GameObject:
   m_ObjectHideFlags: 0
@@ -10837,6 +11553,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642020840}
   m_CullTransparentMesh: 1
+--- !u!1 &1647326108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2268493968148393607, guid: 365fa10f1d5a3de419d5605ff15aedae,
+    type: 3}
+  m_PrefabInstance: {fileID: 235321990}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1647326110
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647326108}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010000001, y: 0.06718005, z: 0.010000007}
+  m_Center: {x: 4.344779e-11, y: -0.028589996, z: 0.0000000037256154}
 --- !u!1 &1654462389
 GameObject:
   m_ObjectHideFlags: 0
@@ -10995,62 +11738,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661882846}
   m_Mesh: {fileID: -7513297493162946847, guid: 365fa10f1d5a3de419d5605ff15aedae, type: 3}
---- !u!1 &1674873597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1674873598}
-  - component: {fileID: 1674873599}
-  m_Layer: 0
-  m_Name: Z
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1674873598
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674873597}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1372603160}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1674873599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674873597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b53969f7ef70c4627b06868663a6572c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSource: 5
-  movementSource: {fileID: 1903596537}
-  debugCubePrefab: {fileID: 0}
-  inputDisplay: {fileID: 1548854728}
-  creationMode: 0
-  newGestureName: 
-  recognitionThreshold: 0.9
-  OnGestureRecognised:
-    m_PersistentCalls:
-      m_Calls: []
-  requiredPose: {fileID: 11400000, guid: 8ecb1b2f675de454c8d5a427d3311887, type: 2}
-  newPositionThresholdDistance: 0.01
 --- !u!1 &1702937260
 GameObject:
   m_ObjectHideFlags: 0
@@ -11913,6 +12600,7 @@ GameObject:
   - component: {fileID: 1825456062}
   - component: {fileID: 1825456061}
   - component: {fileID: 1825456060}
+  - component: {fileID: 1825456063}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -12004,6 +12692,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1825456063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825456058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &1830119831
 GameObject:
   m_ObjectHideFlags: 0
@@ -14101,6 +14808,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1903596536}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1903596541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1723273701039701928, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1903596536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1944092422
 GameObject:
   m_ObjectHideFlags: 0
@@ -15648,6 +16361,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134379920}
   m_CullTransparentMesh: 1
+--- !u!1 &2141217243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141217245}
+  - component: {fileID: 2141217244}
+  m_Layer: 0
+  m_Name: Terrain Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2141217244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141217243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7cecaccbefe47319bd6a27738ecaec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputField: {fileID: 1548854728}
+  spawnPoint: {fileID: 191700098}
+  prefabList:
+  - {fileID: 8452157970811025740, guid: da70fb8beb021024292aa6adef156bd3, type: 3}
+  - {fileID: 2388050560968303086, guid: 4053c5b5e25285b478410e1afe5697d1, type: 3}
+  - {fileID: 7327353435892017481, guid: f2904f1e03ed3e641baac2ca6b1a596f, type: 3}
+--- !u!4 &2141217245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141217243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3614397, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -15663,7 +16426,9 @@ SceneRoots:
   - {fileID: 1520562276}
   - {fileID: 1874134566}
   - {fileID: 1838732671}
-  - {fileID: 1372603160}
   - {fileID: 444572040}
   - {fileID: 512382114}
   - {fileID: 1996688399}
+  - {fileID: 29092051}
+  - {fileID: 2141217245}
+  - {fileID: 191700098}

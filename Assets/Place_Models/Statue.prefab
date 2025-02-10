@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 7482306784717481317}
   - component: {fileID: 7093874557369744626}
   m_Layer: 0
-  m_Name: Merlion
+  m_Name: Statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
