@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ba691c825db204446a46e55b1e441928, type: 2}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1034,14 +1034,14 @@ RectTransform:
   m_GameObject: {fileID: 770435061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.63147974, y: 0.63147974, z: 0.63147974}
+  m_LocalScale: {x: 2.607155, y: 2.607155, z: 2.607155}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559358847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101.8, y: 50.7}
+  m_AnchoredPosition: {x: -739, y: 360}
   m_SizeDelta: {x: 31.81, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770435063
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.08235294, b: 0.12941177, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1143,7 +1143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &785871647
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 51.8}
+  m_AnchoredPosition: {x: 0, y: 530.1}
   m_SizeDelta: {x: 259.97, y: 44.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785871648
@@ -1378,9 +1378,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: How to play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d6cb88ebcb7ccad489bd906e72b03fa4, type: 2}
-  m_sharedMaterial: {fileID: 3470321002658729866, guid: d6cb88ebcb7ccad489bd906e72b03fa4,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1954,15 +1953,15 @@ RectTransform:
   m_GameObject: {fileID: 1686613126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79113775, y: 0.79113775, z: 0.79113775}
+  m_LocalScale: {x: 5.3480372, y: 5.3480372, z: 5.3480372}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559358847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 14.700073, y: 48.900024}
-  m_SizeDelta: {x: -69.53658, y: -109.108406}
+  m_AnchoredPosition: {x: 37.428894, y: 360}
+  m_SizeDelta: {x: -1738.7197, y: -1053.5344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686613128
 MonoBehaviour:
@@ -1994,8 +1993,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2019,7 +2018,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -3.43
@@ -2842,16 +2841,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103034040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.79113775, y: 0.79113775, z: 0.79113775}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5.7550335, y: 5.7550335, z: 5.7550335}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1559358847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 38.69995, y: 10.5}
-  m_SizeDelta: {x: -69.53658, y: -109.108406}
+  m_AnchoredPosition: {x: 44, y: -113}
+  m_SizeDelta: {x: -1637.2892, y: -946.7382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2103034042
 MonoBehaviour:
@@ -2873,7 +2872,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How to play
+  m_text: "Welcome to HoloHands!\nExplore Singapore Sign Language (SgSL) through
+    3 exciting game modes:\n\n1. Learning Mode\nA relaxed, self-paced mode where
+    you can take your time to learn sign language at your own speed.\n\n2. Quiz Mode\nTest
+    your skills with a timed challenge and point system at varying difficulty levels!\n\n3.
+    Terrain Mode\nUnleash your creativity! Use sign language to spawn objects and
+    build 3D models in your world. Snap a screenshot and view your creations on our
+    website!\n\nCurious about your progress? Visit our website to check out the leaderboard
+    and see how you\u2019re improving your sign language skills!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2900,15 +2906,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: -3.43
   m_wordSpacing: 0
