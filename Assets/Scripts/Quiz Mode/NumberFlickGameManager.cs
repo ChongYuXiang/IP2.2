@@ -13,9 +13,7 @@ public class NumberFlickGameManager : MonoBehaviour
 {
     public int NF_highscore;
     public int NF_score;
-    public int NF_wrong;
-    public int NF_time_taken;
-    public int NF_average_time_per_letter;
+
 
     private int currentNumber;  // The current random number prompt
     public TextMeshPro numberDisplay;  // UI text component that will display the number
@@ -78,7 +76,6 @@ public class NumberFlickGameManager : MonoBehaviour
             }
             else
             {
-                NF_wrong++;  // Increase the wrong count
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
