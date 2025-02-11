@@ -114,7 +114,7 @@ public class ScreenshotToSupabase : MonoBehaviour
                 if (request.result == UnityWebRequest.Result.Success)
                 {
                     Debug.Log($"File uploaded successfully \u2705: {fileName}");
-                    SendToFirebase(fileName);
+                    SendToFirebase(uploadUrl);
                 }
                 else
                 {
