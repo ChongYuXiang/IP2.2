@@ -10,6 +10,7 @@ using TMPro;
 public class WordQuiz : MonoBehaviour
 {
     public int highscore;
+    public int score;
     public TMP_InputField inputField;
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI wordDisplayText;
@@ -18,7 +19,7 @@ public class WordQuiz : MonoBehaviour
 
     private HashSet<string> usedWords = new HashSet<string>();
     private string currentWord = "";
-    private int score = 0;
+    
     private float timeRemaining = 60f;
     private bool isGameOver = false;
 
@@ -29,7 +30,7 @@ public class WordQuiz : MonoBehaviour
             Debug.LogError("Word list is empty!");
             return;
         }
-
+        score = 0;
         inputField.onSubmit.AddListener(delegate { ValidateWord(); });
         GetNewWord();
     }
