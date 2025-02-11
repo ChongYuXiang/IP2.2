@@ -90,11 +90,6 @@ public class Database : MonoBehaviour
         Debug.Log(json);
 
         /*
-        AlphabetGame alphabetgame = new AlphabetGame(0, 0, 0, 0, 0);
-        json = JsonUtility.ToJson(alphabetgame);
-        dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
-        Debug.Log(json);
-
         WordGame wordgame = new WordGame(0, 0, 0, 0, 0);
         json = JsonUtility.ToJson(wordgame);
         dataRef.Child("word_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
@@ -102,6 +97,16 @@ public class Database : MonoBehaviour
         */
 
         ReadPlayerData();
+    }
+
+    public void WriteAlphaGameData(int correct, int wrong, int time_taken, int average_time_per_letter)
+    {
+        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+        AlphabetGame alphabetgame = new AlphabetGame(correct, wrong, time_taken, average_time_per_letter);
+        string json = JsonUtility.ToJson(alphabetgame);
+        dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
     }
 
     // Read player data

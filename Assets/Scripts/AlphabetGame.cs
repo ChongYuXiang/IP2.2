@@ -11,15 +11,13 @@ using UnityEngine.UI;  // For UI elements
 
 public class AlphabetGame : MonoBehaviour
 {
-    public int highscore;
     public int correct;
     public int wrong;
     public int time_taken;
     public int average_time_per_letter;
 
-    public AlphabetGame(int highscore, int correct, int wrong, int time_taken, int average_time_per_letter)
+    public AlphabetGame(int correct, int wrong, int time_taken, int average_time_per_letter)
     {
-        this.highscore = highscore;
         this.correct = correct;
         this.wrong = wrong;
         this.time_taken = time_taken;
