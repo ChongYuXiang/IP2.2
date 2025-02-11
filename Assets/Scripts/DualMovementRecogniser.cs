@@ -46,7 +46,7 @@ public class DualMovementRecognizer : MonoBehaviour
         {
             Gesture gesture = GestureIO.ReadGestureFromXML(file.text);
             trainingSet.Add(gesture);
-            Debug.Log($"Loaded {trainingSet.Count} gestures from {file.name}");
+            Debug.Log($"Loaded gesture: {file.name} " + $", {trainingSet.Count} gestures loaded");
         }
     }
 
