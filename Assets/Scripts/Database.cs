@@ -24,11 +24,10 @@ public class Database : MonoBehaviour
     DatabaseReference dataRef;
     FirebaseAuth auth;
 
+    // User data
     private string email;
     private string password;
-    private string uuid;
-
-    // User data
+    public string uuid;
     public string username;
     public string gender;
     public string race;
@@ -88,17 +87,10 @@ public class Database : MonoBehaviour
         string json = JsonUtility.ToJson(player);
         dataRef.Child("players").Child(uuid).SetRawJsonValueAsync(json);
         Debug.Log(json);
-
-        /*
-        WordGame wordgame = new WordGame(0, 0, 0, 0, 0);
-        json = JsonUtility.ToJson(wordgame);
-        dataRef.Child("word_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
-        Debug.Log(json);
-        */
-
         ReadPlayerData();
     }
 
+    // Write alphabet quiz results data under player's uuid
     public void WriteAlphaGameData(int correct, int wrong, int time_taken, int average_time_per_letter)
     {
         string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
@@ -106,6 +98,39 @@ public class Database : MonoBehaviour
         AlphabetGame alphabetgame = new AlphabetGame(correct, wrong, time_taken, average_time_per_letter);
         string json = JsonUtility.ToJson(alphabetgame);
         dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
+    }
+
+    // Write number quiz results data under player's uuid
+    public void WriteNumberGameData(int correct, int wrong, int time_taken, int average_time_per_number)
+    {
+        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+        NumberGame numbergame = new NumberGame(correct, wrong, time_taken, average_time_per_number);
+        string json = JsonUtility.ToJson(numbergame);
+        dataRef.Child("number_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
+    }
+
+    // Write word quiz results data under player's uuid
+    public void WriteWordGameData(int correct, int wrong, int time_taken, int average_time_per_word)
+    {
+        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+        WordGame wordgame = new WordGame(correct, wrong, time_taken, average_time_per_word);
+        string json = JsonUtility.ToJson(wordgame);
+        dataRef.Child("number_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        Debug.Log(json);
+    }
+
+    // Write screenshot url under player's uuid
+    public void WriteScreenshotURL(string URL)
+    {
+        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+
+        ScreenshotURL screenshot = new ScreenshotURL(URL);
+        string json = JsonUtility.ToJson(screenshot);
+        dataRef.Child("screenshots").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
         Debug.Log(json);
     }
 
@@ -135,28 +160,6 @@ public class Database : MonoBehaviour
             }
         });
     }
-
-    /*
-    public void IncreaseScore(int scoreChange)
-    {
-        // Increase score when fruit is clicked
-
-        int newScore = (int)score + scoreChange;
-        int newHighscore = (int)highscore;
-
-        if ((int)highscore <= (int)score)
-        {
-            Debug.Log("new highscore!");
-            newHighscore = newScore;
-        }
-        Dictionary<string, object> childUpdates = new Dictionary<string, object>();
-        childUpdates[uuid + "/score"] = newScore;
-        childUpdates[uuid + "/highscore"] = newHighscore;
-        FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
-        ReadPlayerData();
-    }
-    */
-
 
     public void Login()
     {
@@ -220,6 +223,7 @@ public class Database : MonoBehaviour
         });
     }
 
+    // Sign out function
     public void SignOutPlayer()
     {
         // Set player's status to not active
@@ -230,6 +234,15 @@ public class Database : MonoBehaviour
         auth.SignOut(); // Sign out user
 
         Debug.Log("Signed out");
+    }
+
+    // When game is closed
+    void OnApplicationQuit()
+    {
+        // Set player's status to not active
+        Dictionary<string, object> childUpdates = new Dictionary<string, object>();
+        childUpdates[uuid + "/active_status"] = false;
+        FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
     }
 
     public void forgotPassword()

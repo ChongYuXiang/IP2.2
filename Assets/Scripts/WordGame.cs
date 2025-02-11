@@ -9,15 +9,13 @@ using UnityEngine;
 
 public class WordGame
 {
-    public int highscore;
     public int correct;
     public int wrong;
     public int time_taken;
     public int average_time_per_word;
 
-    public WordGame(int highscore, int correct, int wrong, int time_taken, int average_time_per_word)
+    public WordGame(int correct, int wrong, int time_taken, int average_time_per_word)
     {
-        this.highscore = highscore;
         this.correct = correct;
         this.wrong = wrong;
         this.time_taken = time_taken;
