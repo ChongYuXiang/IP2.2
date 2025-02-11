@@ -1071,7 +1071,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a3b3c32d97f90234faf6116d615a2175,
         type: 3}
       propertyPath: m_Name
-      value: DesertHouse
+      value: House
       objectReference: {fileID: 0}
     - target: {fileID: 3199641718464332858, guid: a3b3c32d97f90234faf6116d615a2175,
         type: 3}
@@ -1233,8 +1233,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

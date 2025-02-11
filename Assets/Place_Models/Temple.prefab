@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6379ba1ad598f3449bd476bcf2d7be98,
         type: 3}
       propertyPath: m_Name
-      value: Pyramid
+      value: Temple
       objectReference: {fileID: 0}
     - target: {fileID: 2181595028485647771, guid: 6379ba1ad598f3449bd476bcf2d7be98,
         type: 3}
@@ -194,8 +194,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

@@ -11,7 +11,7 @@ public class WordQuiz : MonoBehaviour
 {
     public int score;
     public TMP_InputField inputField;
-    public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI scoreDisplay;
     public TextMeshProUGUI wordDisplayText;
     public TextMeshProUGUI timerText; // Added: UI for displaying remaining time
     public List<string> wordList;
@@ -30,7 +30,7 @@ public class WordQuiz : MonoBehaviour
             return;
         }
         score = 0;
-        inputField.onSubmit.AddListener(delegate { ValidateWord(); });
+        inputField.onValueChanged.AddListener(delegate { ValidateWord(); });
         GetNewWord();
     }
 
@@ -82,14 +82,14 @@ public class WordQuiz : MonoBehaviour
 
         if (inputText.Equals(currentWord, System.StringComparison.OrdinalIgnoreCase))
         {
-            feedbackText.text = "Correct!";
+            scoreDisplay.text = score.ToString();
             score += 10;
 
             GetNewWord();
         }
         else
         {
-            feedbackText.text = "Incorrect. Try again!";
+            scoreDisplay.text = "Incorrect. Try again!";
         }
 
         inputField.text = ""; // Added: Clear input field
@@ -98,6 +98,7 @@ public class WordQuiz : MonoBehaviour
 
     void EndGame()
     {
-        feedbackText.text = "Game Over! Final Score: " + score;
+        scoreDisplay.text = "Game Over! " + score;
+        Debug.Log("Final Score: " + score);
     }
 }
