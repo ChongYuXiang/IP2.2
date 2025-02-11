@@ -4,7 +4,6 @@ using TMPro;
 
 public class AlphabetGameManager : MonoBehaviour
 {
-    public int highscore;
     public int score;
 
     private char currentLetter = 'A';
@@ -120,9 +119,6 @@ public class AlphabetGameManager : MonoBehaviour
     {
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + score;
-        if (score > highscore)
-        {
-            highscore = score;
-        }
+
     }
 }

@@ -11,7 +11,6 @@ using UnityEngine;
 
 public class NumberFlickGameManager : MonoBehaviour
 {
-    public int NF_highscore;
     public int NF_score;
 
 
@@ -80,7 +79,7 @@ public class NumberFlickGameManager : MonoBehaviour
             }
 
             // Update the score display
-            scoreDisplay.text = "Final Score: " + NF_highscore;
+            scoreDisplay.text = "Final Score: " + NF_score;
         }
     }
 
@@ -88,11 +87,8 @@ public class NumberFlickGameManager : MonoBehaviour
     {
         // Show the final score or a message when the game ends
         feedbackDisplay.text = "Time's up! Game over!";
-        scoreDisplay.text = "Final Score: " + NF_highscore;
-        if (NF_score > NF_highscore)
-        {
-            NF_highscore = NF_score;
-        }
+        scoreDisplay.text = "Final Score: " + NF_score;
+
     }
 
 }

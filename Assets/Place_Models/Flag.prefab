@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: -3558531252713767072}
   - component: {fileID: -6462443621466515110}
   - component: {fileID: -7874922015586906258}
+  - component: {fileID: -7996894322436601652}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -344,6 +345,21 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &-7996894322436601652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2388050560968303086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07cd0878cd1b541a6bab18f503f96d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &5958191117443914666
 GameObject:
   m_ObjectHideFlags: 0

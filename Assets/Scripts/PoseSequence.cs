@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Hands.Gestures;
+using TMPro;
 
 public class XRHandPoseSequence : MonoBehaviour
 {
@@ -19,8 +20,11 @@ public class XRHandPoseSequence : MonoBehaviour
     public delegate void PoseSequenceCompleted();
     public static event PoseSequenceCompleted OnPoseSequenceCompleted;
 
-    public GameObject spawnPrefab; // Prefab to spawn
+    public TMP_InputField inputField;
     public Transform spawnPosition; // Position to spawn the prefab
+
+    private string[] colours = { "red", "blue", "green" };
+    public string sequenceName = "HDB_";
 
     void Start()
     {
@@ -55,10 +59,11 @@ public class XRHandPoseSequence : MonoBehaviour
 
         if (IsSequenceMatched())
         {
+            string randomColour = colours[Random.Range(0, colours.Length)];
             Debug.Log("Pose sequence completed!");
             OnPoseSequenceCompleted?.Invoke();
             OnSequenceMatched?.Invoke("Pose sequence matched!");
-            SpawnPrefab();
+            inputField.text = sequenceName + randomColour;
             detectedPoses.Clear();
         }
     }
@@ -75,17 +80,5 @@ public class XRHandPoseSequence : MonoBehaviour
                 return false;
         }
         return true;
-    }
-
-    private void SpawnPrefab()
-    {
-        if (spawnPrefab != null && spawnPosition != null)
-        {
-            Instantiate(spawnPrefab, spawnPosition.position, spawnPosition.rotation);
-        }
-        else
-        {
-            Debug.LogWarning("SpawnPrefab or SpawnPosition not assigned!");
-        }
     }
 }

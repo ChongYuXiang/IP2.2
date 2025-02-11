@@ -9,7 +9,6 @@ using TMPro;
 
 public class WordQuiz : MonoBehaviour
 {
-    public int highscore;
     public int score;
     public TMP_InputField inputField;
     public TextMeshProUGUI feedbackText;
@@ -85,11 +84,6 @@ public class WordQuiz : MonoBehaviour
         {
             feedbackText.text = "Correct!";
             score += 10;
-
-            if (score > highscore)
-            {
-                highscore = score;
-            }
 
             GetNewWord();
         }
