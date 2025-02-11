@@ -13,7 +13,6 @@ using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
 using System.Threading.Tasks;
 using Firebase.Auth;
-using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
 using System;
@@ -186,6 +185,7 @@ public class Database : MonoBehaviour
                 errorText1.text = ""; // Hide error text
                 uuid = result.User.UserId; // Save uuid
                 ReadPlayerData(); // Read to retrieve data
+                UpdateDoors();
             }
         });
     }
@@ -219,6 +219,7 @@ public class Database : MonoBehaviour
                 errorText2.text = ""; // Hide error text
                 uuid = result.User.UserId; // Save uuid
                 WriteNewPlayer(username, email, gender, race, true); // Write player with sign up data
+                UpdateDoors();
             }
         });
     }
@@ -231,8 +232,16 @@ public class Database : MonoBehaviour
         childUpdates[uuid + "/active_status"] = false;
         FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
 
+        // Reset user data
+        email = null;
+        uuid = null;
+        username = null;
+        gender = null; 
+        race = null;
+
         auth.SignOut(); // Sign out user
 
+        UpdateDoors();
         Debug.Log("Signed out");
     }
 
@@ -245,6 +254,7 @@ public class Database : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("players").UpdateChildrenAsync(childUpdates);
     }
 
+    // For Forgot Password button
     public void forgotPassword()
     {
         email = inputEmailReset.text; // Retrieve email from input field
@@ -261,5 +271,19 @@ public class Database : MonoBehaviour
                 resetText.text = "Email sent successfully"; // Display confirmation text
             }
         });
+    }
+
+    public void UpdateDoors()
+    {
+        GameObject door;
+
+        door = GameObject.Find("Quiz Mode Door");
+        door.SendMessage("AuthChanged");
+
+        door = GameObject.Find("Terrain Mode Door");
+        door.SendMessage("AuthChanged");
+
+        door = GameObject.Find("Learning Mode Door");
+        door.SendMessage("AuthChanged");
     }
 }
