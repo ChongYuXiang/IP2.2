@@ -91,35 +91,35 @@ public class Database : MonoBehaviour
     }
 
     // Write alphabet quiz results data under player's uuid
-    public void WriteAlphaGameData(int correct, int wrong, int time_taken, int average_time_per_letter)
+    public void WriteAlphaGameData(int score)
     {
         string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
 
-        AlphabetGame alphabetgame = new AlphabetGame(correct, wrong, time_taken, average_time_per_letter);
-        string json = JsonUtility.ToJson(alphabetgame);
+        Quiz quiz = new Quiz(score);
+        string json = JsonUtility.ToJson(quiz);
         dataRef.Child("alphabet_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
         Debug.Log(json);
     }
 
     // Write number quiz results data under player's uuid
-    public void WriteNumberGameData(int correct, int wrong, int time_taken, int average_time_per_number)
+    public void WriteNumberGameData(int score)
     {
         string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
 
-        NumberGame numbergame = new NumberGame(correct, wrong, time_taken, average_time_per_number);
+        Quiz numbergame = new Quiz(score);
         string json = JsonUtility.ToJson(numbergame);
         dataRef.Child("number_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
         Debug.Log(json);
     }
 
     // Write word quiz results data under player's uuid
-    public void WriteWordGameData(int correct, int wrong, int time_taken, int average_time_per_word)
+    public void WriteWordGameData(int score)
     {
         string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
 
-        WordGame wordgame = new WordGame(correct, wrong, time_taken, average_time_per_word);
+        Quiz wordgame = new Quiz(score);
         string json = JsonUtility.ToJson(wordgame);
-        dataRef.Child("number_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
+        dataRef.Child("word_game").Child(uuid).Child(timestamp).SetRawJsonValueAsync(json);
         Debug.Log(json);
     }
 
