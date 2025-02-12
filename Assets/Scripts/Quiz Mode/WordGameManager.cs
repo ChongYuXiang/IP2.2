@@ -100,5 +100,10 @@ public class WordQuiz : MonoBehaviour
     {
         scoreDisplay.text = "Game Over! " + score;
         Debug.Log("Final Score: " + score);
+        
+        // Find and tell database to create word game data
+        GameObject database;
+        database = GameObject.Find("Database");
+        database.GetComponent<Database>().WriteWordGameData(score);
     }
 }

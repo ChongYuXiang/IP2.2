@@ -120,5 +120,9 @@ public class AlphabetGameManager : MonoBehaviour
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + score;
 
+        // Find and tell database to create word game data
+        GameObject database;
+        database = GameObject.Find("Database");
+        database.GetComponent<Database>().WriteAlphaGameData(score);
     }
 }

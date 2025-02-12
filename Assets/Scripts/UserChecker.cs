@@ -1,6 +1,6 @@
 /* Author: Chong Yu Xiang  
- * Filename: Database
- * Descriptions: Communicate with firebase database and auth
+ * Filename: UserChecker
+ * Descriptions: Applied on door to gamemodes to check if user is logged in to an account
  */
 
 using System.Collections;

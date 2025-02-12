@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class NumberFlickGameManager : MonoBehaviour
 {
@@ -89,6 +90,9 @@ public class NumberFlickGameManager : MonoBehaviour
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + NF_score;
 
+        // Find and tell database to create word game data
+        GameObject database;
+        database = GameObject.Find("Database");
+        database.GetComponent<Database>().WriteNumberGameData(NF_score);
     }
-
 }

@@ -73,8 +73,6 @@ public class Database : MonoBehaviour
         // Set up dataRef
         dataRef = FirebaseDatabase.DefaultInstance.RootReference;
         auth = FirebaseAuth.DefaultInstance;
-
-        //ReadPlayerData();
     }
 
     // Create player data
@@ -245,7 +243,7 @@ public class Database : MonoBehaviour
         Debug.Log("Signed out");
     }
 
-    // When game is closed
+    // Detect when the game is closed
     void OnApplicationQuit()
     {
         // Set player's status to not active
@@ -273,17 +271,18 @@ public class Database : MonoBehaviour
         });
     }
 
+    // Remove popups on doors in main scene
     public void UpdateDoors()
     {
         GameObject door;
 
-        door = GameObject.Find("Quiz Mode Door");
+        door = GameObject.Find("Quiz Mode Door"); // Select quiz door
         door.SendMessage("AuthChanged");
 
-        door = GameObject.Find("Terrain Mode Door");
+        door = GameObject.Find("Terrain Mode Door"); // Select terrain door
         door.SendMessage("AuthChanged");
 
-        door = GameObject.Find("Learning Mode Door");
+        door = GameObject.Find("Learning Mode Door"); // Select learning door
         door.SendMessage("AuthChanged");
     }
 }
