@@ -1,138 +1,111 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.XR;
-using UnityEngine.XR.Hands;
-using UnityEngine.XR.Hands.Gestures;
-using UnityEngine.XR.Management;
 using TMPro;
+using System;
 
-public class XRHandPoseSequence : MonoBehaviour
+public class PoseSequence : MonoBehaviour
 {
-    public XRNode inputSource; // Specify LeftHand or RightHand
-    public XRHandSubsystem handSubsystem;
-    public List<XRHandPose> targetPoseSequence;
-    private Queue<XRHandPose> detectedPoses = new Queue<XRHandPose>();
-    private XRHandPose lastDetectedPose; // Variable to track the last detected pose
-
-    [System.Serializable]
-    public class UnityStringEvent : UnityEvent<string> { }
-    public UnityStringEvent OnSequenceMatched;
-
-    public delegate void PoseSequenceCompleted();
-    public static event PoseSequenceCompleted OnPoseSequenceCompleted;
-
+    // Your input field and sequence name
     public TMP_InputField inputField;
-    public Transform spawnPosition; // Position to spawn the prefab
+    public TMP_InputField finalInputField;
+    public string[] validSequenceWords;
+    public string sequenceName;
 
-    private string[] colours = { "red", "blue", "green" };
-    public string sequenceName = "HDB_";
+    // Color array
+    private string[] colours = { "Red", "Green", "Blue" };
 
+    // Current word index the player needs to input
+    private int currentWordIndex = 0;
+
+    // To track whether the current word has been correctly entered
+    private bool wordEntered = false;
+
+    // Events
+    public static event Action OnPoseSequenceCompleted;
+    public static event Action<string> OnSequenceMatched;
+
+    // Start is called before the first frame update
     void Start()
     {
-        // Initialize the class-level handSubsystem
-        handSubsystem = XRGeneralSettings.Instance?.Manager?.activeLoader?.GetLoadedSubsystem<XRHandSubsystem>();
+        // Automatically subscribe to the input field's onValueChanged event
+        inputField.onValueChanged.AddListener(OnInputValueChanged);
+    }
 
-        if (handSubsystem == null)
+    // This method will be called when the input field value changes
+    private void OnInputValueChanged(string text)
+    {
+        // Only check the sequence if the word hasn't been entered yet and the text is not empty
+        if (!wordEntered && !string.IsNullOrEmpty(text))
         {
-            Debug.LogError("Hand Subsystem is not initialized!");
-            return;
+            CheckSequence(text);
+        }
+    }
+
+    // This method checks if the sequence matches
+    private void CheckSequence(string inputText)
+    {
+        // If the current input matches the expected word
+        if (inputText == validSequenceWords[currentWordIndex])
+        {
+            Debug.Log($"Word {currentWordIndex + 1} in sequence matched!");
+
+            // Move to the next word in the sequence
+            currentWordIndex++;
+
+            // Check if the entire sequence is completed
+            if (currentWordIndex >= validSequenceWords.Length)
+            {
+                CompleteSequence();
+            }
+            
+            // Mark this word as entered
+            wordEntered = false; // Allow checking for the next word
         }
         else
         {
-            Debug.Log("Hand Subsystem initialized successfully.");
-        }
-
-        // Initialize the target pose sequence
-        targetPoseSequence = new List<XRHandPose>
-        {
-            ScriptableObject.CreateInstance<XRHandPose>(),
-            ScriptableObject.CreateInstance<XRHandPose>(),
-            ScriptableObject.CreateInstance<XRHandPose>()
-        };
-
-        lastDetectedPose = null; // Initially, no pose has been detected
-    }
-
-
-    void Update()
-    {
-        if (handSubsystem == null)
-        {
-            Debug.LogError("Hand Subsystem is not initialized!");
-            return;
-        }
-        if (targetPoseSequence == null || targetPoseSequence.Count == 0)
-        {
-            Debug.LogError("Target Pose Sequence is not initialized!");
-            return;
-        }
-
-        XRHand hand = (inputSource == XRNode.LeftHand) ? handSubsystem.leftHand : handSubsystem.rightHand;
-        var handJointsUpdatedEventArgs = new XRHandJointsUpdatedEventArgs { hand = hand };
-        bool matchesPose = targetPoseSequence[0]?.CheckConditions(handJointsUpdatedEventArgs) ?? false;
-
-        if (matchesPose)
-        {
-            OnHandPoseRecognized(targetPoseSequence[0]);
+            // Sequence mismatch - give feedback and reset the sequence
+            Debug.Log("Incorrect word. Sequence reset.");
+            ResetSequence();
         }
     }
 
-    public void OnHandPoseRecognized(XRHandPose recognizedPose)
+    // This method is called when the entire sequence is matched
+    private void CompleteSequence()
     {
+        // Pick a random color from the array
+        string randomColour = colours[UnityEngine.Random.Range(0, colours.Length)];
+        // Update the input field with the sequence name + random color
+        finalInputField.text = sequenceName + randomColour;
+        Debug.Log(sequenceName + randomColour);
+        currentWordIndex = 0;
 
-        // Skip if the same pose was detected consecutively
-        if (recognizedPose.Equals(lastDetectedPose))
-        {
-            return; // Do not add this pose to the detected poses queue
-        }
+        // Log and invoke events
+        Debug.Log("Pose sequence completed!");
+        OnPoseSequenceCompleted?.Invoke();
+        OnSequenceMatched?.Invoke("Pose sequence matched!");
 
-        detectedPoses.Enqueue(recognizedPose);
-        lastDetectedPose = recognizedPose; // Update the last detected pose
+        // Update the input field with the sequence name + random color
+        inputField.text = sequenceName + randomColour;
+        Debug.Log($"Sequence name: {sequenceName} {randomColour}");
 
-        Debug.Log("Detected pose: " + recognizedPose.name);
-
-        // Ensure that detectedPoses only holds the most recent poses up to the size of targetPoseSequence
-        if (detectedPoses.Count > targetPoseSequence.Count)
-        {
-            detectedPoses.Dequeue();
-        }
-
-        // Check if the sequence is matched
-        if (IsSequenceMatched())
-        {
-            string randomColour = colours[Random.Range(0, colours.Length)];
-            Debug.Log("Pose sequence completed!");
-            OnPoseSequenceCompleted?.Invoke();
-            OnSequenceMatched?.Invoke("Pose sequence matched!");
-            inputField.text = sequenceName + randomColour;
-
-            // Clear the detected poses once the sequence is matched
-            detectedPoses.Clear();
-        }
+        // Complete the sequence and reset for the next round
+        ResetSequence();
     }
 
-    private bool IsSequenceMatched()
+    // Resets the sequence if the player inputs the wrong word
+    private void ResetSequence()
     {
-        // If the number of detected poses doesn't match the target sequence, return false
-        if (detectedPoses.Count != targetPoseSequence.Count)
-        {
-            Debug.LogWarning("Pose count mismatch! Detected: " + detectedPoses.Count + " Target: " + targetPoseSequence.Count);
-            return false;
-        }
+        // Clear the input fields
+        inputField.text = string.Empty;
+        finalInputField.text = string.Empty;
 
-        // Convert detected poses to an array for easier comparison
-        XRHandPose[] detectedArray = detectedPoses.ToArray();
+        // Reset the index to 0 to start over the sequence
+        currentWordIndex = 0;
 
-        // Check if each detected pose matches the corresponding pose in the target sequence
-        for (int i = 0; i < targetPoseSequence.Count; i++)
-        {
-            if (!detectedArray[i].Equals(targetPoseSequence[i]))
-            {
-                Debug.LogWarning("Pose mismatch at index " + i + ": Detected " + detectedArray[i].name + " vs Target " + targetPoseSequence[i].name);
-                return false;
-            }        
-        }
-        return true;
+        // Reset wordEntered flag to allow the sequence to start over
+        wordEntered = false;
+
+        Debug.Log("Sequence reset. Try again.");
     }
 }
