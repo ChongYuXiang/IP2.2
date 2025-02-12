@@ -160,6 +160,10 @@ public class Database : MonoBehaviour
 
     public void Login()
     {
+        // Find input objects
+        inputEmail1 = GameObject.Find("Email Input 1").GetComponent<TMP_InputField>();
+        inputPassword1 = GameObject.Find("Password Input 1").GetComponent<TMP_InputField>();
+
         // Retrieve input values
         email = inputEmail1.text;
         password = inputPassword1.text;
@@ -174,13 +178,17 @@ public class Database : MonoBehaviour
             if (task.IsFaulted) // If log in fails
             {
                 Debug.Log("SignInilAndPasswordAsync error " + task.Exception);
+                errorText1 = GameObject.Find("Error Text 1").GetComponent<TextMeshProUGUI>(); // Find error object
                 errorText1.text = "Error: Check that email and password are input correctly"; // Display error text
             }
             if (task.IsCompleted) // If lon in is successfull
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("User logged in successfully: {0} {1}", result.User.Email, result.User.UserId);
+
+                errorText1 = GameObject.Find("Error Text 1").GetComponent<TextMeshProUGUI>(); // Find error object
                 errorText1.text = ""; // Hide error text
+
                 uuid = result.User.UserId; // Save uuid
                 ReadPlayerData(); // Read to retrieve data
                 UpdateDoors();
@@ -190,6 +198,13 @@ public class Database : MonoBehaviour
 
     public void SignUp()
     {
+        // Find input objects
+        inputName = GameObject.Find("Username Input").GetComponent<TMP_InputField>();
+        inputEmail2 = GameObject.Find("Email Input 2").GetComponent<TMP_InputField>();
+        inputPassword2 = GameObject.Find("Password Input 2").GetComponent<TMP_InputField>();
+        inputGender = GameObject.Find("inputGender").GetComponent<TMP_Dropdown>();
+        inputRace = GameObject.Find("inputRace").GetComponent<TMP_Dropdown>();
+
         // Retrieve input values
         username = inputName.text;
         email = inputEmail2.text;
@@ -208,13 +223,17 @@ public class Database : MonoBehaviour
             if (task.IsFaulted) // If account creation failed
             {
                 Debug.LogFormat("CreateUserWithEmailAndPasswordAsync error " + task.Exception);
+                errorText2 = GameObject.Find("Error Text 2").GetComponent<TextMeshProUGUI>(); // Find error object
                 errorText2.text = "Error: Check that all fields have been input correctly"; // Display error text
             }
             else if (task.IsCompleted) // If account creation is successfull
             {
                 AuthResult result = task.Result;
                 Debug.LogFormat("Firebase user created successfully: {0} {1}", result.User.Email, result.User.UserId);
+
+                errorText2 = GameObject.Find("Error Text 2").GetComponent<TextMeshProUGUI>(); // Find error object
                 errorText2.text = ""; // Hide error text
+
                 uuid = result.User.UserId; // Save uuid
                 WriteNewPlayer(username, email, gender, race, true); // Write player with sign up data
                 UpdateDoors();
@@ -255,8 +274,10 @@ public class Database : MonoBehaviour
     // For Forgot Password button
     public void forgotPassword()
     {
+        inputEmailReset = GameObject.Find("Email Input Reset").GetComponent<TMP_InputField>(); // Find input field
         email = inputEmailReset.text; // Retrieve email from input field
 
+        resetText = GameObject.Find("Feedback Text").GetComponent<TextMeshProUGUI>(); // Find reset feedback
         auth.SendPasswordResetEmailAsync(email).ContinueWith(task => {
             if (task.IsFaulted) // If email cannot be sent
             {

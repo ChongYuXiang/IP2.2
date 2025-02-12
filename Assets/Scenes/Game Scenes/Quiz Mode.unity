@@ -501,11 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052a30bfb81c4a14eb7bae0e027a13b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NF_highscore: 0
   NF_score: 0
-  NF_wrong: 0
-  NF_time_taken: 0
-  NF_average_time_per_letter: 0
   numberDisplay: {fileID: 1196585691}
   scoreDisplay: {fileID: 188056946}
   feedbackDisplay: {fileID: 866891809}
@@ -521,6 +517,65 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.15248074, y: 1.0955582, z: 0.64291877}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &165435802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 165435804}
+  - component: {fileID: 165435803}
+  m_Layer: 0
+  m_Name: Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &165435803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165435802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d225095350aa5214b9ebb31f505911b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uuid: 
+  username: 
+  gender: 
+  race: 
+  inputName: {fileID: 0}
+  inputEmail1: {fileID: 0}
+  inputPassword1: {fileID: 0}
+  inputEmail2: {fileID: 0}
+  inputPassword2: {fileID: 0}
+  inputEmailReset: {fileID: 0}
+  inputGender: {fileID: 0}
+  inputRace: {fileID: 0}
+  errorText1: {fileID: 0}
+  errorText2: {fileID: 0}
+  resetText: {fileID: 0}
+--- !u!4 &165435804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165435802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.53608066, y: 1.2246428, z: 2.127972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3455,10 +3510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc894d3a8a69db348ae51daf5bf09c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correct: 0
-  wrong: 0
-  time_taken: 0
-  average_time_per_letter: 0
+  score: 0
 --- !u!4 &599137192
 Transform:
   m_ObjectHideFlags: 0
@@ -3486,11 +3538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd3578e8ab54869b5dc85084ceea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highscore: 0
   score: 0
-  wrong: 0
-  time_taken: 0
-  average_time_per_letter: 0
   letterDisplay: {fileID: 1196585691}
   scoreDisplay: {fileID: 188056946}
   feedbackDisplay: {fileID: 866891809}
@@ -13748,3 +13796,4 @@ SceneRoots:
   - {fileID: 1372603160}
   - {fileID: 1293447220}
   - {fileID: 612047049}
+  - {fileID: 165435804}

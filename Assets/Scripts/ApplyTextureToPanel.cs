@@ -1,3 +1,8 @@
+/* Author: Chong Yu Xiang  
+ * Filename: ApplyTextureToPanel
+ * Descriptions: Apply texture on UI image from supabase URL
+ */
+
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,7 +16,13 @@ public class ApplyTextureToPanel : MonoBehaviour
 
     public void Start()
     {
-        Display();
+        Display(); // Displays default image
+    }
+
+    public void ChangeDisplay(string newUrl) // Call to switch with a new URL
+    {
+        imageUrl = newUrl; // Switch to new given URL
+        Display(); // Update displayed image
     }
 
     private async void Display()
