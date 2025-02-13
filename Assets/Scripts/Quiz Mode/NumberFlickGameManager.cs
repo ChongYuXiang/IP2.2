@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
+
 
 public class NumberFlickGameManager : MonoBehaviour
 {
@@ -101,7 +103,15 @@ public class NumberFlickGameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        // Reload the scene to restart the game
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        NF_score = 0;  // Reset the score
+        timeRemaining = 60f;  // Reset the timer
+        isGameOver = false;  // Allow input
+        gameOverPanel.SetActive(false);  // Hide the game over panel
+        GenerateRandomNumber();  // Start a new game
+        scoreDisplay.text = "Score: " + NF_score;  // Reset the score display
+        timerDisplay.text = "Time: 60s";  // Reset the timer display
+        feedbackDisplay.text = "";  // Clear the feedback display
+        inputDisplay.text = "";  // Clear the input field
+        inputDisplay.ActivateInputField();  // Refocus on the input field
     }
 }

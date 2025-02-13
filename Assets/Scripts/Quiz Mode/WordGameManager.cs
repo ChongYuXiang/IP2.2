@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WordQuiz : MonoBehaviour
 {
@@ -112,6 +113,14 @@ public class WordQuiz : MonoBehaviour
 
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        score = 0;
+        timeRemaining = 60f;
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        scoreDisplay.text = "Score: " + score;
+        timerText.text = "Time: 60s";
+        GetNewWord();
+        inputField.text = "";
+        inputField.ActivateInputField();
     }
 }

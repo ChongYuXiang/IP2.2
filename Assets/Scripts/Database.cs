@@ -53,6 +53,11 @@ public class Database : MonoBehaviour
     public TextMeshProUGUI errorText1;
     public TextMeshProUGUI errorText2;
     public TextMeshProUGUI resetText;
+    public DoorLock doorLock1;// Reference to DoorLock script
+    public DoorLock doorLock2;// Reference to DoorLock script
+    public DoorLock doorLock3;// Reference to DoorLock script
+
+
 
     // Instance
     public static Database instance;
@@ -191,6 +196,9 @@ public class Database : MonoBehaviour
 
                 uuid = result.User.UserId; // Save uuid
                 ReadPlayerData(); // Read to retrieve data
+                doorLock1.SetLockState(false); // Unlock the door
+                doorLock2.SetLockState(false); // Unlock the door
+                doorLock3.SetLockState(false); // Unlock the door
                 UpdateDoors();
             }
         });
@@ -236,6 +244,9 @@ public class Database : MonoBehaviour
 
                 uuid = result.User.UserId; // Save uuid
                 WriteNewPlayer(username, email, gender, race, true); // Write player with sign up data
+                doorLock1.SetLockState(false); // Unlock the door
+                doorLock2.SetLockState(false); // Unlock the door
+                doorLock3.SetLockState(false); // Unlock the door
                 UpdateDoors();
             }
         });
@@ -258,6 +269,9 @@ public class Database : MonoBehaviour
 
         auth.SignOut(); // Sign out user
 
+        doorLock1.SetLockState(true); // Lock the door
+        doorLock2.SetLockState(true); // Lock the door
+        doorLock3.SetLockState(true); // Lock the door
         UpdateDoors();
         Debug.Log("Signed out");
     }

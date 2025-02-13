@@ -130,6 +130,12 @@ public class AlphabetGameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        score = 0;
+        timeRemaining = 60f;
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        GenerateLetter();
+        scoreDisplay.text = "Score: " + score;
+        feedbackDisplay.text = "";
     }
 }
