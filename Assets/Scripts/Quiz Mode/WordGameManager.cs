@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WordQuiz : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class WordQuiz : MonoBehaviour
     public TextMeshProUGUI scoreDisplay;
     public TextMeshProUGUI wordDisplayText;
     public TextMeshProUGUI timerText; // Added: UI for displaying remaining time
+    public GameObject gameOverPanel; // Added: Panel to display when the game ends
     public List<string> wordList;
 
     private HashSet<string> usedWords = new HashSet<string>();
@@ -98,6 +100,8 @@ public class WordQuiz : MonoBehaviour
 
     void EndGame()
     {
+        isGameOver = true;
+        gameOverPanel.SetActive(true);
         scoreDisplay.text = "Game Over! " + score;
         Debug.Log("Final Score: " + score);
         
@@ -105,5 +109,18 @@ public class WordQuiz : MonoBehaviour
         GameObject database;
         database = GameObject.Find("Database");
         database.GetComponent<Database>().WriteWordGameData(score);
+    }
+
+    public void RestartGame()
+    {
+        score = 0;
+        timeRemaining = 60f;
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        scoreDisplay.text = "Score: " + score;
+        timerText.text = "Time: 60s";
+        GetNewWord();
+        inputField.text = "";
+        inputField.ActivateInputField();
     }
 }
