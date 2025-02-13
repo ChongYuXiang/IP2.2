@@ -5332,10 +5332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc894d3a8a69db348ae51daf5bf09c2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correct: 0
-  wrong: 0
-  time_taken: 0
-  average_time_per_letter: 0
+  score: 0
 --- !u!4 &599137192
 Transform:
   m_ObjectHideFlags: 0
@@ -5363,11 +5360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd3578e8ab54869b5dc85084ceea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highscore: 0
   score: 0
-  wrong: 0
-  time_taken: 0
-  average_time_per_letter: 0
   letterDisplay: {fileID: 1196585691}
   scoreDisplay: {fileID: 0}
   feedbackDisplay: {fileID: 0}
