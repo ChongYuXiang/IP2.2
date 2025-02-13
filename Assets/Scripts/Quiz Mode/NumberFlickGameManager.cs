@@ -21,6 +21,7 @@ public class NumberFlickGameManager : MonoBehaviour
     public TextMeshPro feedbackDisplay; // For displaying feedback (correct/incorrect)
     public TMP_InputField inputDisplay;  // Input field for player's input
     public TextMeshPro timerDisplay; // UI text component to display the timer
+    public GameObject gameOverPanel;  // Panel to display when the game ends
 
     private float timeRemaining = 60f;  // Start timer with 60 seconds
     private bool isGameOver = false;
@@ -86,6 +87,8 @@ public class NumberFlickGameManager : MonoBehaviour
 
     void EndGame()
     {
+        isGameOver = true;  // Prevent further input
+        gameOverPanel.SetActive(true);  // Show the game over panel
         // Show the final score or a message when the game ends
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + NF_score;
@@ -94,5 +97,11 @@ public class NumberFlickGameManager : MonoBehaviour
         GameObject database;
         database = GameObject.Find("Database");
         database.GetComponent<Database>().WriteNumberGameData(NF_score);
+    }
+
+    public void RestartGame()
+    {
+        // Reload the scene to restart the game
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

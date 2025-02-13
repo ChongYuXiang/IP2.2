@@ -12,6 +12,7 @@ public class AlphabetGameManager : MonoBehaviour
     public TextMeshPro feedbackDisplay;
     public TMP_InputField inputDisplay;
     public TextMeshPro timerDisplay;
+    public GameObject gameOverPanel;
 
     private float timeRemaining = 60f;
     private bool isGameOver = false;
@@ -111,12 +112,13 @@ public class AlphabetGameManager : MonoBehaviour
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
-            scoreDisplay.text = "Correct: " + score;
+            scoreDisplay.text = "Score: " + score;
         }
     }
 
     void EndGame()
     {
+        gameOverPanel.SetActive(true);
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + score;
 
@@ -124,5 +126,10 @@ public class AlphabetGameManager : MonoBehaviour
         GameObject database;
         database = GameObject.Find("Database");
         database.GetComponent<Database>().WriteAlphaGameData(score);
+    }
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
