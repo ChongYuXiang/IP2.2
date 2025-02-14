@@ -1,6 +1,6 @@
 /* Author: Chong Yu Xiang  
- * Filename: AlphabetPractice
- * Descriptions: For alphabet learning mode
+ * Filename: NumberPractice
+ * Descriptions: For number learning mode
  */
 
 using System.Collections;
@@ -8,12 +8,12 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class AlphabetPractice : MonoBehaviour
+public class NumberPractice : MonoBehaviour
 {
-    private char currentLetter = 'A';
-    private int progress = 0;
-    public TextMeshPro letterDisplay;
-    public ApplyTextureToPanel letterExampleImg;
+    private int currentNumber = 0;
+    private int barProgress = 0;
+    public TextMeshPro numberDisplay;
+    public ApplyTextureToPanel numberExampleImg;
     public TMP_InputField inputDisplay;
     public Image progressBar;
     public Button nextButton;
@@ -24,66 +24,62 @@ public class AlphabetPractice : MonoBehaviour
     public Material correctMat;
     public Material wrongMat;
 
-    public GameObject unlockNumbers;
-    public Button numberButton;
+    public GameObject unlockWords;
+    public Button wordButton;
 
     void Start()
     {
-        inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
+        inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
 
-        letterDisplay.text = currentLetter.ToString(); // Display current number
-        letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString()); // Display example sign
+        numberDisplay.text = currentNumber.ToString(); // Display current number
+        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString()); // Display example sign
 
         //nextButton.gameObject.SetActive(false); // Hide the next button at the start
-        nextButton.onClick.AddListener(GenerateNextLetter); // Set up the button to call GenerateLetter
+        nextButton.onClick.AddListener(GenerateNextNumber); // Set up the button to call GenerateNextNumber
     }
 
-    void GenerateNextLetter()
+    void GenerateNextNumber()
     {
-        //nextButton.gameObject.SetActive(false); // Hide the next button when generating a new letter
+        //nextButton.gameObject.SetActive(false); // Hide the next button when generating a new number
 
-        // Skip 'J' and 'R', and cycle back to 'A' after 'Z'
-        if (currentLetter < 'Z')
+        // Cycle back to 0 after 9
+        if (currentNumber < 9)
         {
-            do
-            {
-                currentLetter++; // Next letter
-            }
-            while (currentLetter == 'J' || currentLetter == 'R'); // Skip 'J' and 'R'
+            currentNumber++; // Next number
         }
         else
         {
-            currentLetter = 'A'; // Reset to 'A' after 'Z'
+            currentNumber = 0; // Reset to 0
         }
 
-        letterDisplay.text = currentLetter.ToString();
-        letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString());
+        numberDisplay.text = currentNumber.ToString();
+        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());
 
-        progress += 1;
-        progressBar.fillAmount = (float)progress / 24f; // Update progress bar
-        if (progress >= 24) // If progress is complete, unlock number mode
+        barProgress += 1;
+        progressBar.fillAmount = (float)barProgress / 10f;
+        if (barProgress >= 10) // If progress is complete, unlock number mode
         {
-            unlockNumbers.SetActive(false);
-            numberButton.interactable = true;
+            unlockWords.SetActive(false);
+            wordButton.interactable = true;
         }
     }
 
-    void CheckLetterInput()
+    void CheckNumberInput()
     {
         if (inputDisplay.text.Length > 0)
         {
             char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1];
 
-            if (char.ToUpper(enteredChar) == currentLetter)
+            if (char.ToUpper(enteredChar) == currentNumber)
             {
                 StartCoroutine("DisplayHandsCorrect");
 
-                progress += 1;
-                progressBar.fillAmount = (float)progress / 24f; // Update progress bar
-                if (progress >= 24) // If progress is complete, unlock number mode
+                barProgress += 1;
+                progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
+                if (barProgress >= 10) // If progress is complete, unlock number mode
                 {
-                    unlockNumbers.SetActive(false);
-                    numberButton.interactable = true;
+                    unlockWords.SetActive(false);
+                    wordButton.interactable = true;
                 }
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
@@ -114,4 +110,3 @@ public class AlphabetPractice : MonoBehaviour
         rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
     }
 }
-
