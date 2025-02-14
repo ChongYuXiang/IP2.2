@@ -869,3 +869,4 @@ ProjectSettings/GraphicsSettings.asset
 Assets/HDRPDefaultResources.meta
 Assets/HDRPDefaultResources/HDRenderPipelineGlobalSettings.asset.meta
 ProjectSettings/GraphicsSettings.asset
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
