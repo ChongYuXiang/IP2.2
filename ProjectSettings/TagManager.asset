@@ -3,12 +3,34 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CinemachineTarget
+  - SamplesInfoPanel
+  - QDSUIToggleBorderlessButton
+  - QDSUISharedThemeColor
+  - QDSUIIcon
+  - QDSUIBorderlessButton
+  - QDSUIAccentColor
+  - QDSUISecondaryButton
+  - QDSUIToggleButton
+  - QDSUITextSecondaryColor
+  - Locomotion
+  - PassThrough
+  - PassThroughButton
+  - LocoButton
+  - LocoText
+  - QDSUIDestructiveButton
+  - QDSUIPrimaryButton
+  - QDSUIToggleCheckboxRadio
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUITextInputField
+  - QDSUISection
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - 

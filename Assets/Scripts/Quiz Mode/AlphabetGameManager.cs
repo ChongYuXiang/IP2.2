@@ -4,11 +4,7 @@ using TMPro;
 
 public class AlphabetGameManager : MonoBehaviour
 {
-    public int highscore;
     public int score;
-    public int wrong;
-    public int time_taken;
-    public int average_time_per_letter;
 
     private char currentLetter = 'A';
     public TextMeshPro letterDisplay;
@@ -16,6 +12,7 @@ public class AlphabetGameManager : MonoBehaviour
     public TextMeshPro feedbackDisplay;
     public TMP_InputField inputDisplay;
     public TextMeshPro timerDisplay;
+    public GameObject gameOverPanel;
 
     private float timeRemaining = 60f;
     private bool isGameOver = false;
@@ -112,21 +109,33 @@ public class AlphabetGameManager : MonoBehaviour
             }
             else
             {
-                wrong++;
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
-            scoreDisplay.text = "Correct: " + score + "\nWrong: " + wrong;
+            scoreDisplay.text = "Score: " + score;
         }
     }
 
     void EndGame()
     {
+        gameOverPanel.SetActive(true);
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + score;
-        if (score > highscore)
-        {
-            highscore = score;
-        }
+
+        // Find and tell database to create word game data
+        GameObject database;
+        database = GameObject.Find("Database");
+        database.GetComponent<Database>().WriteAlphaGameData(score);
+    }
+
+    public void RestartGame()
+    {
+        score = 0;
+        timeRemaining = 60f;
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        GenerateLetter();
+        scoreDisplay.text = "Score: " + score;
+        feedbackDisplay.text = "";
     }
 }

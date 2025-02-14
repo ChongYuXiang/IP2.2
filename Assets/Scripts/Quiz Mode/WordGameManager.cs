@@ -6,19 +6,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class WordQuiz : MonoBehaviour
 {
-    public int highscore;
+    public int score;
     public TMP_InputField inputField;
-    public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI scoreDisplay;
     public TextMeshProUGUI wordDisplayText;
     public TextMeshProUGUI timerText; // Added: UI for displaying remaining time
+    public GameObject gameOverPanel; // Added: Panel to display when the game ends
     public List<string> wordList;
 
     private HashSet<string> usedWords = new HashSet<string>();
     private string currentWord = "";
-    private int score = 0;
+    
     private float timeRemaining = 60f;
     private bool isGameOver = false;
 
@@ -29,8 +31,8 @@ public class WordQuiz : MonoBehaviour
             Debug.LogError("Word list is empty!");
             return;
         }
-
-        inputField.onSubmit.AddListener(delegate { ValidateWord(); });
+        score = 0;
+        inputField.onValueChanged.AddListener(delegate { ValidateWord(); });
         GetNewWord();
     }
 
@@ -82,19 +84,14 @@ public class WordQuiz : MonoBehaviour
 
         if (inputText.Equals(currentWord, System.StringComparison.OrdinalIgnoreCase))
         {
-            feedbackText.text = "Correct!";
+            scoreDisplay.text = score.ToString();
             score += 10;
-
-            if (score > highscore)
-            {
-                highscore = score;
-            }
 
             GetNewWord();
         }
         else
         {
-            feedbackText.text = "Incorrect. Try again!";
+            scoreDisplay.text = "Incorrect. Try again!";
         }
 
         inputField.text = ""; // Added: Clear input field
@@ -103,6 +100,27 @@ public class WordQuiz : MonoBehaviour
 
     void EndGame()
     {
-        feedbackText.text = "Game Over! Final Score: " + score;
+        isGameOver = true;
+        gameOverPanel.SetActive(true);
+        scoreDisplay.text = "Game Over! " + score;
+        Debug.Log("Final Score: " + score);
+        
+        // Find and tell database to create word game data
+        GameObject database;
+        database = GameObject.Find("Database");
+        database.GetComponent<Database>().WriteWordGameData(score);
+    }
+
+    public void RestartGame()
+    {
+        score = 0;
+        timeRemaining = 60f;
+        isGameOver = false;
+        gameOverPanel.SetActive(false);
+        scoreDisplay.text = "Score: " + score;
+        timerText.text = "Time: 60s";
+        GetNewWord();
+        inputField.text = "";
+        inputField.ActivateInputField();
     }
 }
