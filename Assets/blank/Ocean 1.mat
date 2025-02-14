@@ -63,7 +63,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Displacement: 0.5
+    - _Displacement: 0
     - _Foam_Depth: 0.39
     - _Foam_Strength: 1
     - _Foam_Tile: 1
