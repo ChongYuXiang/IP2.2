@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3256213348719285922}
   - component: {fileID: 1613989809925568806}
   m_Layer: 0
-  m_Name: leaf wind thin
+  m_Name: Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
