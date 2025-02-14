@@ -6,26 +6,33 @@ using UnityEngine.UI;
 public class AlphabetPractice : MonoBehaviour
 {
     private char currentLetter = 'A';
+    private int progress = 0;
     public TextMeshPro letterDisplay;
-    public TextMeshPro feedbackDisplay;
+    public ApplyTextureToPanel letterExampleImg;
     public TMP_InputField inputDisplay;
+    public Image progressBar;
 
     public Button nextButton; // Reference to the "Next" button
 
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public Material defaultMat;
+    public Material correctMat;
+    public Material wrongMat;
+
     void Start()
     {
-        GenerateLetter();
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
 
-        nextButton.gameObject.SetActive(false); // Hide the next button at the start
+        //nextButton.gameObject.SetActive(false); // Hide the next button at the start
         nextButton.onClick.AddListener(GenerateLetter); // Set up the button to call GenerateLetter
     }
 
-    void GenerateLetter()
+    public void GenerateLetter()
     {
         GenerateNextLetter();
 
-        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new letter
+        //nextButton.gameObject.SetActive(false); // Hide the next button when generating a new letter
     }
 
     void GenerateNextLetter()
@@ -45,6 +52,7 @@ public class AlphabetPractice : MonoBehaviour
         }
 
         letterDisplay.text = currentLetter.ToString();
+        letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString());
     }
 
     void CheckLetterInput()
@@ -55,15 +63,35 @@ public class AlphabetPractice : MonoBehaviour
 
             if (char.ToUpper(enteredChar) == currentLetter)
             {
-                feedbackDisplay.text = "Correct!";
+                StartCoroutine("DisplayHandsCorrect");
+                progress += 1;
+                progressBar.fillAmount = (float)progress / 24f;
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }
             else
             {
-                feedbackDisplay.text = "Incorrect. Try again!";
+                StartCoroutine("DisplayHandsWrong");
                 nextButton.gameObject.SetActive(false); // Hide the "Next" button if the input is wrong
             }
         }
+    }
+
+    IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+    }
+
+    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
     }
 }
 

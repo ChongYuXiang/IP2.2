@@ -16,12 +16,15 @@ public class ApplyTextureToPanel : MonoBehaviour
 
     public void Start()
     {
-        Display(); // Displays default image
+        if (imageUrl != "")
+        {
+            Display(); // Displays default image
+        }
     }
 
     public void ChangeDisplay(string newUrl) // Call to switch with a new URL
     {
-        imageUrl = newUrl; // Switch to new given URL
+        imageUrl = "https://mrjzpnoiqdnifempamof.supabase.co/storage/v1/object/public/images/signs/" + newUrl +".png"; // Switch to new given URL
         Display(); // Update displayed image
     }
 
