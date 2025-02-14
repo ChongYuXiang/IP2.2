@@ -28,6 +28,11 @@ public class NumberFlickGameManager : MonoBehaviour
     private float timeRemaining = 60f;  // Start timer with 60 seconds
     private bool isGameOver = false;
 
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public Material defaultMat;
+    public Material correctMat;
+    public Material wrongMat;
 
     // Update is called once per frame
     void Update()
@@ -75,16 +80,36 @@ public class NumberFlickGameManager : MonoBehaviour
                 NF_score += 10;
 
                 feedbackDisplay.text = "Correct!";
+                StartCoroutine("DisplayHandsCorrect");
                 GenerateRandomNumber();  // Generate a new random letter
             }
             else
             {
+                StartCoroutine("DisplayHandsWrong");
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
             // Update the score display
             scoreDisplay.text = "Final Score: " + NF_score;
         }
+    }
+
+        IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+    }
+
+    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
     }
 
     void EndGame()

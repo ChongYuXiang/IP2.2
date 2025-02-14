@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class WordQuiz : MonoBehaviour
 {
@@ -23,6 +24,12 @@ public class WordQuiz : MonoBehaviour
     
     private float timeRemaining = 60f;
     private bool isGameOver = false;
+
+    public GameObject leftHand;
+    public GameObject rightHand;
+    public Material defaultMat;
+    public Material correctMat;
+    public Material wrongMat;
 
     void Start()
     {
@@ -87,15 +94,36 @@ public class WordQuiz : MonoBehaviour
             scoreDisplay.text = score.ToString();
             score += 10;
 
+            StartCoroutine("DisplayHandsCorrect");
+
             GetNewWord();
         }
         else
         {
+            StartCoroutine("DisplayHandsWrong");
             scoreDisplay.text = "Incorrect. Try again!";
         }
 
         inputField.text = ""; // Added: Clear input field
         inputField.ActivateInputField(); // Added: Refocus on input field
+    }
+
+    IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+    }
+
+    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    {
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        yield return new WaitForSeconds(1.5f);
+        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
     }
 
     void EndGame()

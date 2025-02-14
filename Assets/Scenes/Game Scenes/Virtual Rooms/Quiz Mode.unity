@@ -508,6 +508,11 @@ MonoBehaviour:
   inputDisplay: {fileID: 1548854728}
   timerDisplay: {fileID: 1757073894}
   gameOverPanel: {fileID: 0}
+  leftHand: {fileID: 1545959112}
+  rightHand: {fileID: 1545959113}
+  defaultMat: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  correctMat: {fileID: 2100000, guid: ea33afaf94dba1e4d8a9c994471586d8, type: 2}
+  wrongMat: {fileID: 2100000, guid: 92796fdf650d38b468284c074dd6a459, type: 2}
 --- !u!4 &117127675
 Transform:
   m_ObjectHideFlags: 0
@@ -3529,6 +3534,11 @@ MonoBehaviour:
   timerDisplay: {fileID: 1757073894}
   gameOverPanel: {fileID: 0}
   isSequential: 1
+  leftHand: {fileID: 1545959112}
+  rightHand: {fileID: 1545959113}
+  defaultMat: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  correctMat: {fileID: 2100000, guid: ea33afaf94dba1e4d8a9c994471586d8, type: 2}
+  wrongMat: {fileID: 2100000, guid: 92796fdf650d38b468284c074dd6a459, type: 2}
 --- !u!1001 &612047049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9850,6 +9860,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538397315}
   m_CullTransparentMesh: 1
+--- !u!1 &1545959112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2176075390798225449, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1903596536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1545959113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616979458509162541, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 1903596536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1548854726
 GameObject:
   m_ObjectHideFlags: 0
@@ -13070,6 +13092,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5267632774870171197, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
     - target: {fileID: 5363469783780307604, guid: 5eccbf4be2c00e94689ee8062e4e7276,
         type: 3}
       propertyPath: m_StaticEditorFlags
