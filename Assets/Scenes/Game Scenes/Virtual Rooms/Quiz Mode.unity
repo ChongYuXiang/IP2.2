@@ -12096,7 +12096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSource: 5
   movementSource: {fileID: 1903596537}
-  debugCubePrefab: {fileID: 0}
+  debugCubePrefab: {fileID: 7650415500823833707, guid: 2b585172b9f59475b9ca5fa239d1bab1,
+    type: 3}
   inputDisplay: {fileID: 1548854728}
   creationMode: 0
   newGestureName: 

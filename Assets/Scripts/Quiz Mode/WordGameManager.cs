@@ -13,9 +13,9 @@ public class WordQuiz : MonoBehaviour
 {
     public int score;
     public TMP_InputField inputField;
-    public TextMeshProUGUI scoreDisplay;
-    public TextMeshProUGUI wordDisplayText;
-    public TextMeshProUGUI timerText; // Added: UI for displaying remaining time
+    public TextMeshPro scoreDisplay;
+    public TextMeshPro wordDisplayText;
+    public TextMeshPro timerText; // Added: UI for displaying remaining time
     public GameObject gameOverPanel; // Added: Panel to display when the game ends
     public List<string> wordList;
 
