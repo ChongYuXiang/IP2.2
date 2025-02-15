@@ -1,4 +1,4 @@
-/* Author: Chong Yu Xiang  
+/* Author: Chong Yu Xiang & Sung Yeji 
  * Filename: ScreenshotToSupabase
  * Descriptions: For taking screenshot and sending to supabase
  */
@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScreenshotToSupabase : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class ScreenshotToSupabase : MonoBehaviour
 
     // Database object ref
     public GameObject database;
+
+    // Screenshot Button Ref
+    public Button screenshot_Button;
 
     private string screenshotsFolder;
     private string filePath;
@@ -36,6 +41,23 @@ public class ScreenshotToSupabase : MonoBehaviour
         {
             Directory.CreateDirectory(screenshotsFolder);
             Debug.Log($"Created folder: {screenshotsFolder}");
+        }
+
+    }
+
+    private void Awake()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Terrain Game")
+        {
+            screenshot_Button.interactable = true;
+            Debug.Log("screenshot button is interactive");
+        }
+        else
+        {
+            screenshot_Button.interactable = false;
+            Debug.Log("screenshot button is not interactive");
         }
     }
 
