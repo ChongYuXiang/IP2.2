@@ -14,10 +14,10 @@ public class Player
     public string gender;
     public string race;
     public bool active_status;
-    public string account_creation_date;
-    public string last_logged_in_time;
+    public int account_creation_date;
+    public int last_logged_in_time;
 
-    public Player(string username, string email, string gender, string race, bool active_status, string account_creation_date, string last_logged_in_time)
+    public Player(string username, string email, string gender, string race, bool active_status, int account_creation_date, int last_logged_in_time)
     {
         this.username = username;
         this.email = email;
