@@ -8,7 +8,7 @@ public class FirebaseAuthentication : MonoBehaviour
 {
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
-    public TextMeshPro messageText;
+    public TextMeshProUGUI messageText;
     public Button loginButton;
     public Button signUpButton;
 
@@ -17,6 +17,9 @@ public class FirebaseAuthentication : MonoBehaviour
     void Start()
     {
         firebaseAuth = gameObject.AddComponent<FirebaseWebQuery>();
+
+        loginButton.onClick.RemoveAllListeners();
+        signUpButton.onClick.RemoveAllListeners();
 
         // Add button click listeners
         loginButton.onClick.AddListener(() => StartCoroutine(SignInUser()));
@@ -27,6 +30,8 @@ public class FirebaseAuthentication : MonoBehaviour
     {
         string email = emailInput.text;
         string password = passwordInput.text;
+
+        Debug.Log("Signing up user with email: " + email);
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
@@ -42,6 +47,8 @@ public class FirebaseAuthentication : MonoBehaviour
     {
         string email = emailInput.text;
         string password = passwordInput.text;
+
+        Debug.Log("Signing in user with email: " + email);
 
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {

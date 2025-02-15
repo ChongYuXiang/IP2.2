@@ -17,14 +17,12 @@ public class FirebaseWebQuery : MonoBehaviour
 
     void Start()
     {
-        // Example usage
-        StartCoroutine(SignUpUser("testuser@example.com", "TestPassword123"));
-        // StartCoroutine(SignInUser("testuser@example.com", "TestPassword123"));
+        // Test usage
+        //StartCoroutine(SignInUser("Test@test.gmail.com", "Test123"));
+        //StartCoroutine(SignUpUser("Test@test.gmail.com", "Test123"));
     }
 
-    /// <summary>
     /// Sign up a new user with email and password.
-    /// </summary>
     public IEnumerator SignUpUser(string email, string password)
     {
         string json = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
@@ -43,12 +41,12 @@ public class FirebaseWebQuery : MonoBehaviour
         else
         {
             Debug.LogError("Sign up error: " + request.error);
+            Debug.LogError("Response: " + request.downloadHandler.text);
+
         }
     }
 
-    /// <summary>
     /// Sign in an existing user and get an authentication token.
-    /// </summary>
     public IEnumerator SignInUser(string email, string password)
     {
         string json = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
@@ -71,12 +69,11 @@ public class FirebaseWebQuery : MonoBehaviour
         else
         {
             Debug.LogError("Sign in error: " + request.error);
+            Debug.LogError("Response: " + request.downloadHandler.text);
         }
     }
 
-    /// <summary>
     /// Send authenticated GET request to Firebase Database.
-    /// </summary>
     public IEnumerator GetData()
     {
         string url = databaseURL + "users.json?auth=" + idToken;
@@ -94,9 +91,7 @@ public class FirebaseWebQuery : MonoBehaviour
         }
     }
 
-    /// <summary>
     /// Send authenticated POST request to Firebase Database.
-    /// </summary>
     public IEnumerator PostData(string userId, string name, int score)
     {
         string url = databaseURL + "users/" + userId + ".json?auth=" + idToken;
