@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class NumberPractice : MonoBehaviour
 {
+    // Learning UI elements
     private int currentNumber = 0;
     private int barProgress = 0;
     public TextMeshPro numberDisplay;
@@ -18,29 +19,47 @@ public class NumberPractice : MonoBehaviour
     public Image progressBar;
     public Button nextButton;
 
+    // Hands color swapping
     public GameObject leftHand;
     public GameObject rightHand;
     public Material defaultMat;
     public Material correctMat;
     public Material wrongMat;
 
+    // For unlocking next mode
     public GameObject unlockWords;
     public Button wordButton;
 
+    // End popup
+    public GameObject endPopup;
+    public GameObject popupPage;
+
     void Start()
+    {
+        if (GameManager.instance.wordsUnlocked == true) // Check GameManager if words are already unlocked
+        {
+            unlockWords.SetActive(false);
+            wordButton.interactable = true;
+            barProgress = 10;
+        }
+    }
+
+    public void BeginLearning()
     {
         inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
 
         numberDisplay.text = currentNumber.ToString(); // Display current number
         numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString()); // Display example sign
 
-        //nextButton.gameObject.SetActive(false); // Hide the next button at the start
+        nextButton.gameObject.SetActive(false); // Hide the next button at the start
         nextButton.onClick.AddListener(GenerateNextNumber); // Set up the button to call GenerateNextNumber
+
+        progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
     }
 
     void GenerateNextNumber()
     {
-        //nextButton.gameObject.SetActive(false); // Hide the next button when generating a new number
+        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new number
 
         // Cycle back to 0 after 9
         if (currentNumber < 9)
@@ -54,14 +73,6 @@ public class NumberPractice : MonoBehaviour
 
         numberDisplay.text = currentNumber.ToString();
         numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());
-
-        barProgress += 1;
-        progressBar.fillAmount = (float)barProgress / 10f;
-        if (barProgress >= 10) // If progress is complete, unlock number mode
-        {
-            unlockWords.SetActive(false);
-            wordButton.interactable = true;
-        }
     }
 
     void CheckNumberInput()
@@ -76,10 +87,15 @@ public class NumberPractice : MonoBehaviour
 
                 barProgress += 1;
                 progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
-                if (barProgress >= 10) // If progress is complete, unlock number mode
+                if (barProgress == 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock word mode
                 {
                     unlockWords.SetActive(false);
                     wordButton.interactable = true;
+                    GameManager.instance.wordsUnlocked = true;
+
+                    // Show popup
+                    endPopup.SetActive(true);
+                    popupPage.SetActive(true);
                 }
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
