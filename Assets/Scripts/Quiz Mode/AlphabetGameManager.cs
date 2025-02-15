@@ -101,7 +101,7 @@ public class AlphabetGameManager : MonoBehaviour
         letterDisplay.text = currentLetter.ToString();
     }
 
-    void CheckLetterInput()
+    public void CheckLetterInput()
     {
         if (inputDisplay.text.Length > 0 && !isGameOver)
         {
