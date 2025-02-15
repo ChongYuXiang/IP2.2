@@ -164,4 +164,10 @@ public class AlphabetGameManager : MonoBehaviour
         scoreDisplay.text = "Score: " + score;
         feedbackDisplay.text = "";
     }
+
+    public void SkipLetter()
+    {
+        GenerateLetter();
+        score -= 5;
+    }
 }
