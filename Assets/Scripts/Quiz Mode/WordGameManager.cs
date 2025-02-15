@@ -151,4 +151,12 @@ public class WordQuiz : MonoBehaviour
         inputField.text = "";
         inputField.ActivateInputField();
     }
+
+    public void SkipWord()
+    {
+        GetNewWord();
+        inputField.text = "";
+        inputField.ActivateInputField();
+        score -= 5;
+    }
 }

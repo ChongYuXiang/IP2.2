@@ -8,7 +8,9 @@ public class DoorLock : MonoBehaviour
     public float openAngle = 10f; // The angle considered "fully open"
     private HingeJoint hinge;
     private bool isTransitionTriggered = false;
-    //public LevelLoader levelLoader;
+    public UI levelLoader;
+    public int sceneIndex;
+
 
     public GameObject warningUI;
 
@@ -61,14 +63,14 @@ public class DoorLock : MonoBehaviour
     {
         Debug.Log("Door fully opened. Starting scene transition...");
 
-        //if (levelLoader != null)
-        //{
-        //    levelLoader.LoadNextLevel();
-        //}
-        //else
-        //{
-        //    Debug.LogError("SceneLoader is not assigned or found in the scene.");
-        //}
+        if (levelLoader != null)
+        {
+            levelLoader.ChangeSceneByIndex(sceneIndex);  
+        }
+        else
+        {
+            Debug.LogError("SceneLoader is not assigned or found in the scene.");
+        }
     }
 
     public void onHoverEnter_DoorLocked()

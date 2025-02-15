@@ -139,4 +139,10 @@ public class NumberFlickGameManager : MonoBehaviour
         inputDisplay.text = "";  // Clear the input field
         inputDisplay.ActivateInputField();  // Refocus on the input field
     }
+
+    public void SkipNumber()
+    {
+        GenerateRandomNumber();  // Generate a new random number
+        NF_score -= 5;  // Deduct 5 points for skipping
+    }
 }
