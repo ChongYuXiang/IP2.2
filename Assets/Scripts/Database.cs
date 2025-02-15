@@ -17,6 +17,7 @@ using UnityEngine.Analytics;
 using UnityEngine.UI;
 using System;
 using System.Net.Mail;
+using UnityEngine.SceneManagement;
 
 public class Database : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Database : MonoBehaviour
     public string username;
     public string gender;
     public string race;
+    public int accountCreationDate;
 
     // Input fields
     [SerializeField]
@@ -48,6 +50,15 @@ public class Database : MonoBehaviour
     private TMP_Dropdown inputGender;
     [SerializeField]
     private TMP_Dropdown inputRace;
+
+    private GameObject MainMenu;
+    private GameObject signUpPage;
+    private GameObject logInPage;
+    private TextMeshProUGUI displayName;
+    private TextMeshProUGUI displayEmail;
+    private TextMeshProUGUI displayGender;
+    private TextMeshProUGUI displayRace;
+    private TextMeshProUGUI displayDate;
 
     // UI Objects
     public TextMeshProUGUI errorText1;
@@ -78,12 +89,48 @@ public class Database : MonoBehaviour
         // Set up dataRef
         dataRef = FirebaseDatabase.DefaultInstance.RootReference;
         auth = FirebaseAuth.DefaultInstance;
+        LinkObjects();
+    }
+
+    public void LinkObjects()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Living Room")
+        {
+            MainMenu = GameObject.Find("Main Menu Page");
+            signUpPage = GameObject.Find("Sign Up Page");
+            signUpPage.SetActive(false);
+            logInPage = GameObject.Find("Log In Page");
+            logInPage.SetActive(false);
+            displayName = GameObject.Find("DisplayName").GetComponent<TextMeshProUGUI>();
+            displayEmail = GameObject.Find("DisplayEmail").GetComponent<TextMeshProUGUI>();
+            displayGender = GameObject.Find("DisplayGender").GetComponent<TextMeshProUGUI>();
+            displayRace = GameObject.Find("DisplayRace").GetComponent<TextMeshProUGUI>();
+            displayDate = GameObject.Find("DisplayDate").GetComponent<TextMeshProUGUI>();
+        }
+    }
+
+    private void DisplayProfile()
+    {
+        // Display data on profile page
+
+        Debug.Log("profile displaying...");
+        signUpPage.SetActive(false);
+        logInPage.SetActive(false);
+        displayName.text = "WELCOME, " + username + "!";
+        displayEmail.text = email;
+        displayGender.text = "Gender: " + gender;
+        displayRace.text = "Race: " + race;
+        displayDate.text = "Account Made: " + DateTimeOffset.FromUnixTimeSeconds(accountCreationDate).DateTime;
+        MainMenu.SetActive(false);
+        Debug.Log("profile displayed");
     }
 
     // Create player data
     public void WriteNewPlayer(string username, string email, string gender, string race, bool active_status)
     {
-        string timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString();
+        int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
         Player player = new Player(username, email, gender, race, active_status, timestamp, timestamp);
         string json = JsonUtility.ToJson(player);
@@ -158,7 +205,10 @@ public class Database : MonoBehaviour
                 username = p.username;
                 email = p.email;
                 gender = p.gender;
+                race = p.race;
+                accountCreationDate = p.account_creation_date;
                 Debug.LogFormat("Player data of {0}: email:{1} gender:{2} race:{3} status:{4}", username, email, gender, race, p.active_status);
+                DisplayProfile();
             }
         });
     }
@@ -196,6 +246,7 @@ public class Database : MonoBehaviour
 
                 uuid = result.User.UserId; // Save uuid
                 ReadPlayerData(); // Read to retrieve data
+
                 doorLock1.SetLockState(false); // Unlock the door
                 doorLock2.SetLockState(false); // Unlock the door
                 doorLock3.SetLockState(false); // Unlock the door
@@ -244,6 +295,7 @@ public class Database : MonoBehaviour
 
                 uuid = result.User.UserId; // Save uuid
                 WriteNewPlayer(username, email, gender, race, true); // Write player with sign up data
+
                 doorLock1.SetLockState(false); // Unlock the door
                 doorLock2.SetLockState(false); // Unlock the door
                 doorLock3.SetLockState(false); // Unlock the door
