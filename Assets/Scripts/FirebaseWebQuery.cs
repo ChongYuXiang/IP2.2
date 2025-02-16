@@ -316,12 +316,14 @@ public class FirebaseWebQuery : MonoBehaviour
     // Firebase UPDATE for active_status
     public IEnumerator UpdateStatus(string userId, bool active)
     {
+        int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // Get current UTC time
         string url = databaseURL + "players/" + userId + ".json?auth=" + idToken;
 
         // Create a dictionary with the fields you want to update
         Dictionary<string, object> updatedData = new Dictionary<string, object>
         {
-            { "active_status",  active}
+            { "active_status",  active},
+            { "last_logged_in_time",  timestamp}
         };
 
         // Convert dictionary to JSON
