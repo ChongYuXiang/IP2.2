@@ -1,7 +1,7 @@
 /* Author: Chong Yu Xiang  
- * Filename: AlphabetPractice
- * Descriptions: For alphabet learning mode
- */
+    * Filename: AlphabetPractice
+    * Descriptions: For alphabet learning mode
+    */
 
 using System.Collections;
 using UnityEngine;
@@ -31,17 +31,14 @@ public class AlphabetPractice : MonoBehaviour
     {
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
 
-        letterDisplay.text = currentLetter.ToString(); // Display current number
+        letterDisplay.text = currentLetter.ToString(); // Display current letter
         letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString()); // Display example sign
 
-        //nextButton.gameObject.SetActive(false); // Hide the next button at the start
-        nextButton.onClick.AddListener(GenerateNextLetter); // Set up the button to call GenerateLetter
+        nextButton.onClick.AddListener(GenerateNextLetter); // Set up the button to call GenerateNextLetter
     }
 
     void GenerateNextLetter()
     {
-        //nextButton.gameObject.SetActive(false); // Hide the next button when generating a new letter
-
         // Skip 'J' and 'R', and cycle back to 'A' after 'Z'
         if (currentLetter < 'Z')
         {
@@ -61,6 +58,7 @@ public class AlphabetPractice : MonoBehaviour
 
         progress += 1;
         progressBar.fillAmount = (float)progress / 24f; // Update progress bar
+
         if (progress >= 24) // If progress is complete, unlock number mode
         {
             unlockNumbers.SetActive(false);
@@ -76,10 +74,11 @@ public class AlphabetPractice : MonoBehaviour
 
             if (char.ToUpper(enteredChar) == currentLetter)
             {
-                StartCoroutine("DisplayHandsCorrect");
+                StartCoroutine(DisplayHandsCorrect());
 
                 progress += 1;
                 progressBar.fillAmount = (float)progress / 24f; // Update progress bar
+
                 if (progress >= 24) // If progress is complete, unlock number mode
                 {
                     unlockNumbers.SetActive(false);
@@ -90,7 +89,7 @@ public class AlphabetPractice : MonoBehaviour
             }
             else
             {
-                StartCoroutine("DisplayHandsWrong");
+                StartCoroutine(DisplayHandsWrong());
                 nextButton.gameObject.SetActive(false); // Hide the "Next" button if the input is wrong
             }
         }
@@ -98,20 +97,49 @@ public class AlphabetPractice : MonoBehaviour
 
     IEnumerator DisplayHandsCorrect() // Change hands to a green material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        Debug.Log("Green hand");
+
+        ChangeHandMaterial(correctMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
     }
 
     IEnumerator DisplayHandsWrong() // Change hands to a red material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        Debug.Log("Red hand");
+
+        ChangeHandMaterial(wrongMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
+    }
+
+    void ChangeHandMaterial(Material mat)
+    {
+        SkinnedMeshRenderer leftRenderer = leftHand.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer rightRenderer = rightHand.GetComponent<SkinnedMeshRenderer>();
+
+        if (leftRenderer == null || rightRenderer == null)
+        {
+            Debug.LogError("SkinnedMeshRenderer component missing on left or right hand!");
+            return;
+        }
+
+        Material[] leftMaterials = leftRenderer.materials;
+        Material[] rightMaterials = rightRenderer.materials;
+
+        if (leftMaterials.Length > 1) leftMaterials[1] = mat;
+        else leftMaterials[0] = mat;
+
+        if (rightMaterials.Length > 1) rightMaterials[1] = mat;
+        else rightMaterials[0] = mat;
+
+        leftRenderer.materials = leftMaterials;
+        rightRenderer.materials = rightMaterials;
+
+        Debug.Log($"Hand material changed to {mat.name}");
     }
 }
-

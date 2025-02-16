@@ -41,7 +41,7 @@ public class TerrainTask : MonoBehaviour
         }
     }
 
-    private void TaskDone(int task) // Update task
+    public void TaskDone(int task) // Update task
     {
         if (task == 1)
         {

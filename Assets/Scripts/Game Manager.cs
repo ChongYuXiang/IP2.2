@@ -1,6 +1,6 @@
 /* Author: Chong Yu Xiang  
  * Filename: Game Manager
- * Descriptions: Save player data between scenes
+ * Descriptions: Save game completion between scenes
  */
 
 using System.Collections;
@@ -33,42 +33,6 @@ public class GameManager : MonoBehaviour
         else if (instance != null && instance != this)
         {
             Destroy(gameObject);
-        }
-    }
-
-    public void TaskDone(int index)
-    {
-        if (index == 1)
-        {
-            terrainTask1 = true;
-        }
-        if (index == 2)
-        {
-            terrainTask2 = true;
-        }
-        if (index == 3)
-        {
-            terrainTask3 = true;
-        }
-        if (index == 4)
-        {
-            terrainTask4 = true;
-        }
-        if (index == 5)
-        {
-            terrainTask5 = true;
-        }
-    }
-
-    public void UpdateLearningModes(string mode)
-    {
-        if (mode == "number")
-        {
-            numbersUnlocked = true;
-        }
-        if (mode == "word")
-        {
-            wordsUnlocked = true;
         }
     }
 }
