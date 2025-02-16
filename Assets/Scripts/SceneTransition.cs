@@ -12,15 +12,24 @@ public class SceneTransition : MonoBehaviour
 {
     public Animator transitionAnim;
 
-    public void transitionScene(string sceneName)
+    public void transitionScene(int index)
     {
-        StartCoroutine(LoadScene(sceneName));
+        StartCoroutine(LoadScene(index));
     }
 
-    IEnumerator LoadScene(string sceneName)
+    IEnumerator LoadScene(int index)
     {
         transitionAnim.SetTrigger("end");
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(sceneName);
+        ChangeSceneByIndex(index);
+    }
+    private void ChangeSceneByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+
+        if (sceneIndex == 1)
+        {
+            Database.instance.LinkObjects();
+        }
     }
 }

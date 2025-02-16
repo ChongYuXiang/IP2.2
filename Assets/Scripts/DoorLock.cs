@@ -14,8 +14,8 @@ public class DoorLock : MonoBehaviour
     public float openAngle = 10f; // The angle considered "fully open"
     private HingeJoint hinge;
     private bool isTransitionTriggered = false;
-    public UI levelLoader;
     public int sceneIndex;
+    public SceneTransition sceneTransition;
 
 
     public GameObject warningUI;
@@ -74,9 +74,9 @@ public class DoorLock : MonoBehaviour
     {
         Debug.Log("Door fully opened. Starting scene transition...");
 
-        if (levelLoader != null)
+        if (sceneTransition != null)
         {
-            levelLoader.ChangeSceneByIndex(sceneIndex);  
+            sceneTransition.transitionScene(sceneIndex);
         }
         else
         {
