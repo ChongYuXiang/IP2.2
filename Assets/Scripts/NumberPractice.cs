@@ -30,6 +30,9 @@ public class NumberPractice : MonoBehaviour
     public GameObject unlockWords;
     public Button wordButton;
 
+    // Confetti VFX
+    public ParticleSystem confetti;
+
     // End popup
     public GameObject endPopup;
     public GameObject popupPage;
@@ -42,6 +45,8 @@ public class NumberPractice : MonoBehaviour
             wordButton.interactable = true;
             barProgress = 10;
         }
+
+        confetti.Stop(); //Ensure Confetti does not happen at the start
     }
 
     public void BeginLearning()
@@ -55,6 +60,11 @@ public class NumberPractice : MonoBehaviour
         nextButton.onClick.AddListener(GenerateNextNumber); // Set up the button to call GenerateNextNumber
 
         progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
+    }
+
+    public void PlayConfetti()
+    {
+        confetti.Play(); // Trigger confetti effect
     }
 
     void GenerateNextNumber()
@@ -72,7 +82,19 @@ public class NumberPractice : MonoBehaviour
         }
 
         numberDisplay.text = currentNumber.ToString();
-        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());
+        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());    
+        
+        /* FOR TEST ONLY
+        progress += 1;
+        progressBar.fillAmount = (float)progress / 10f; // Update progress bar
+        if (progress >= 24) // If progress is complete, unlock number mode
+        {
+            PlayConfetti(); // Trigger confetti when game ends
+
+            unlockWords.SetActive(false);
+            wordsButton.interactable = true;
+        }
+        */
     }
 
     void CheckNumberInput()
@@ -89,6 +111,8 @@ public class NumberPractice : MonoBehaviour
                 progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
                 if (barProgress == 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock word mode
                 {
+                    PlayConfetti(); // Trigger confetti when game ends
+
                     unlockWords.SetActive(false);
                     wordButton.interactable = true;
                     GameManager.instance.wordsUnlocked = true;
@@ -110,19 +134,49 @@ public class NumberPractice : MonoBehaviour
 
     IEnumerator DisplayHandsCorrect() // Change hands to a green material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        Debug.Log("Green hand");
+
+        ChangeHandMaterial(correctMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
     }
 
     IEnumerator DisplayHandsWrong() // Change hands to a red material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        Debug.Log("Red hand");
+
+        ChangeHandMaterial(wrongMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
+    }
+
+    void ChangeHandMaterial(Material mat)
+    {
+        SkinnedMeshRenderer leftRenderer = leftHand.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer rightRenderer = rightHand.GetComponent<SkinnedMeshRenderer>();
+
+        if (leftRenderer == null || rightRenderer == null)
+        {
+            Debug.LogError("SkinnedMeshRenderer component missing on left or right hand!");
+            return;
+        }
+
+        Material[] leftMaterials = leftRenderer.materials;
+        Material[] rightMaterials = rightRenderer.materials;
+
+        if (leftMaterials.Length > 1) leftMaterials[1] = mat;
+        else leftMaterials[0] = mat;
+
+        if (rightMaterials.Length > 1) rightMaterials[1] = mat;
+        else rightMaterials[0] = mat;
+
+        leftRenderer.materials = leftMaterials;
+        rightRenderer.materials = rightMaterials;
+
+        Debug.Log($"Hand material changed to {mat.name}");
     }
 }
