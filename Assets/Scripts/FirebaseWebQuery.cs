@@ -20,6 +20,8 @@ public class FirebaseWebQuery : MonoBehaviour
 
     public string idToken = ""; // Token received after authentication
     public string userId = "";  // Firebase UID (localId), used as the database key
+    public GameObject SignUpPage;
+    public GameObject LogInPage;
 
     public TextMeshProUGUI message;
 
@@ -77,6 +79,9 @@ public class FirebaseWebQuery : MonoBehaviour
             message.text = ""; // Empty error message
 
             yield return StartCoroutine(PostData(userId, email ,username, gender, race)); // Create user data
+            // Close sign up page
+            SignUpPage = GameObject.Find("Sign Up Page");
+            SignUpPage.SetActive(false);
         }
         else
         {

@@ -29,16 +29,11 @@ public class FirebaseAuthentication : MonoBehaviour
 
     void Start()
     {
-        firebaseAuth = gameObject.GetComponent<FirebaseWebQuery>();
+        firebaseAuth = FirebaseWebQuery.instance;
+    }
 
-        loginButton.onClick.RemoveAllListeners();
-        signUpButton.onClick.RemoveAllListeners();
-
-        // Add button click listeners
-        loginButton = GameObject.Find("Log In Button").GetComponent<Button>();
-        signUpButton = GameObject.Find("Sign Up Button").GetComponent<Button>();
-        loginButton.onClick.AddListener(() => StartCoroutine(SignInUser()));
-        signUpButton.onClick.AddListener(() => StartCoroutine(SignUpUser()));
+    public void SignUpFunc(){
+        StartCoroutine(SignUpUser());
     }
 
     IEnumerator SignUpUser()
@@ -61,9 +56,7 @@ public class FirebaseAuthentication : MonoBehaviour
         Debug.Log("Signing up user with email: " + email);
         yield return StartCoroutine(firebaseAuth.SignUpUser(email, password, username, gender, race));
 
-        // Close sign up page
-        SignUpPage = GameObject.Find("Sign Up Page");
-        SignUpPage.SetActive(false);
+
     }
 
     IEnumerator SignInUser()

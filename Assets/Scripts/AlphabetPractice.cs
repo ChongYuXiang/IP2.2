@@ -89,17 +89,21 @@ public class AlphabetPractice : MonoBehaviour
         letterDisplay.text = currentLetter.ToString();
         letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString());
 
-        /* FOR TEST ONLY
         progress += 1;
         progressBar.fillAmount = (float)progress / 24f; // Update progress bar
-        if (progress >= 24) // If progress is complete, unlock number mode
+        if (progress >= 24 && GameManager.instance.numbersUnlocked == false) // If progress is complete, unlock number mode
         {
             PlayConfetti(); // Trigger confetti when game ends
 
             unlockNumbers.SetActive(false);
             numberButton.interactable = true;
+
+            GameManager.instance.numbersUnlocked = true;
+
+            // Show popup
+            endPopup.SetActive(true);
+            popupPage.SetActive(true);
         }
-        */
     }
 
     void CheckLetterInput()
@@ -111,21 +115,6 @@ public class AlphabetPractice : MonoBehaviour
             if (char.ToUpper(enteredChar) == currentLetter)
             {
                 StartCoroutine(DisplayHandsCorrect());
-
-                progress += 1;
-                progressBar.fillAmount = (float)progress / 24f; // Update progress bar
-                if (progress == 24 && GameManager.instance.numbersUnlocked == false) // If progress is complete, unlock number mode
-                {
-                    PlayConfetti(); // Trigger confetti when game ends
-
-                    unlockNumbers.SetActive(false);
-                    numberButton.interactable = true;
-                    GameManager.instance.numbersUnlocked = true;
-
-                    // Show popup
-                    endPopup.SetActive(true);
-                    popupPage.SetActive(true);
-                }
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }

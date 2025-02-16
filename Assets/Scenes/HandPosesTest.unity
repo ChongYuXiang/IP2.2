@@ -560,9 +560,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   inputField: {fileID: 1822036018}
-  scoreDisplay: {fileID: 1919272895}
-  wordDisplayText: {fileID: 498598921}
-  timerText: {fileID: 1708423439}
+  scoreDisplay: {fileID: 0}
+  wordDisplayText: {fileID: 0}
+  timerText: {fileID: 0}
   gameOverPanel: {fileID: 0}
   wordList:
   - Flag
@@ -3091,7 +3091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1483656049
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3344,7 +3344,7 @@ HingeJoint:
   m_Anchor: {x: -0.5, y: 0, z: 0}
   m_Axis: {x: 0, y: 90, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.24930535, y: 0.985, z: 0.7823546}
+  m_ConnectedAnchor: {x: -0.05934964, y: 0.985, z: 0.885}
   serializedVersion: 2
   m_UseSpring: 0
   m_Spring:
@@ -5545,6 +5545,11 @@ PrefabInstance:
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 498598921}
+    - target: {fileID: 7873558825470213875, guid: 259d8e9add14248c59d587cad572daa5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7935216945503895942, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5560,6 +5565,11 @@ PrefabInstance:
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 498598921}
+    - target: {fileID: 8310124267380959681, guid: 259d8e9add14248c59d587cad572daa5,
+        type: 3}
+      propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Z
+      objectReference: {fileID: 0}
     - target: {fileID: 8345493213685571570, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
       propertyPath: m_GesturePerformed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5968,6 +5978,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1822036018}
     - target: {fileID: 1271085574511946915, guid: f8904105434584142a2b37f4e3459fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382755890203030980, guid: f8904105434584142a2b37f4e3459fd2,
         type: 3}
       propertyPath: m_IsActive
       value: 1
