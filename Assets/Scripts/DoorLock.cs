@@ -18,6 +18,11 @@ public class DoorLock : MonoBehaviour
     {
         hinge = GetComponent<HingeJoint>();
         UpdateLockState();
+        
+        if (FirebaseWebQuery.instance.userId != null){
+            isLocked = false;
+        }
+        
     }
 
     public void SetLockState(bool locked)

@@ -79,6 +79,7 @@ public class FirebaseWebQuery : MonoBehaviour
             message.text = ""; // Empty error message
 
             yield return StartCoroutine(PostData(userId, email ,username, gender, race)); // Create user data
+            yield return StartCoroutine(GetData()); // Get user data
             // Close sign up page
             SignUpPage = GameObject.Find("Sign Up Page");
             SignUpPage.SetActive(false);
@@ -138,20 +139,34 @@ public class FirebaseWebQuery : MonoBehaviour
     /// </summary>
     public IEnumerator GetData()
     {
-        string url = databaseURL + "users.json?auth=" + idToken;
+        string url = databaseURL + "players/" + userId + ".json?auth=" + idToken;
         UnityWebRequest request = UnityWebRequest.Get(url);
 
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("Data received: " + request.downloadHandler.text);
+            // Parse the JSON response
+            string jsonResponse = request.downloadHandler.text;
+            Debug.Log("Data received: " + jsonResponse);
+
+            // Parse the JSON response using Newtonsoft.Json
+            JObject json = JObject.Parse(jsonResponse);
+
+            // Access specific data values
+            string email = json["email"]?.ToString(); // Safe check in case the key doesn't exist
+            string username = json["username"]?.ToString();
+
+            // Print the values
+            Debug.Log("Email: " + email);
+            Debug.Log("Username: " + username);
         }
         else
         {
             Debug.LogError("Error fetching data: " + request.error);
         }
     }
+
 
     /// <summary>
     /// Send authenticated POST request to Firebase Database.
