@@ -6261,6 +6261,10 @@ MonoBehaviour:
   SFXSounds:
   - name: Button
     clip: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
+  - name: Correct
+    clip: {fileID: 8300000, guid: 0bb552e844346c6489c0b14502605649, type: 3}
+  - name: Wrong
+    clip: {fileID: 8300000, guid: d4e3f57cb6d238d4f9c11d550f2c3cb9, type: 3}
   BGMSource: {fileID: 799963487}
   SFXSource: {fileID: 1950180659}
 --- !u!1 &772101520
