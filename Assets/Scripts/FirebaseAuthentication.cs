@@ -12,10 +12,9 @@ public class FirebaseAuthentication : MonoBehaviour
     public TMP_InputField passwordInput;
     public TMP_InputField usernameInput;
     public TMP_Dropdown inputGender;
-    public TMP_Dropdown inputRace;
+    public TMP_InputField inputAge;
 
     //public TMP_InputField inputEmailReset;
-    public TextMeshProUGUI messageText;
 
     // Auth buttons
     public Button loginButton;
@@ -36,6 +35,11 @@ public class FirebaseAuthentication : MonoBehaviour
         StartCoroutine(SignUpUser());
     }
 
+    public void LogInFunc()
+    {
+        StartCoroutine(LogInUser());
+    }
+
     IEnumerator SignUpUser()
     {
         // Find inputs
@@ -43,45 +47,31 @@ public class FirebaseAuthentication : MonoBehaviour
         passwordInput = GameObject.Find("Password Input 2").GetComponent<TMP_InputField>();
         usernameInput = GameObject.Find("Username Input").GetComponent<TMP_InputField>();
         inputGender = GameObject.Find("inputGender").GetComponent<TMP_Dropdown>();
-        inputRace = GameObject.Find("inputRace").GetComponent<TMP_Dropdown>();
+        inputAge = GameObject.Find("inputAge").GetComponent<TMP_InputField>();
 
         // Save inputs
         string email = emailInput.text;
         string password = passwordInput.text;
         string username = usernameInput.text;
         string gender = inputGender.options[inputGender.value].text;
-        string race = inputRace.options[inputRace.value].text;
+        string age = inputAge.text;
 
         // Attempt sign up with inputs
         Debug.Log("Signing up user with email: " + email);
-        yield return StartCoroutine(firebaseAuth.SignUpUser(email, password, username, gender, race));
-
-
+        yield return StartCoroutine(firebaseAuth.SignUpUser(email, password, username, gender, age));
     }
 
-    IEnumerator SignInUser()
+    IEnumerator LogInUser()
     {
+        // Find inputs
+        emailInput = GameObject.Find("Email Input 1").GetComponent<TMP_InputField>();
+        passwordInput = GameObject.Find("Password Input 1").GetComponent<TMP_InputField>();
+
+        // Save inputs
         string email = emailInput.text;
         string password = passwordInput.text;
 
         Debug.Log("Signing in user with email: " + email);
-
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-        {
-            messageText.text = "Please enter email and password.";
-            yield break;
-        }
-
-        yield return StartCoroutine(firebaseAuth.SignInUser(email, password));
-
-        if (!string.IsNullOrEmpty(firebaseAuth.idToken))
-        {
-            messageText.text = "Login successful!";
-            // Load next scene or enable game content here
-        }
-        else
-        {
-            messageText.text = "Login failed. Check your credentials.";
-        }
+        yield return StartCoroutine(firebaseAuth.LogInUser(email, password));
     }
 }
