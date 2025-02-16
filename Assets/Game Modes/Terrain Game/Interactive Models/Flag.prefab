@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 397554923013952003}
   - component: {fileID: 3615191542856900006}
   - component: {fileID: 1571557001470388588}
-  - component: {fileID: 5189713025974111798}
   m_Layer: 0
   m_Name: FlagPole
   m_TagString: Untagged
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5189713025974111798
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067272521025587385}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.06
-  m_Height: 6.963745
-  m_Direction: 1
-  m_Center: {x: 0.00000011920929, y: 3.4818726, z: -0.00000011920929}
 --- !u!1 &2388050560968303086
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +95,6 @@ GameObject:
   - component: {fileID: -3558531252713767072}
   - component: {fileID: -6462443621466515110}
   - component: {fileID: -7874922015586906258}
-  - component: {fileID: -7996894322436601652}
   m_Layer: 0
   m_Name: Flag
   m_TagString: Untagged
@@ -345,21 +320,6 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
---- !u!114 &-7996894322436601652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2388050560968303086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07cd0878cd1b541a6bab18f503f96d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &5958191117443914666
 GameObject:
   m_ObjectHideFlags: 0
