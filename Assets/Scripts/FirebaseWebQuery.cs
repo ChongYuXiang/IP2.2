@@ -269,7 +269,7 @@ public class FirebaseWebQuery : MonoBehaviour
     }
     
     // Firebase CREATE player data for screenshot
-    public IEnumerator PostQuizData(string userId, string ssURL)
+    public IEnumerator PostScreenshotData(string ssURL)
     {
         int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // Get current UTC time
         string url = databaseURL + "screenshots/" + userId + timestamp.ToString() + ".json?auth=" + idToken;
