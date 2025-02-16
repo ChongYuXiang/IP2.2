@@ -569,6 +569,7 @@ MonoBehaviour:
   - Statue
   - House
   - Temple
+  SkipButton: {fileID: 0}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
   defaultMat: {fileID: 0}
@@ -2285,6 +2286,7 @@ MonoBehaviour:
   inputDisplay: {fileID: 0}
   timerDisplay: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  SkipButton: {fileID: 0}
   isSequential: 1
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
@@ -5065,7 +5067,7 @@ PrefabInstance:
     - target: {fileID: 155642324420667067, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 201200964959103828, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
@@ -5135,7 +5137,7 @@ PrefabInstance:
     - target: {fileID: 961278746614192308, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 977590597089335476, guid: 259d8e9add14248c59d587cad572daa5,
         type: 3}
