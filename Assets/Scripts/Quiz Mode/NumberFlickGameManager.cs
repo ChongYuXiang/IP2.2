@@ -81,11 +81,13 @@ public class NumberFlickGameManager : MonoBehaviour
 
                 feedbackDisplay.text = "Correct!";
                 StartCoroutine("DisplayHandsCorrect");
+                AudioManager.instance.PlaySFX("Correct");
                 GenerateRandomNumber();  // Generate a new random letter
             }
             else
             {
                 StartCoroutine("DisplayHandsWrong");
+                AudioManager.instance.PlaySFX("Wrong");
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 

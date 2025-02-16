@@ -95,12 +95,14 @@ public class WordQuiz : MonoBehaviour
             score += 10;
 
             StartCoroutine("DisplayHandsCorrect");
+            AudioManager.instance.PlaySFX("Correct");
 
             GetNewWord();
         }
         else
         {
             StartCoroutine("DisplayHandsWrong");
+            AudioManager.instance.PlaySFX("Wrong");
         }
 
         inputField.text = ""; // Added: Clear input field

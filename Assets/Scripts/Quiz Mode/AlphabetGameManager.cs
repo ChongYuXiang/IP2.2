@@ -146,11 +146,14 @@ public class AlphabetGameManager : MonoBehaviour
                 score += 10;
                 feedbackDisplay.text = "Correct!";
                 StartCoroutine(DisplayHandsCorrect());
+                AudioManager.instance.PlaySFX("Correct");
                 GenerateLetter();
+                
             }
             else
             {
                 StartCoroutine(DisplayHandsWrong());
+                AudioManager.instance.PlaySFX("Wrong");
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
