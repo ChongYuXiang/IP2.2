@@ -34,5 +34,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SceneManager.activeSceneChanged += OnSceneChange;
     }
+    private void OnSceneChange(Scene current, Scene next)
+    {
+        if (next.name == "Main Menu")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
