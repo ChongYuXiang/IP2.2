@@ -90,8 +90,10 @@ public class DualMovementRecognizer : MonoBehaviour
         
         if (debugCubePrefab)
         {
-            Instantiate(debugCubePrefab, leftHandSource.position, Quaternion.identity);
-            Instantiate(debugCubePrefab, rightHandSource.position, Quaternion.identity);
+            GameObject leftCube = Instantiate(debugCubePrefab, leftHandSource.position, Quaternion.identity);
+            GameObject rightCube = Instantiate(debugCubePrefab, rightHandSource.position, Quaternion.identity);
+            Destroy(leftCube, 2.0f);  // Destroy after 2 seconds
+            Destroy(rightCube, 2.0f); // Destroy after 2 seconds
         }
     }
 
@@ -107,7 +109,8 @@ public class DualMovementRecognizer : MonoBehaviour
             leftPositionsList.Add(leftHandSource.position);
             if (debugCubePrefab)
             {
-                Instantiate(debugCubePrefab, leftHandSource.position, Quaternion.identity);
+                GameObject leftCube = Instantiate(debugCubePrefab, leftHandSource.position, Quaternion.identity);
+                Destroy(leftCube, 2.0f); // Destroy after 2 seconds
             }
         }
 
@@ -116,7 +119,8 @@ public class DualMovementRecognizer : MonoBehaviour
             rightPositionsList.Add(rightHandSource.position);
             if (debugCubePrefab)
             {
-                Instantiate(debugCubePrefab, rightHandSource.position, Quaternion.identity);
+                GameObject rightCube = Instantiate(debugCubePrefab, rightHandSource.position, Quaternion.identity);
+                Destroy(rightCube, 2.0f); // Destroy after 2 seconds
             }
         }
     }

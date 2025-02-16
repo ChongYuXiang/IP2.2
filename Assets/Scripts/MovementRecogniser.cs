@@ -87,7 +87,8 @@ public class MovementRecogniser : MonoBehaviour
 
         if (debugCubePrefab)
         {
-            Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
+            GameObject instance = Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
+            Destroy(instance, 2.0f); // Destroy after 2 seconds
         }
     }
 
@@ -109,7 +110,8 @@ public class MovementRecogniser : MonoBehaviour
 
             if (debugCubePrefab)
             {
-                Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
+                GameObject instance = Instantiate(debugCubePrefab, movementSource.position, Quaternion.identity);
+                Destroy(instance, 2.0f); // Destroy after 2 seconds            
             }
         }
     }
