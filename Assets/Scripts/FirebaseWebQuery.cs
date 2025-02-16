@@ -19,7 +19,7 @@ public class FirebaseWebQuery : MonoBehaviour
     {
         // Test usage
         //StartCoroutine(SignInUser("Test@test.gmail.com", "Test123"));
-        //StartCoroutine(SignUpUser("Test@test.gmail.com", "Test123"));
+        //StartCoroutine(SignUpUser("Test@gmail.com", "Test123"));
     }
 
     /// Sign up a new user with email and password.
