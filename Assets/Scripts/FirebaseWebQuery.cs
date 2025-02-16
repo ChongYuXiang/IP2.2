@@ -233,7 +233,7 @@ public class FirebaseWebQuery : MonoBehaviour
     }
 
     // Firebase CREATE player data for quiz modes
-    public IEnumerator PostQuizData(string userId, string mode ,int score)
+    public IEnumerator PostQuizData(string mode ,int score)
     {
         int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // Get current UTC time
         string url = databaseURL + mode + "/" + userId + timestamp.ToString() + ".json?auth=" + idToken;
