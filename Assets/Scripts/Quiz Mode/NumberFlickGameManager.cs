@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class NumberFlickGameManager : MonoBehaviour
@@ -24,6 +25,8 @@ public class NumberFlickGameManager : MonoBehaviour
     public TMP_InputField inputDisplay;  // Input field for player's input
     public TextMeshPro timerDisplay; // UI text component to display the timer
     public GameObject gameOverPanel;  // Panel to display when the game ends
+    public Button SkipButton;
+
 
     private float timeRemaining = 60f;  // Start timer with 60 seconds
     private bool isGameOver = false;
@@ -60,11 +63,13 @@ public class NumberFlickGameManager : MonoBehaviour
     {
         GenerateRandomNumber();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
+        SkipButton.onClick.AddListener(SkipNumber);
     }
 
     void OnDisable()
     {
         inputDisplay.onValueChanged.RemoveListener(delegate { CheckNumberInput(); });
+        SkipButton.onClick.RemoveListener(SkipNumber);
     }
 
     void GenerateRandomNumber()

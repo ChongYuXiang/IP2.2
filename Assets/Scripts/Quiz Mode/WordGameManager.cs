@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -18,6 +19,7 @@ public class WordQuiz : MonoBehaviour
     public TextMeshPro timerText; // Added: UI for displaying remaining time
     public GameObject gameOverPanel; // Added: Panel to display when the game ends
     public List<string> wordList;
+    public Button SkipButton;
 
     private HashSet<string> usedWords = new HashSet<string>();
     private string currentWord = "";
@@ -31,16 +33,17 @@ public class WordQuiz : MonoBehaviour
     public Material correctMat;
     public Material wrongMat;
 
-    void Start()
+    void OnEnable()
     {
-        if (wordList.Count == 0)
-        {
-            Debug.LogError("Word list is empty!");
-            return;
-        }
-        score = 0;
+        GetNewWord();  
         inputField.onValueChanged.AddListener(delegate { ValidateWord(); });
-        GetNewWord();
+        SkipButton.onClick.AddListener(SkipWord);
+    }
+
+    void OnDisable()
+    {
+        inputField.onValueChanged.RemoveListener(delegate { ValidateWord(); });
+        SkipButton.onClick.RemoveListener(SkipWord);
     }
 
     void Update()

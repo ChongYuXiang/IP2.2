@@ -8,6 +8,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manages the Alphabet game, including score, timer, input handling, and letter generation.
@@ -33,6 +34,8 @@ public class AlphabetGameManager : MonoBehaviour
     /// <summary>Game over panel UI element.</summary>
     public GameObject gameOverPanel;
 
+    public Button SkipButton;
+
     /// <summary>Time remaining in seconds.</summary>
     private float timeRemaining = 60f;
     /// <summary>Indicates whether the game is over.</summary>
@@ -55,12 +58,14 @@ public class AlphabetGameManager : MonoBehaviour
     {
         GenerateLetter();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
+        SkipButton.onClick.AddListener(SkipLetter);
     }
 
     void OnDisable()
     {
         inputDisplay.onValueChanged.RemoveListener(delegate { CheckLetterInput(); });
         currentLetter = ' ';
+        SkipButton.onClick.RemoveListener(SkipLetter);
     }
 
     void Update()
