@@ -64,8 +64,8 @@ public class FirebaseAuthentication : MonoBehaviour
     IEnumerator LogInUser()
     {
         // Find inputs
-        emailInput = GameObject.Find("Email Input 2").GetComponent<TMP_InputField>();
-        passwordInput = GameObject.Find("Password Input 2").GetComponent<TMP_InputField>();
+        emailInput = GameObject.Find("Email Input 1").GetComponent<TMP_InputField>();
+        passwordInput = GameObject.Find("Password Input 1").GetComponent<TMP_InputField>();
 
         // Save inputs
         string email = emailInput.text;
