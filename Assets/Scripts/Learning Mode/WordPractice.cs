@@ -15,7 +15,6 @@ public class WordPractice : MonoBehaviour
     // Learning UI elements
     private int progress = 0;
     public TextMeshPro wordDisplay;
-    //public ApplyTextureToPanel wordExampleVid;
     public TMP_InputField inputDisplay;
     public Image progressBar;
     public Button nextButton;
@@ -35,11 +34,15 @@ public class WordPractice : MonoBehaviour
     public Material correctMat;
     public Material wrongMat;
 
+    // End popup
+    public GameObject endPopup;
+    public GameObject popupPage;
+
     void Start()
     {
         if (GameManager.instance.wordsComplete == true) // Check GameManager if numbers are already unlocked
         {
-            progress = 11;
+            progress = wordList.Count;
         }
 
         if (wordList.Count == 0)
@@ -56,28 +59,50 @@ public class WordPractice : MonoBehaviour
 
         currentWord = wordList[nextWordIndex];
         wordDisplay.text = currentWord; // Display current word
-        //wordExampleVid.SendMessage("ChangeDisplay", currentWord.ToString()); // Display example sign video
 
         nextButton.onClick.AddListener(GetNewWord); // Set up the button to call GenNewWord
         nextButton.gameObject.SetActive(false); // Hide the next button at the start
 
-        GetNewWord();
+        GetNewWord(); // Get the first word
     }
+
+    public void PlayConfetti()
+    {
+        confetti.Play(); // Trigger confetti effect
+    }
+
 
     void GetNewWord()
     {
-        if (wordList.Count >= nextWordIndex)
+        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new word (Delete line for testing)
+
+        if (wordList.Count > nextWordIndex) // If next word if within the list
         {
             currentWord = wordList[nextWordIndex];
-            wordDisplay.text = currentWord;
+            wordDisplay.text = currentWord; // Display current word
         }
         else
         {
-            nextWordIndex = 0;
-            currentWord = wordList[nextWordIndex];
-            wordDisplay.text = currentWord;
+            nextWordIndex = 0; // Go back to first word
+            wordDisplay.text = currentWord; // Display current word
         }
-        nextWordIndex += 1;
+        nextWordIndex += 1; // Increment word count
+
+        wordDisplay.text = currentWord.ToString();
+
+        progress += 1;
+        progressBar.fillAmount = (float)progress / wordList.Count; // Update progress bar
+        if (progress >= 24 && GameManager.instance.numbersUnlocked == false) // If progress is complete, unlock number mode
+        {
+            PlayConfetti(); // Trigger confetti when game ends
+            AudioManager.instance.PlaySFX("Confetti");
+
+            GameManager.instance.numbersUnlocked = true;
+
+            // Show popup
+            endPopup.SetActive(true);
+            popupPage.SetActive(true);
+        }
     }
 
     public void ValidateWord()
