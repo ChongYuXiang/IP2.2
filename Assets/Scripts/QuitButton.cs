@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class QuitButton : MonoBehaviour
 {
+    //Change Scene based on name
     public void ChangeSceneByIndex(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

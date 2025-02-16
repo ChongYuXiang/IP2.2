@@ -1,3 +1,9 @@
+//Author: Wang Johnathan Zhi Wen
+//Filename: Combine Input
+//Description: Combining Input field results
+
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

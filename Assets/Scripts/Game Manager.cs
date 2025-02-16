@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool wordsUnlocked = false;
     public bool wordsComplete = false;
 
+    //Don't destroy Game Object
     private void Awake()
     {
         // Dont destroy on load
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
 
         SceneManager.activeSceneChanged += OnSceneChange;
     }
+
+    //Destroy Game Object if next scene is main menu
     private void OnSceneChange(Scene current, Scene next)
     {
         if (next.name == "Main Menu")
