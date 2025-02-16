@@ -18266,7 +18266,7 @@ GameObject:
   - component: {fileID: 1278932195}
   - component: {fileID: 1278932194}
   m_Layer: 5
-  m_Name: Feedback Text
+  m_Name: Reset Feedback Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20305,69 +20305,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4046324307770120262, guid: 0563ba967fb0ac74cb4bd4272c4b47a2, type: 3}
---- !u!1 &1441274706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1441274708}
-  - component: {fileID: 1441274707}
-  m_Layer: 0
-  m_Name: Database
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1441274707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441274706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d225095350aa5214b9ebb31f505911b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uuid: n0V6f7fPQTZPbudWVk5BLb637xX2
-  username: 
-  gender: 
-  race: 
-  accountCreationDate: 0
-  inputName: {fileID: 1137162694}
-  inputEmail1: {fileID: 484902803}
-  inputPassword1: {fileID: 392956684}
-  inputEmail2: {fileID: 2113807636}
-  inputPassword2: {fileID: 1749667902}
-  inputEmailReset: {fileID: 1869769348}
-  inputGender: {fileID: 159308131}
-  inputRace: {fileID: 0}
-  errorText1: {fileID: 608850838}
-  errorText2: {fileID: 1741028886}
-  resetText: {fileID: 1278932194}
-  doorLock1: {fileID: 397746970}
-  doorLock2: {fileID: 0}
-  doorLock3: {fileID: 0}
---- !u!4 &1441274708
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441274706}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1442560092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21402,9 +21339,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1441274707}
-        m_TargetAssemblyTypeName: Database, Assembly-CSharp
-        m_MethodName: forgotPassword
+      - m_Target: {fileID: 1032061553}
+        m_TargetAssemblyTypeName: FirebaseAuthentication, Assembly-CSharp
+        m_MethodName: EmailResetFunc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21984,6 +21921,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Button
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1032061553}
+        m_TargetAssemblyTypeName: FirebaseAuthentication, Assembly-CSharp
+        m_MethodName: SignOutFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1565483673
@@ -31453,7 +31402,6 @@ SceneRoots:
   - {fileID: 1670011836}
   - {fileID: 1112820383}
   - {fileID: 119131195}
-  - {fileID: 1441274708}
   - {fileID: 224042763}
   - {fileID: 1032061554}
   - {fileID: 1136517610}
