@@ -3,47 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Analytics;
 
 public class FirebaseAuthentication : MonoBehaviour
 {
+    // Inputs for auth
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
-    public TextMeshProUGUI messageText;
-    public TMP_InputField SignUpEmailInput;
-    public TMP_InputField SignUpPasswordInput;
+    public TMP_InputField usernameInput;
+    public TMP_Dropdown inputGender;
+    public TMP_Dropdown inputRace;
 
+    //public TMP_InputField inputEmailReset;
+    public TextMeshProUGUI messageText;
+
+    // Auth buttons
     public Button loginButton;
     public Button signUpButton;
+
+    // Menu Pages
+    public GameObject SignUpPage;
+    public GameObject LogInPage;
 
     private FirebaseWebQuery firebaseAuth;
 
     void Start()
     {
-        firebaseAuth = gameObject.AddComponent<FirebaseWebQuery>();
+        firebaseAuth = gameObject.GetComponent<FirebaseWebQuery>();
 
         loginButton.onClick.RemoveAllListeners();
         signUpButton.onClick.RemoveAllListeners();
 
         // Add button click listeners
+        loginButton = GameObject.Find("Log In Button").GetComponent<Button>();
+        signUpButton = GameObject.Find("Sign Up Button").GetComponent<Button>();
         loginButton.onClick.AddListener(() => StartCoroutine(SignInUser()));
         signUpButton.onClick.AddListener(() => StartCoroutine(SignUpUser()));
     }
 
     IEnumerator SignUpUser()
     {
-        string email = SignUpEmailInput.text;
-        string password = SignUpPasswordInput.text;
+        // Find inputs
+        emailInput = GameObject.Find("Email Input 2").GetComponent<TMP_InputField>();
+        passwordInput = GameObject.Find("Password Input 2").GetComponent<TMP_InputField>();
+        usernameInput = GameObject.Find("Username Input").GetComponent<TMP_InputField>();
+        inputGender = GameObject.Find("inputGender").GetComponent<TMP_Dropdown>();
+        inputRace = GameObject.Find("inputRace").GetComponent<TMP_Dropdown>();
 
+        // Save inputs
+        string email = emailInput.text;
+        string password = passwordInput.text;
+        string username = usernameInput.text;
+        string gender = inputGender.options[inputGender.value].text;
+        string race = inputRace.options[inputRace.value].text;
+
+        // Attempt sign up with inputs
         Debug.Log("Signing up user with email: " + email);
+        yield return StartCoroutine(firebaseAuth.SignUpUser(email, password, username, gender, race));
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-        {
-            messageText.text = "Please enter email and password.";
-            yield break;
-        }
-
-        yield return StartCoroutine(firebaseAuth.SignUpUser(email, password));
-        messageText.text = "Sign-up successful! Now log in.";
+        // Close sign up page
+        SignUpPage = GameObject.Find("Sign Up Page");
+        SignUpPage.SetActive(false);
     }
 
     IEnumerator SignInUser()

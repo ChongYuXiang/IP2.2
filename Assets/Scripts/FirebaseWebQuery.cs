@@ -3,10 +3,15 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json.Linq; // Install Newtonsoft.Json via NuGet or Unity Package Manager
+using System;
+using Newtonsoft.Json.Linq;
+using TMPro; // Install Newtonsoft.Json via NuGet or Unity Package Manager
 
 public class FirebaseWebQuery : MonoBehaviour
 {
+    // Instance
+    public static FirebaseWebQuery instance;
+
     private string apiKey = "AIzaSyAXIFk44UR-2siXFHZnh9iwsBydKid86hY"; // Replace with your Firebase API Key
     private string databaseURL = "https://ip-holohands-default-rtdb.asia-southeast1.firebasedatabase.app/"; // Replace with your Firebase Database URL
 
@@ -15,6 +20,22 @@ public class FirebaseWebQuery : MonoBehaviour
 
     public string idToken = ""; // Token received after authentication
     public string userId = "";  // Firebase UID (localId), used as the database key
+
+    public TextMeshProUGUI message;
+
+    private void Awake()
+    {
+        // Dont destroy on load
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -26,8 +47,16 @@ public class FirebaseWebQuery : MonoBehaviour
     /// <summary>
     /// Sign up a new user with email and password.
     /// </summary>
-    public IEnumerator SignUpUser(string email, string password)
+    public IEnumerator SignUpUser(string email, string password, string username, string gender, string race)
     {
+        message = GameObject.Find("Error Text 2").GetComponent<TextMeshProUGUI>(); // Find error message display
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(username)) // If user didnt fill in all inputs
+        {
+            message.text = "Please fill in all the boxes"; // Display error message
+            yield break;
+        }
+
         string json = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
         UnityWebRequest request = new UnityWebRequest(signUpUrl + apiKey, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
@@ -45,12 +74,16 @@ public class FirebaseWebQuery : MonoBehaviour
             userId = responseData["localId"].ToString(); // Store Firebase UID
 
             Debug.Log("User signed up successfully. UID: " + userId);
-            yield return StartCoroutine(PostData(userId, "testName", 10));
+            message.text = ""; // Empty error message
+
+            yield return StartCoroutine(PostData(userId, email ,username, gender, race)); // Create user data
         }
         else
         {
             Debug.LogError("Sign up error: " + request.error);
             Debug.LogError("Response: " + request.downloadHandler.text);
+
+            message.text = "Error: Check that email and password are input correctly"; // Display error message
         }
     }
 
@@ -59,6 +92,14 @@ public class FirebaseWebQuery : MonoBehaviour
     /// </summary>
     public IEnumerator SignInUser(string email, string password)
     {
+        message = GameObject.Find("Error Text 1").GetComponent<TextMeshProUGUI>(); // Find error message display
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password)) // If user didnt fill in all inputs
+        {
+            message.text = "Please fill in all the boxes"; // Display error message
+            yield break;
+        }
+
         string json = $"{{\"email\":\"{email}\",\"password\":\"{password}\",\"returnSecureToken\":true}}";
         UnityWebRequest request = new UnityWebRequest(signInUrl + apiKey, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
@@ -76,11 +117,14 @@ public class FirebaseWebQuery : MonoBehaviour
             userId = responseData["localId"].ToString(); // Store Firebase UID
 
             Debug.Log("User signed in successfully. UID: " + userId);
+            message.text = ""; // Empty error message
         }
         else
         {
             Debug.LogError("Sign in error: " + request.error);
             Debug.LogError("Response: " + request.downloadHandler.text);
+
+            message.text = "Error: Check that email and password are input correctly"; // Display error message
         }
     }
 
@@ -107,14 +151,20 @@ public class FirebaseWebQuery : MonoBehaviour
     /// <summary>
     /// Send authenticated POST request to Firebase Database.
     /// </summary>
-    public IEnumerator PostData(string userId, string name, int score)
+    public IEnumerator PostData(string userId, string email, string username, string gender, string race)
     {
         string url = databaseURL + "players/" + userId + ".json?auth=" + idToken;
+        int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
 
         Dictionary<string, object> userData = new Dictionary<string, object>
         {
-            { "name", name },
-            { "score", score }
+            { "email", email },
+            { "username", username },
+            { "gender", gender },
+            { "race", race },
+            { "active_status", true },
+            { "account_creation_date", timestamp },
+            { "last_logged_in_time", timestamp },
         };
 
         string json = Newtonsoft.Json.JsonConvert.SerializeObject(userData);
