@@ -74,6 +74,8 @@ public class WordPractice : MonoBehaviour
 
     void GetNewWord()
     {
+        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new word (Delete line for testing)
+
         if (wordList.Count > nextWordIndex) // If next word if within the list
         {
             currentWord = wordList[nextWordIndex];
