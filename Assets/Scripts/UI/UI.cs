@@ -17,6 +17,8 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI descOfViewSetting;
     bool passthroughMode = false;
 
+    public static UI instance;
+
     // Change View Mode Buotton Ref
     public Button viewSetting_Button;
 
@@ -34,6 +36,7 @@ public class UI : MonoBehaviour
     private void Awake()
     {
         string currentScene = SceneManager.GetActiveScene().name;
+
 
         if (currentScene != "Living Room")
         {
