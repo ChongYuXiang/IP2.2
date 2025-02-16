@@ -96,7 +96,7 @@ public class FirebaseWebQuery : MonoBehaviour
     }
 
     // Firebase Sign IN
-    public IEnumerator SignInUser(string email, string password)
+    public IEnumerator LogInUser(string email, string password)
     {
         message = GameObject.Find("Error Text 1").GetComponent<TextMeshProUGUI>(); // Find error message display
 
@@ -124,6 +124,12 @@ public class FirebaseWebQuery : MonoBehaviour
 
             Debug.Log("User signed in successfully. UID: " + userId);
             message.text = ""; // Empty error message
+
+            yield return StartCoroutine(GetData()); // Get user data
+
+            // Close sign up page
+            LogInPage = GameObject.Find("Log In Page");
+            LogInPage.SetActive(false);
         }
         else
         {

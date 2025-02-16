@@ -15,7 +15,6 @@ public class FirebaseAuthentication : MonoBehaviour
     public TMP_InputField inputAge;
 
     //public TMP_InputField inputEmailReset;
-    public TextMeshProUGUI messageText;
 
     // Auth buttons
     public Button loginButton;
@@ -34,6 +33,11 @@ public class FirebaseAuthentication : MonoBehaviour
 
     public void SignUpFunc(){
         StartCoroutine(SignUpUser());
+    }
+
+    public void LogInFunc()
+    {
+        StartCoroutine(LogInUser());
     }
 
     IEnumerator SignUpUser()
@@ -55,33 +59,19 @@ public class FirebaseAuthentication : MonoBehaviour
         // Attempt sign up with inputs
         Debug.Log("Signing up user with email: " + email);
         yield return StartCoroutine(firebaseAuth.SignUpUser(email, password, username, gender, age));
-
-
     }
 
-    IEnumerator SignInUser()
+    IEnumerator LogInUser()
     {
+        // Find inputs
+        emailInput = GameObject.Find("Email Input 2").GetComponent<TMP_InputField>();
+        passwordInput = GameObject.Find("Password Input 2").GetComponent<TMP_InputField>();
+
+        // Save inputs
         string email = emailInput.text;
         string password = passwordInput.text;
 
         Debug.Log("Signing in user with email: " + email);
-
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-        {
-            messageText.text = "Please enter email and password.";
-            yield break;
-        }
-
-        yield return StartCoroutine(firebaseAuth.SignInUser(email, password));
-
-        if (!string.IsNullOrEmpty(firebaseAuth.idToken))
-        {
-            messageText.text = "Login successful!";
-            // Load next scene or enable game content here
-        }
-        else
-        {
-            messageText.text = "Login failed. Check your credentials.";
-        }
+        yield return StartCoroutine(firebaseAuth.LogInUser(email, password));
     }
 }
