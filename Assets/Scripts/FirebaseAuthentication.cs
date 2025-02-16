@@ -1,9 +1,15 @@
+/* Author: Chong Yu Xiang, Wang Johnathan Zhiwen
+* Filename: FirebaseAuthentication
+* Descriptions: Save inputs and buttons for FirebaseWebQuery
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Analytics;
+using System.Reflection;
 
 public class FirebaseAuthentication : MonoBehaviour
 {
@@ -38,6 +44,18 @@ public class FirebaseAuthentication : MonoBehaviour
     public void LogInFunc()
     {
         StartCoroutine(LogInUser());
+    }
+
+    public void SignOutFunc()
+    {
+        StartCoroutine(firebaseAuth.SignOut());
+    }
+
+    public void EmailResetFunc()
+    {
+        emailInput = GameObject.Find("Email Input Reset").GetComponent<TMP_InputField>();
+        string email = emailInput.text;
+        StartCoroutine(firebaseAuth.SendPasswordResetEmail(email));
     }
 
     IEnumerator SignUpUser()
