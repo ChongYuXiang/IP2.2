@@ -54,7 +54,7 @@ public class AlphabetPractice : MonoBehaviour
     {
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
 
-        letterDisplay.text = currentLetter.ToString(); // Display current number
+        letterDisplay.text = currentLetter.ToString(); // Display current letter
         letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString()); // Display example sign
 
         nextButton.onClick.AddListener(GenerateNextLetter); // Set up the button to call GenerateLetter
@@ -118,10 +118,9 @@ public class AlphabetPractice : MonoBehaviour
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }
-            else
+            else if (nextButton.gameObject.activeSelf == false)
             {
                 StartCoroutine(DisplayHandsWrong());
-                nextButton.gameObject.SetActive(false); // Hide the "Next" button if the input is wrong
             }
         }
     }
