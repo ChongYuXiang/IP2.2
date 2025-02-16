@@ -1687,7 +1687,7 @@ MonoBehaviour:
   OnGestureRecognised:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1295875378}
+      - m_Target: {fileID: 221201018}
         m_TargetAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 5
@@ -2151,6 +2151,8 @@ MonoBehaviour:
   - {fileID: 1297341320453883666, guid: f964e57b70a50184184db20472456c17, type: 3}
   - {fileID: 7327353435892017481, guid: f2904f1e03ed3e641baac2ca6b1a596f, type: 3}
   - {fileID: 7048872974987255126, guid: 51face01ef46a094080f48ee466e6be9, type: 3}
+  - {fileID: 4753283450481004023, guid: bc7981257a247dd45b221d87db7f2012, type: 3}
+  - {fileID: 7497532441511695866, guid: f0efdfffcc508a043b3d512f11c67ab3, type: 3}
 --- !u!4 &1087009425
 Transform:
   m_ObjectHideFlags: 0
