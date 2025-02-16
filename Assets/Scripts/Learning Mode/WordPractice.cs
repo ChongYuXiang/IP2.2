@@ -38,32 +38,17 @@ public class WordPractice : MonoBehaviour
     public GameObject endPopup;
     public GameObject popupPage;
 
-    void Start()
+    void OnEnable()
     {
-        if (GameManager.instance.wordsComplete == true) // Check GameManager if numbers are already unlocked
-        {
-            progress = wordList.Count;
-        }
-
-        if (wordList.Count == 0)
-        {
-            Debug.Log("Word list is empty!");
-        }
-
-        confetti.Stop(); //Ensure Confetti does not happen at the start
+        GetNewWord();  
+        inputDisplay.onValueChanged.AddListener(delegate { ValidateWord(); });
+        nextButton.onClick.AddListener(GetNewWord);
     }
 
-    public void BeginLearning()
+    void OnDisable()
     {
-        inputDisplay.onValueChanged.AddListener(delegate { ValidateWord(); });
-
-        currentWord = wordList[nextWordIndex];
-        wordDisplay.text = currentWord; // Display current word
-
-        nextButton.onClick.AddListener(GetNewWord); // Set up the button to call GenNewWord
-        nextButton.gameObject.SetActive(false); // Hide the next button at the start
-
-        GetNewWord(); // Get the first word
+        inputDisplay.onValueChanged.RemoveListener(delegate { ValidateWord(); });
+        nextButton.onClick.RemoveListener(GetNewWord);
     }
 
     public void PlayConfetti()
@@ -71,35 +56,30 @@ public class WordPractice : MonoBehaviour
         confetti.Play(); // Trigger confetti effect
     }
 
-
     void GetNewWord()
     {
-        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new word (Delete line for testing)
+        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new word
 
-        if (wordList.Count > nextWordIndex) // If next word if within the list
+        if (wordList.Count > nextWordIndex)
         {
             currentWord = wordList[nextWordIndex];
-            wordDisplay.text = currentWord; // Display current word
         }
         else
         {
-            nextWordIndex = 0; // Go back to first word
-            wordDisplay.text = currentWord; // Display current word
+            nextWordIndex = 0;
+            currentWord = wordList[nextWordIndex];
         }
-        nextWordIndex += 1; // Increment word count
-
-        wordDisplay.text = currentWord.ToString();
+        nextWordIndex += 1;
+        wordDisplay.text = currentWord;
 
         progress += 1;
-        progressBar.fillAmount = (float)progress / wordList.Count; // Update progress bar
-        if (progress >= 24 && GameManager.instance.numbersUnlocked == false) // If progress is complete, unlock number mode
+        progressBar.fillAmount = (float)progress / wordList.Count;
+
+        if (progress >= wordList.Count && GameManager.instance.numbersUnlocked == false)
         {
-            PlayConfetti(); // Trigger confetti when game ends
+            PlayConfetti();
             AudioManager.instance.PlaySFX("Confetti");
-
             GameManager.instance.numbersUnlocked = true;
-
-            // Show popup
             endPopup.SetActive(true);
             popupPage.SetActive(true);
         }
@@ -108,15 +88,13 @@ public class WordPractice : MonoBehaviour
     public void ValidateWord()
     {
         string inputText = inputDisplay.text.Trim();
-
         if (string.IsNullOrEmpty(inputText)) return;
 
         if (inputText.Equals(currentWord, System.StringComparison.OrdinalIgnoreCase))
         {
             StartCoroutine(DisplayHandsCorrect());
             AudioManager.instance.PlaySFX("Correct");
-
-            nextButton.gameObject.SetActive(true); // Show the "Next" button
+            nextButton.gameObject.SetActive(true);
         }
         else if (nextButton.gameObject.activeSelf == false)
         {
@@ -125,25 +103,17 @@ public class WordPractice : MonoBehaviour
         }
     }
 
-    IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    IEnumerator DisplayHandsCorrect()
     {
-        Debug.Log("Green hand");
-
         ChangeHandMaterial(correctMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
-    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    IEnumerator DisplayHandsWrong()
     {
-        Debug.Log("Red hand");
-
         ChangeHandMaterial(wrongMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
@@ -169,7 +139,5 @@ public class WordPractice : MonoBehaviour
 
         leftRenderer.materials = leftMaterials;
         rightRenderer.materials = rightMaterials;
-
-        Debug.Log($"Hand material changed to {mat.name}");
     }
 }

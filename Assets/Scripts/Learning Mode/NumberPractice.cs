@@ -1,8 +1,3 @@
-/* Author: Chong Yu Xiang  
- * Filename: NumberPractice
- * Descriptions: For number learning mode
- */
-
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -10,7 +5,6 @@ using UnityEngine.UI;
 
 public class NumberPractice : MonoBehaviour
 {
-    // Learning UI elements
     private int currentNumber = 0;
     private int barProgress = 0;
     public TextMeshPro numberDisplay;
@@ -19,84 +13,65 @@ public class NumberPractice : MonoBehaviour
     public Image progressBar;
     public Button nextButton;
 
-    // Hands color swapping
     public GameObject leftHand;
     public GameObject rightHand;
     public Material defaultMat;
     public Material correctMat;
     public Material wrongMat;
 
-    // For unlocking next mode
     public GameObject unlockWords;
     public Button wordButton;
 
-    // Confetti VFX
     public ParticleSystem confetti;
 
-    // End popup
     public GameObject endPopup;
     public GameObject popupPage;
 
-    void Start()
+    void OnEnable()
     {
-        if (GameManager.instance.wordsUnlocked == true) // Check GameManager if words are already unlocked
-        {
-            unlockWords.SetActive(false);
-            wordButton.interactable = true;
-            barProgress = 10;
-        }
-
-        confetti.Stop(); //Ensure Confetti does not happen at the start
-    }
-
-    public void BeginLearning()
-    {
+        GenerateNumber();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
-
-        numberDisplay.text = currentNumber.ToString(); // Display current number
-        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString()); // Display example sign
-
-        nextButton.gameObject.SetActive(false); // Hide the next button at the start
-        nextButton.onClick.AddListener(GenerateNextNumber); // Set up the button to call GenerateNextNumber
-
-        progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
+        nextButton.onClick.AddListener(GenerateNextNumber);
     }
 
-    public void PlayConfetti()
+    void OnDisable()
     {
-        confetti.Play(); // Trigger confetti effect
+        inputDisplay.onValueChanged.RemoveListener(delegate { CheckNumberInput(); });
+        currentNumber = -1;
+        nextButton.onClick.RemoveListener(GenerateNextNumber);
+    }
+
+    void GenerateNumber()
+    {
+        numberDisplay.text = currentNumber.ToString();
+        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());
+        progressBar.fillAmount = (float)barProgress / 10f;
+    }
+
+    void SkipNumber()
+    {
+        GenerateNextNumber();
     }
 
     void GenerateNextNumber()
     {
-        nextButton.gameObject.SetActive(false); // Hide the next button when generating a new number
+        nextButton.gameObject.SetActive(false);
 
-        // Cycle back to 0 after 9
-        if (currentNumber < 9)
-        {
-            currentNumber++; // Next number
-        }
-        else
-        {
-            currentNumber = 0; // Reset to 0
-        }
-
-        numberDisplay.text = currentNumber.ToString();
-        numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());    
+        currentNumber = (currentNumber < 9) ? currentNumber + 1 : 0;
+        
+        GenerateNumber();
         
         barProgress += 1;
-        progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
-        if (barProgress >= 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock number mode
+        progressBar.fillAmount = (float)barProgress / 10f;
+        if (barProgress >= 10 && GameManager.instance.wordsUnlocked == false)
         {
-            PlayConfetti(); // Trigger confetti when game ends
+            PlayConfetti();
             AudioManager.instance.PlaySFX("Confetti");
 
             unlockWords.SetActive(false);
             wordButton.interactable = true;
 
             GameManager.instance.wordsUnlocked = true;
-
-            // Show popup
             endPopup.SetActive(true);
             popupPage.SetActive(true);
         }
@@ -108,40 +83,31 @@ public class NumberPractice : MonoBehaviour
         {
             char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1];
 
-            if (char.ToUpper(enteredChar) == currentNumber)
+            if (char.GetNumericValue(enteredChar) == currentNumber)
             {
-                StartCoroutine("DisplayHandsCorrect");
+                StartCoroutine(DisplayHandsCorrect());
                 AudioManager.instance.PlaySFX("Correct");
-
-                nextButton.gameObject.SetActive(true); // Show the "Next" button
+                nextButton.gameObject.SetActive(true);
             }
-            else if (nextButton.gameObject.activeSelf == false)
+            else if (!nextButton.gameObject.activeSelf)
             {
-                StartCoroutine("DisplayHandsWrong");
+                StartCoroutine(DisplayHandsWrong());
                 AudioManager.instance.PlaySFX("Wrong");
             }
         }
     }
 
-    IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    IEnumerator DisplayHandsCorrect()
     {
-        Debug.Log("Green hand");
-
         ChangeHandMaterial(correctMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
-    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    IEnumerator DisplayHandsWrong()
     {
-        Debug.Log("Red hand");
-
         ChangeHandMaterial(wrongMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
@@ -167,7 +133,10 @@ public class NumberPractice : MonoBehaviour
 
         leftRenderer.materials = leftMaterials;
         rightRenderer.materials = rightMaterials;
+    }
 
-        Debug.Log($"Hand material changed to {mat.name}");
+    void PlayConfetti()
+    {
+        confetti.Play();
     }
 }
