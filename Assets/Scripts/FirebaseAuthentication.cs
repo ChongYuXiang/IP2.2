@@ -51,6 +51,7 @@ public class FirebaseAuthentication : MonoBehaviour
         StartCoroutine(firebaseAuth.SignOut());
     }
 
+    //Send password reset to email
     public void EmailResetFunc()
     {
         emailInput = GameObject.Find("Email Input Reset").GetComponent<TMP_InputField>();

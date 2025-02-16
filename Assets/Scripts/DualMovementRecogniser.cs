@@ -38,6 +38,10 @@ public class DualMovementRecognizer : MonoBehaviour
     private List<Vector3> leftPositionsList = new List<Vector3>();
     private List<Vector3> rightPositionsList = new List<Vector3>();
 
+
+    /// <summary>
+    /// Loads stored gestures at the start.
+    /// </summary>
     void Start()
     {
         TextAsset[] gestureFiles = Resources.LoadAll<TextAsset>("Gestures");
@@ -50,6 +54,10 @@ public class DualMovementRecognizer : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Checks for hand movement updates every frame.
+    /// </summary>
     private void Update()
     {
         XRHandSubsystem handSubsystem = XRGeneralSettings.Instance?.Manager?.activeLoader?.GetLoadedSubsystem<XRHandSubsystem>();
@@ -58,6 +66,10 @@ public class DualMovementRecognizer : MonoBehaviour
         CheckHandMovement(handSubsystem.leftHand, handSubsystem.rightHand);
     }
 
+
+    /// <summary>
+    /// Evaluates whether hands are moving in a recognized pattern.
+    /// </summary>
     private void CheckHandMovement(XRHand leftHand, XRHand rightHand)
     {
         var leftHandJointsUpdatedEventArgs = new XRHandJointsUpdatedEventArgs { hand = leftHand };
@@ -80,6 +92,9 @@ public class DualMovementRecognizer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts tracking hand movement.
+    /// </summary>
     private void StartMovement()
     {
         isMoving = true;
@@ -97,6 +112,9 @@ public class DualMovementRecognizer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates movement tracking.
+    /// </summary>
     private void UpdateMovement()
     {
         if (leftPositionsList.Count == 0 || rightPositionsList.Count == 0) return;
@@ -125,6 +143,9 @@ public class DualMovementRecognizer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ends hand movement tracking and processes recognition.
+    /// </summary>
     private void EndMovement()
     {
         isMoving = false;

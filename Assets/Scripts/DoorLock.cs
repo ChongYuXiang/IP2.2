@@ -1,3 +1,9 @@
+//Author: Wang Johnathan Zhi Wen
+//Filename: DoorLock
+//Description: Determine the angle at which the door is considered open
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

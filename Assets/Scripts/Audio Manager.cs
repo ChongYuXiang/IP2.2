@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        
         if (instance == null)
         {
             instance = this;
@@ -30,26 +31,31 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        //Adjust Volume
         BGMSource.volume = 1f;
         SFXSource.volume = 1f;
     }
 
     public void ToggleBGM()
     {
+        //Adjust Mute Settings on Main Menu
         BGMSource.mute = !BGMSource.mute;
     }
     public void ToggleSFX()
     {
+        //Adjust Mute Settings on Main Menu
         SFXSource.mute = !SFXSource.mute;
     }
     public void Volume(float volume)
     {
+        //Change Volume with slider
         BGMSource.volume = volume / 10 * 5;
         SFXSource.volume = volume / 10 * 5;
     }
 
     public void PlayBGM(string name)
     {
+        //Allow User to assign a name to the sound
         Sound s = Array.Find(BGMSounds, x => x.name == name);
 
         BGMSource.clip = s.clip;
@@ -58,6 +64,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string name)
     {
+        //Allow User to assign a name to the sound
         Sound s = Array.Find(SFXSounds, x => x.name == name);
 
         SFXSource.PlayOneShot(s.clip);
