@@ -12,17 +12,21 @@ public class FirebaseWebQuery : MonoBehaviour
     // Instance
     public static FirebaseWebQuery instance;
 
+    // Database Ref
     private string apiKey = "AIzaSyAXIFk44UR-2siXFHZnh9iwsBydKid86hY"; // Replace with your Firebase API Key
     private string databaseURL = "https://ip-holohands-default-rtdb.asia-southeast1.firebasedatabase.app/"; // Replace with your Firebase Database URL
-
+    
+    // Auth Ref
     private string signUpUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
     private string signInUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
 
+    // 
     public string idToken = ""; // Token received after authentication
     public string userId = "";  // Firebase UID (localId), used as the database key
     public GameObject SignUpPage;
     public GameObject LogInPage;
 
+    // Feedback text
     public TextMeshProUGUI message;
 
     private void Awake()
@@ -46,10 +50,8 @@ public class FirebaseWebQuery : MonoBehaviour
         // StartCoroutine(SignInUser("Test@gmail.com", "Test123"));
     }
 
-    /// <summary>
-    /// Sign up a new user with email and password.
-    /// </summary>
-    public IEnumerator SignUpUser(string email, string password, string username, string gender, string race)
+    // Firebase Sign UP
+    public IEnumerator SignUpUser(string email, string password, string username, string gender, string age)
     {
         message = GameObject.Find("Error Text 2").GetComponent<TextMeshProUGUI>(); // Find error message display
 
@@ -78,7 +80,7 @@ public class FirebaseWebQuery : MonoBehaviour
             Debug.Log("User signed up successfully. UID: " + userId);
             message.text = ""; // Empty error message
 
-            yield return StartCoroutine(PostData(userId, email ,username, gender, race)); // Create user data
+            yield return StartCoroutine(PostData(userId, email ,username, gender, age)); // Create user data
             yield return StartCoroutine(GetData()); // Get user data
             // Close sign up page
             SignUpPage = GameObject.Find("Sign Up Page");
@@ -93,9 +95,7 @@ public class FirebaseWebQuery : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Sign in an existing user and get an authentication token.
-    /// </summary>
+    // Firebase Sign IN
     public IEnumerator SignInUser(string email, string password)
     {
         message = GameObject.Find("Error Text 1").GetComponent<TextMeshProUGUI>(); // Find error message display
@@ -134,9 +134,7 @@ public class FirebaseWebQuery : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Send authenticated GET request to Firebase Database.
-    /// </summary>
+    // Firebase READ
     public IEnumerator GetData()
     {
         string url = databaseURL + "players/" + userId + ".json?auth=" + idToken;
@@ -156,10 +154,21 @@ public class FirebaseWebQuery : MonoBehaviour
             // Access specific data values
             string email = json["email"]?.ToString(); // Safe check in case the key doesn't exist
             string username = json["username"]?.ToString();
+            string gender = json["gender"]?.ToString();
+            string age = json["age"]?.ToString();
+            int date = (int)json["account_creation_date"];
 
-            // Print the values
-            Debug.Log("Email: " + email);
-            Debug.Log("Username: " + username);
+            // Display the values
+            TextMeshProUGUI displayName = GameObject.Find("DisplayName").GetComponent<TextMeshProUGUI>();
+            displayName.text = "Welcome, " + username + "!";
+            TextMeshProUGUI displayEmail = GameObject.Find("DisplayEmail").GetComponent<TextMeshProUGUI>();
+            displayEmail.text = email;
+            TextMeshProUGUI displayGender = GameObject.Find("DisplayGender").GetComponent<TextMeshProUGUI>();
+            displayGender.text = "Gender: " + gender;
+            TextMeshProUGUI displayAge = GameObject.Find("DisplayAge").GetComponent<TextMeshProUGUI>();
+            displayAge.text = "Age: " + age;
+            TextMeshProUGUI displayDate = GameObject.Find("DisplayDate").GetComponent<TextMeshProUGUI>();
+            displayDate.text = "Account Made: " + DateTimeOffset.FromUnixTimeSeconds(date).DateTime;
         }
         else
         {
@@ -168,10 +177,8 @@ public class FirebaseWebQuery : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Send authenticated POST request to Firebase Database.
-    /// </summary>
-    public IEnumerator PostData(string userId, string email, string username, string gender, string race)
+    // Firebase CREATE
+    public IEnumerator PostData(string userId, string email, string username, string gender, string age)
     {
         string url = databaseURL + "players/" + userId + ".json?auth=" + idToken;
         int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -181,7 +188,7 @@ public class FirebaseWebQuery : MonoBehaviour
             { "email", email },
             { "username", username },
             { "gender", gender },
-            { "race", race },
+            { "age", age },
             { "active_status", true },
             { "account_creation_date", timestamp },
             { "last_logged_in_time", timestamp },
