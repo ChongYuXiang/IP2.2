@@ -37,6 +37,10 @@ public class FirebaseWebQuery : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("User signed up successfully: " + request.downloadHandler.text);
+            string response = request.downloadHandler.text;
+            JObject responseData = JObject.Parse(response);
+            idToken = responseData["idToken"].ToString(); // Store authentication token
+            yield return StartCoroutine(PostData(idToken, "testName", 10));
         }
         else
         {
