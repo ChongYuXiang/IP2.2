@@ -21,7 +21,7 @@ public class ScreenshotToSupabase : MonoBehaviour
     public string bucketName = "images"; // Bucket name
 
     // Database object ref
-    public GameObject database;
+    public FirebaseWebQuery database;
 
     // Screenshot Button Ref
     public Button screenshot_Button;
@@ -91,9 +91,8 @@ public class ScreenshotToSupabase : MonoBehaviour
 
     public void SendToFirebase(string URL)
     {
-        database = GameObject.Find("Database");
-
-        database.SendMessage("WriteScreenshotURL", URL);
+        database = FirebaseWebQuery.instance;
+        StartCoroutine(database.PostScreenshotData(URL));
     }
 
     public async Task UploadFileUsingPost(string filePath)
