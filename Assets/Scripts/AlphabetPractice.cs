@@ -27,6 +27,8 @@ public class AlphabetPractice : MonoBehaviour
     public GameObject unlockNumbers;
     public Button numberButton;
 
+    public ParticleSystem confetti;
+
     void Start()
     {
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
@@ -35,6 +37,13 @@ public class AlphabetPractice : MonoBehaviour
         letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString()); // Display example sign
 
         nextButton.onClick.AddListener(GenerateNextLetter); // Set up the button to call GenerateNextLetter
+
+        confetti.Stop(); //Ensure Confetti does not happen at the start
+    }
+
+    public void PlayConfetti()
+    {
+        confetti.Play(); // Trigger confetti effect
     }
 
     void GenerateNextLetter()
@@ -61,6 +70,8 @@ public class AlphabetPractice : MonoBehaviour
 
         if (progress >= 24) // If progress is complete, unlock number mode
         {
+            PlayConfetti(); // Trigger confetti when game ends
+
             unlockNumbers.SetActive(false);
             numberButton.interactable = true;
         }
