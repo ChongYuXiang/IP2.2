@@ -11,10 +11,24 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
-{
+{   /// <summary>
+    /// The index of the scene to be loaded.
+    /// </summary>
     public int sceneIndex;
+
+    /// <summary>
+    /// The title text of the view setting.
+    /// </summary>
     public TextMeshProUGUI titleOfViewSetting;
+
+    /// <summary>
+    /// The description text of the view setting.
+    /// </summary>
     public TextMeshProUGUI descOfViewSetting;
+
+    /// <summary>
+    /// Indicates whether passthrough mode is enabled.
+    /// </summary>
     bool passthroughMode = false;
 
     public static UI instance;
@@ -33,6 +47,9 @@ public class UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initializes the UI and sets the interactability of the view setting button.
+    /// </summary>
     private void Awake()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -51,6 +68,9 @@ public class UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the UI text based on the current view mode.
+    /// </summary>
     private void Update()
     {
         if (passthroughMode == false)
@@ -65,6 +85,9 @@ public class UI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Toggles the view setting between passthrough mode and virtual room mode.
+    /// </summary>
     public void viewSettingButton()
     {
         if(passthroughMode == false)

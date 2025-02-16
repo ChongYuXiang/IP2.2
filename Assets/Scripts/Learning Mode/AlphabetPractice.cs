@@ -94,6 +94,7 @@ public class AlphabetPractice : MonoBehaviour
         if (progress >= 24 && GameManager.instance.numbersUnlocked == false) // If progress is complete, unlock number mode
         {
             PlayConfetti(); // Trigger confetti when game ends
+            AudioManager.instance.PlaySFX("Confetti");
 
             unlockNumbers.SetActive(false);
             numberButton.interactable = true;
@@ -115,12 +116,14 @@ public class AlphabetPractice : MonoBehaviour
             if (char.ToUpper(enteredChar) == currentLetter)
             {
                 StartCoroutine(DisplayHandsCorrect());
+                AudioManager.instance.PlaySFX("Correct");
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }
             else if (nextButton.gameObject.activeSelf == false)
             {
                 StartCoroutine(DisplayHandsWrong());
+                AudioManager.instance.PlaySFX("Wrong");
             }
         }
     }
@@ -147,7 +150,7 @@ public class AlphabetPractice : MonoBehaviour
         ChangeHandMaterial(defaultMat);
     }
 
-    void ChangeHandMaterial(Material mat)
+    void ChangeHandMaterial(Material mat) 
     {
         SkinnedMeshRenderer leftRenderer = leftHand.GetComponent<SkinnedMeshRenderer>();
         SkinnedMeshRenderer rightRenderer = rightHand.GetComponent<SkinnedMeshRenderer>();
@@ -173,3 +176,5 @@ public class AlphabetPractice : MonoBehaviour
         Debug.Log($"Hand material changed to {mat.name}");
     }
 }
+
+

@@ -89,12 +89,14 @@ public class WordPractice : MonoBehaviour
         if (inputText.Equals(currentWord, System.StringComparison.OrdinalIgnoreCase))
         {
             StartCoroutine(DisplayHandsCorrect());
+            AudioManager.instance.PlaySFX("Correct");
 
             nextButton.gameObject.SetActive(true); // Show the "Next" button
         }
         else if (nextButton.gameObject.activeSelf == false)
         {
             StartCoroutine(DisplayHandsWrong());
+            AudioManager.instance.PlaySFX("Wrong");
         }
     }
 

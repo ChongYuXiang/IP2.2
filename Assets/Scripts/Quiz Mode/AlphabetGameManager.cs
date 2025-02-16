@@ -1,27 +1,54 @@
+//Author: Johnathan Wang ZhiWen
+//Filename: AlphabetGameManager
+//Description: Manages the alphabet game, including score, generation of letters and input handling
+
+
+
+
 using System.Collections;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Manages the Alphabet game, including score, timer, input handling, and letter generation.
+/// </summary>
 public class AlphabetGameManager : MonoBehaviour
 {
+    /// <summary>Current game score.</summary>
     public int score;
 
+    /// <summary>The current letter to be matched by the player.</summary>
     private char currentLetter = 'A';
+
+    /// <summary>Displays the current letter.</summary>
     public TextMeshPro letterDisplay;
+    /// <summary>Displays the player's score.</summary>
     public TextMeshPro scoreDisplay;
+    /// <summary>Displays feedback on the player's input.</summary>
     public TextMeshPro feedbackDisplay;
+    /// <summary>Handles user input.</summary>
     public TMP_InputField inputDisplay;
+    /// <summary>Displays the remaining time.</summary>
     public TextMeshPro timerDisplay;
+    /// <summary>Game over panel UI element.</summary>
     public GameObject gameOverPanel;
 
+    /// <summary>Time remaining in seconds.</summary>
     private float timeRemaining = 60f;
+    /// <summary>Indicates whether the game is over.</summary>
     private bool isGameOver = false;
-    public bool isSequential = true; // Toggle between sequential and random mode
+    /// <summary>Determines if the letters are generated sequentially or randomly.</summary>
+    public bool isSequential = true;
 
+    /// <summary>Represents the player's left hand object.</summary>
     public GameObject leftHand;
+    /// <summary>Represents the player's right hand object.</summary>
     public GameObject rightHand;
+    /// <summary>Default material for the hands.</summary>
     public Material defaultMat;
+    /// <summary>Material to indicate a correct answer.</summary>
     public Material correctMat;
+    /// <summary>Material to indicate a wrong answer.</summary>
     public Material wrongMat;
 
     void Start()
@@ -46,20 +73,18 @@ public class AlphabetGameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches between sequential and random letter generation modes.
+    /// </summary>
     public void SwitchMode()
     {
-        if (isSequential)
-        {
-            isSequential = false;
-            GenerateLetter();
-        }
-        else
-        {
-            isSequential = true;
-            GenerateLetter();
-        }
+        isSequential = !isSequential;
+        GenerateLetter();
     }
 
+    /// <summary>
+    /// Generates a new letter based on the current mode.
+    /// </summary>
     void GenerateLetter()
     {
         if (isSequential)
@@ -72,6 +97,9 @@ public class AlphabetGameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Generates the next letter in sequence, skipping 'J' and 'R'.
+    /// </summary>
     void GenerateNextLetter()
     {
         if (currentLetter < 'Z')
@@ -80,7 +108,7 @@ public class AlphabetGameManager : MonoBehaviour
             {
                 currentLetter++;
             }
-            while (currentLetter == 'J' || currentLetter == 'R'); // Skip 'J' and 'R'
+            while (currentLetter == 'J' || currentLetter == 'R');
         }
         else
         {
@@ -90,17 +118,23 @@ public class AlphabetGameManager : MonoBehaviour
         letterDisplay.text = currentLetter.ToString();
     }
 
+    /// <summary>
+    /// Generates a random letter, ensuring 'J' and 'R' are skipped.
+    /// </summary>
     void GenerateRandomLetter()
     {
-        currentLetter = (char)Random.Range(65, 91); // Random letter between A and Z
-        while (currentLetter == 'J' || currentLetter == 'R') // Skip 'J' and 'R'
+        do
         {
             currentLetter = (char)Random.Range(65, 91);
         }
+        while (currentLetter == 'J' || currentLetter == 'R');
 
         letterDisplay.text = currentLetter.ToString();
     }
 
+    /// <summary>
+    /// Checks the player's input against the current letter.
+    /// </summary>
     public void CheckLetterInput()
     {
         if (inputDisplay.text.Length > 0 && !isGameOver)
@@ -111,12 +145,12 @@ public class AlphabetGameManager : MonoBehaviour
             {
                 score += 10;
                 feedbackDisplay.text = "Correct!";
-                StartCoroutine("DisplayHandsCorrect");
+                StartCoroutine(DisplayHandsCorrect());
                 GenerateLetter();
             }
             else
             {
-                StartCoroutine("DisplayHandsWrong");
+                StartCoroutine(DisplayHandsWrong());
                 feedbackDisplay.text = "Incorrect. Try again!";
             }
 
@@ -124,28 +158,30 @@ public class AlphabetGameManager : MonoBehaviour
         }
     }
 
-    IEnumerator DisplayHandsCorrect() // Change hands to a green material
+    /// <summary>
+    /// Changes hand material to correct and resets after delay.
+    /// </summary>
+    IEnumerator DisplayHandsCorrect()
     {
-        Debug.Log("Green hand");
-
         ChangeHandMaterial(correctMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
-    IEnumerator DisplayHandsWrong() // Change hands to a red material
+    /// <summary>
+    /// Changes hand material to incorrect and resets after delay.
+    /// </summary>
+    IEnumerator DisplayHandsWrong()
     {
-        Debug.Log("Red hand");
-
         ChangeHandMaterial(wrongMat);
-
         yield return new WaitForSeconds(1.5f);
-
         ChangeHandMaterial(defaultMat);
     }
 
+    /// <summary>
+    /// Changes the material of both hands.
+    /// </summary>
+    /// <param name="mat">The material to apply.</param>
     void ChangeHandMaterial(Material mat)
     {
         SkinnedMeshRenderer leftRenderer = leftHand.GetComponent<SkinnedMeshRenderer>();
@@ -168,22 +204,23 @@ public class AlphabetGameManager : MonoBehaviour
 
         leftRenderer.materials = leftMaterials;
         rightRenderer.materials = rightMaterials;
-
-        Debug.Log($"Hand material changed to {mat.name}");
     }
 
+    /// <summary>
+    /// Ends the game, displays game over screen, and logs score.
+    /// </summary>
     void EndGame()
     {
         gameOverPanel.SetActive(true);
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Final Score: " + score;
-
-        // Find and tell database to create word game data
-        GameObject database;
-        database = GameObject.Find("Database");
+        GameObject database = GameObject.Find("Database");
         database.GetComponent<Database>().WriteAlphaGameData(score);
     }
 
+    /// <summary>
+    /// Restarts the game, resetting score and timer.
+    /// </summary>
     public void RestartGame()
     {
         score = 0;
@@ -195,6 +232,9 @@ public class AlphabetGameManager : MonoBehaviour
         feedbackDisplay.text = "";
     }
 
+    /// <summary>
+    /// Skips the current letter, reducing the score.
+    /// </summary>
     public void SkipLetter()
     {
         GenerateLetter();

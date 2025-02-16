@@ -89,6 +89,7 @@ public class NumberPractice : MonoBehaviour
         if (barProgress >= 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock number mode
         {
             PlayConfetti(); // Trigger confetti when game ends
+            AudioManager.instance.PlaySFX("Confetti");
 
             unlockWords.SetActive(false);
             wordButton.interactable = true;
@@ -110,12 +111,14 @@ public class NumberPractice : MonoBehaviour
             if (char.ToUpper(enteredChar) == currentNumber)
             {
                 StartCoroutine("DisplayHandsCorrect");
+                AudioManager.instance.PlaySFX("Correct");
 
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }
             else if (nextButton.gameObject.activeSelf == false)
             {
                 StartCoroutine("DisplayHandsWrong");
+                AudioManager.instance.PlaySFX("Wrong");
             }
         }
     }
