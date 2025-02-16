@@ -16,6 +16,11 @@ public class UserChecker : MonoBehaviour
     public GameObject warning;
     public GameObject menu;
 
+
+    /// <summary>
+    /// Checks the user's authentication status by checking the UUID from the database.
+    /// If authenticated, the menu is shown, and the warning is hidden. Otherwise, the warning is shown.
+    /// </summary>
     public void AuthCheck()
     {
         database = GameObject.Find("Database");
@@ -31,6 +36,11 @@ public class UserChecker : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Resets the UI elements by hiding both the menu and warning.
+    /// This is typically called when authentication status changes.
+    /// </summary>
     public void AuthChanged()
     {
         menu.SetActive(false);
