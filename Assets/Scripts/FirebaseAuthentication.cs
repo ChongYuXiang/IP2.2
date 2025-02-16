@@ -9,6 +9,9 @@ public class FirebaseAuthentication : MonoBehaviour
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
     public TextMeshProUGUI messageText;
+    public TMP_InputField SignUpEmailInput;
+    public TMP_InputField SignUpPasswordInput;
+
     public Button loginButton;
     public Button signUpButton;
 
@@ -28,8 +31,8 @@ public class FirebaseAuthentication : MonoBehaviour
 
     IEnumerator SignUpUser()
     {
-        string email = emailInput.text;
-        string password = passwordInput.text;
+        string email = SignUpEmailInput.text;
+        string password = SignUpPasswordInput.text;
 
         Debug.Log("Signing up user with email: " + email);
 

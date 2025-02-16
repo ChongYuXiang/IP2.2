@@ -19,7 +19,7 @@ public class FirebaseWebQuery : MonoBehaviour
     {
         // Test usage
         //StartCoroutine(SignInUser("Test@test.gmail.com", "Test123"));
-        //StartCoroutine(SignUpUser("Test@test.gmail.com", "Test123"));
+        //StartCoroutine(SignUpUser("Test@gmail.com", "Test123"));
     }
 
     /// Sign up a new user with email and password.
@@ -37,6 +37,10 @@ public class FirebaseWebQuery : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             Debug.Log("User signed up successfully: " + request.downloadHandler.text);
+            string response = request.downloadHandler.text;
+            JObject responseData = JObject.Parse(response);
+            idToken = responseData["idToken"].ToString(); // Store authentication token
+            yield return StartCoroutine(PostData(idToken, "testName", 10));
         }
         else
         {
