@@ -10681,6 +10681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1231403058}
+  - component: {fileID: 1231403059}
   m_Layer: 0
   m_Name: WordManager
   m_TagString: Untagged
@@ -10703,6 +10704,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1920385229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1231403059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231403057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0bfcd251055274b8ae30431469f959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordDisplay: {fileID: 69697330}
+  inputDisplay: {fileID: 2117351517}
+  progressBar: {fileID: 644623120}
+  nextButton: {fileID: 94091082}
+  wordList: []
+  confetti: {fileID: 1680815239}
+  leftHand: {fileID: 503309121}
+  rightHand: {fileID: 496494674}
+  defaultMat: {fileID: 2100000, guid: 61d033f3a51f40647a5458ea14f3b4af, type: 2}
+  correctMat: {fileID: 2100000, guid: ea33afaf94dba1e4d8a9c994471586d8, type: 2}
+  wrongMat: {fileID: 2100000, guid: 92796fdf650d38b468284c074dd6a459, type: 2}
 --- !u!1 &1233176835
 GameObject:
   m_ObjectHideFlags: 0
@@ -13270,6 +13294,7 @@ MonoBehaviour:
   terrainTask5: 0
   numbersUnlocked: 0
   wordsUnlocked: 0
+  wordsComplete: 0
 --- !u!4 &1515237448
 Transform:
   m_ObjectHideFlags: 0
@@ -13302,7 +13327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1520562274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13338,7 +13363,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.88078994, b: 0.7754717, a: 1}
-  m_Intensity: 3.14
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14603,7 +14628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1661882847
 Transform:
   m_ObjectHideFlags: 0

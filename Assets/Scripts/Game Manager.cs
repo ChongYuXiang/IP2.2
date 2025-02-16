@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public bool numbersUnlocked = false;
     public bool wordsUnlocked = false;
+    public bool wordsComplete = false;
 
     private void Awake()
     {

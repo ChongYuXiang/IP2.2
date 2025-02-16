@@ -84,17 +84,21 @@ public class NumberPractice : MonoBehaviour
         numberDisplay.text = currentNumber.ToString();
         numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());    
         
-        /* FOR TEST ONLY
-        progress += 1;
-        progressBar.fillAmount = (float)progress / 10f; // Update progress bar
-        if (progress >= 24) // If progress is complete, unlock number mode
+        barProgress += 1;
+        progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
+        if (barProgress >= 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock number mode
         {
             PlayConfetti(); // Trigger confetti when game ends
 
             unlockWords.SetActive(false);
-            wordsButton.interactable = true;
+            wordButton.interactable = true;
+
+            GameManager.instance.wordsUnlocked = true;
+
+            // Show popup
+            endPopup.SetActive(true);
+            popupPage.SetActive(true);
         }
-        */
     }
 
     void CheckNumberInput()
@@ -107,27 +111,11 @@ public class NumberPractice : MonoBehaviour
             {
                 StartCoroutine("DisplayHandsCorrect");
 
-                barProgress += 1;
-                progressBar.fillAmount = (float)barProgress / 10f; // Update progress bar
-                if (barProgress == 10 && GameManager.instance.wordsUnlocked == false) // If progress is complete, unlock word mode
-                {
-                    PlayConfetti(); // Trigger confetti when game ends
-
-                    unlockWords.SetActive(false);
-                    wordButton.interactable = true;
-                    GameManager.instance.wordsUnlocked = true;
-
-                    // Show popup
-                    endPopup.SetActive(true);
-                    popupPage.SetActive(true);
-                }
-
                 nextButton.gameObject.SetActive(true); // Show the "Next" button
             }
-            else
+            else if (nextButton.gameObject.activeSelf == false)
             {
                 StartCoroutine("DisplayHandsWrong");
-                nextButton.gameObject.SetActive(false); // Hide the "Next" button if the input is wrong
             }
         }
     }
