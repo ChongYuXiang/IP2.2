@@ -110,20 +110,50 @@ public class WordQuiz : MonoBehaviour
 
     IEnumerator DisplayHandsCorrect() // Change hands to a green material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = correctMat;
+        Debug.Log("Green hand");
+
+        ChangeHandMaterial(correctMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
     }
 
     IEnumerator DisplayHandsWrong() // Change hands to a red material
     {
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = wrongMat;
+        Debug.Log("Red hand");
+
+        ChangeHandMaterial(wrongMat);
+
         yield return new WaitForSeconds(1.5f);
-        leftHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
-        rightHand.GetComponent<SkinnedMeshRenderer>().materials[1] = defaultMat;
+
+        ChangeHandMaterial(defaultMat);
+    }
+
+    void ChangeHandMaterial(Material mat)
+    {
+        SkinnedMeshRenderer leftRenderer = leftHand.GetComponent<SkinnedMeshRenderer>();
+        SkinnedMeshRenderer rightRenderer = rightHand.GetComponent<SkinnedMeshRenderer>();
+
+        if (leftRenderer == null || rightRenderer == null)
+        {
+            Debug.LogError("SkinnedMeshRenderer component missing on left or right hand!");
+            return;
+        }
+
+        Material[] leftMaterials = leftRenderer.materials;
+        Material[] rightMaterials = rightRenderer.materials;
+
+        if (leftMaterials.Length > 1) leftMaterials[1] = mat;
+        else leftMaterials[0] = mat;
+
+        if (rightMaterials.Length > 1) rightMaterials[1] = mat;
+        else rightMaterials[0] = mat;
+
+        leftRenderer.materials = leftMaterials;
+        rightRenderer.materials = rightMaterials;
+
+        Debug.Log($"Hand material changed to {mat.name}");
     }
 
     void EndGame()
