@@ -37,6 +37,10 @@ public class MovementRecogniser : MonoBehaviour
     private bool isMoving = false;
     private List<Vector3> positionsList = new List<Vector3>();
 
+
+    /// <summary>
+    /// Initializes the gesture training set by loading the gesture files from the resources.
+    /// </summary>
     void Start()
     {
         string[] gestureFiles = Resources.Load("Gestures").ToString().Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -48,6 +52,9 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks the current hand pose and starts, updates, or ends the movement based on the pose.
+    /// </summary>
     private void Update()
     {
         XRHandSubsystem handSubsystem = XRGeneralSettings.Instance?.Manager?.activeLoader?.GetLoadedSubsystem<XRHandSubsystem>();
@@ -76,6 +83,9 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts the movement and begins tracking the position of the movement source.
+    /// </summary>
     void StartMovement()
     {
         isMoving = true;
@@ -91,7 +101,9 @@ public class MovementRecogniser : MonoBehaviour
             Destroy(instance, 2.0f); // Destroy after 2 seconds
         }
     }
-
+    /// <summary>
+    /// Updates the movement by adding new positions when the movement source moves a significant distance.
+    /// </summary>
     private void UpdateMovement()
     {
         if (positionsList.Count == 0) return;
@@ -116,6 +128,9 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ends the movement and processes the recorded gesture for either saving or recognition.
+    /// </summary>
     private void EndMovement()
     {
         isMoving = false;
@@ -153,6 +168,10 @@ public class MovementRecogniser : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the name of the recognized gesture in the input field.
+    /// </summary>
+    /// <param name="gestureName">The name of the recognized gesture.</param>
     public void RecogniseGesture(string gestureName)
     {
         inputDisplay.text = gestureName;

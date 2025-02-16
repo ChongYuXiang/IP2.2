@@ -56,10 +56,15 @@ public class NumberFlickGameManager : MonoBehaviour
         
     }
 
-    void Start()
+    void OnEnable()
     {
-        GenerateRandomNumber();  // Start with a random Number
-        inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); }); // Listen for input changes
+        GenerateRandomNumber();  
+        inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
+    }
+
+    void OnDisable()
+    {
+        inputDisplay.onValueChanged.RemoveListener(delegate { CheckNumberInput(); });
     }
 
     void GenerateRandomNumber()
@@ -69,13 +74,13 @@ public class NumberFlickGameManager : MonoBehaviour
         numberDisplay.text = currentNumber.ToString(); // Display the number
     }
 
-    void CheckNumberInput()
+    public void CheckNumberInput()
     {
         if (inputDisplay.text.Length > 0 && !isGameOver) // Ensure there's input before checking
         {
             char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1]; // Get the last entered character
 
-            if (char.ToUpper(enteredChar) == currentNumber)  // Check if the player typed the correct letter
+            if (char.IsDigit(enteredChar) && int.Parse(enteredChar.ToString()) == currentNumber)
             {
                 NF_score += 10;
 
@@ -92,7 +97,7 @@ public class NumberFlickGameManager : MonoBehaviour
             }
 
             // Update the score display
-            scoreDisplay.text = "Final Score: " + NF_score;
+            scoreDisplay.text = "Score: " + NF_score;
         }
     }
 
@@ -150,7 +155,7 @@ public class NumberFlickGameManager : MonoBehaviour
         gameOverPanel.SetActive(true);  // Show the game over panel
         // Show the final score or a message when the game ends
         feedbackDisplay.text = "Time's up! Game over!";
-        scoreDisplay.text = "Final Score: " + NF_score;
+        scoreDisplay.text = "Score: " + NF_score;
 
         // Find and tell database to create number game data
         FirebaseWebQuery database;

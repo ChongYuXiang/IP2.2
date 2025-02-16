@@ -1,3 +1,9 @@
+//Author: Wang Johnathan Zhi Wen
+//Filename: PoseSequence
+//Description: Check for correct hand pose
+
+
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;

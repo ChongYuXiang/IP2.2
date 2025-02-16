@@ -1,3 +1,9 @@
+//Author: Wang Johnathan Zhi Wen
+//Filename: PlacableOnTerrain
+//Description: Place prefabbed objects on terrain in game
+
+
+
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
