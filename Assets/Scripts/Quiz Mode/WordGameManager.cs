@@ -101,7 +101,6 @@ public class WordQuiz : MonoBehaviour
         else
         {
             StartCoroutine("DisplayHandsWrong");
-            scoreDisplay.text = "Incorrect. Try again!";
         }
 
         inputField.text = ""; // Added: Clear input field
