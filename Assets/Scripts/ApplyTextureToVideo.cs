@@ -80,13 +80,13 @@ public class ApplyTextureToVideo : MonoBehaviour
 
     private void Update() // check every frame if word selected changed
     {
-        if (currentObject.text != "" && currentURL != currentObject.text)
+        if (currentObject.text != "" && currentURL != currentObject.text && currentObject.text != "HDB") // If a legible word is input
         {
             currentURL = currentObject.text;
             targetRawImage.gameObject.SetActive(true);
             ChangeDisplay(currentObject.text); // Display the tutorial for the selected word
         }
-        else if (currentObject.text == "" && currentURL != currentObject.text)
+        else if (currentObject.text == "" && currentURL != currentObject.text) // If empty
         {
             currentURL = currentObject.text;
             targetRawImage.gameObject.SetActive(false);
