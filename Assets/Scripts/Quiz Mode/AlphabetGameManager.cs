@@ -140,26 +140,55 @@ public class AlphabetGameManager : MonoBehaviour
         if (inputDisplay.text.Length > 0 && !isGameOver)
         {
             char enteredChar = inputDisplay.text[inputDisplay.text.Length - 1];
+            Debug.Log("Entered Character: " + enteredChar);
+            Debug.Log("Current Letter: " + currentLetter);
 
             if (char.ToUpper(enteredChar) == currentLetter)
             {
                 score += 10;
                 feedbackDisplay.text = "Correct!";
+                Debug.Log("Correct input! Score increased to: " + score);
+
                 StartCoroutine(DisplayHandsCorrect());
-                AudioManager.instance.PlaySFX("Correct");
+
+                if (AudioManager.instance != null)
+                {
+                    Debug.Log("Playing SFX: Correct");
+                    AudioManager.instance.PlaySFX("Correct");
+                }
+                else
+                {
+                    Debug.LogWarning("AudioManager instance is NULL!");
+                }
+
                 GenerateLetter();
-                
             }
             else
             {
-                StartCoroutine(DisplayHandsWrong());
-                AudioManager.instance.PlaySFX("Wrong");
                 feedbackDisplay.text = "Incorrect. Try again!";
+                Debug.Log("Incorrect input!");
+
+                StartCoroutine(DisplayHandsWrong());
+
+                if (AudioManager.instance != null)
+                {
+                    Debug.Log("Playing SFX: Wrong");
+                    AudioManager.instance.PlaySFX("Wrong");
+                }
+                else
+                {
+                    Debug.LogWarning("AudioManager instance is NULL!");
+                }
             }
 
             scoreDisplay.text = "Score: " + score;
         }
+        else
+        {
+            Debug.LogWarning("No input detected or game is over.");
+        }
     }
+
 
     /// <summary>
     /// Changes hand material to correct and resets after delay.
