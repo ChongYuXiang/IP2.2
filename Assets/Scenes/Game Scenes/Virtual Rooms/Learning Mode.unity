@@ -8285,7 +8285,8 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3173719638487253541, guid: dd12a00f16117af4b934f1e80b1f9631, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8932,6 +8933,7 @@ GameObject:
   - component: {fileID: 830436311}
   - component: {fileID: 830436310}
   - component: {fileID: 830436309}
+  - component: {fileID: 830436312}
   m_Layer: 0
   m_Name: Home Button
   m_TagString: Untagged
@@ -9015,6 +9017,18 @@ MonoBehaviour:
           m_StringArgument: Button
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 830436312}
+        m_TargetAssemblyTypeName: QuitButton, Assembly-CSharp
+        m_MethodName: ChangeSceneByIndex
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Living Room
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &830436310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9053,6 +9067,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830436307}
   m_CullTransparentMesh: 1
+--- !u!114 &830436312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830436307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45eb908b76fe2c4e964edc31ad87bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883929374
 GameObject:
   m_ObjectHideFlags: 0
@@ -18713,7 +18739,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2138240976}
   m_HandleRect: {fileID: 2138240975}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0.29454
   m_NumberOfSteps: 0
   m_OnValueChanged:
