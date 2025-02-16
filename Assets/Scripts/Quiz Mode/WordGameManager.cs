@@ -161,11 +161,11 @@ public class WordQuiz : MonoBehaviour
         gameOverPanel.SetActive(true);
         scoreDisplay.text = "Game Over! " + score;
         Debug.Log("Final Score: " + score);
-        
+
         // Find and tell database to create word game data
-        GameObject database;
-        database = GameObject.Find("Database");
-        database.GetComponent<Database>().WriteWordGameData(score);
+        FirebaseWebQuery database;
+        database = FirebaseWebQuery.instance;
+        StartCoroutine(database.PostQuizData("word_game", score));
     }
 
     public void RestartGame()
