@@ -51,10 +51,16 @@ public class AlphabetGameManager : MonoBehaviour
     /// <summary>Material to indicate a wrong answer.</summary>
     public Material wrongMat;
 
-    void Start()
+    void OnEnable()
     {
-        GenerateLetter();
+        GenerateLetter();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
+    }
+
+    void OnDisable()
+    {
+        inputDisplay.onValueChanged.RemoveListener(delegate { CheckLetterInput(); });
+        currentLetter = ' ';
     }
 
     void Update()
@@ -245,7 +251,7 @@ public class AlphabetGameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         feedbackDisplay.text = "Time's up! Game over!";
-        scoreDisplay.text = "Final Score: " + score;
+        scoreDisplay.text = "Score: " + score;
         GameObject database = GameObject.Find("Database");
         database.GetComponent<Database>().WriteAlphaGameData(score);
     }
