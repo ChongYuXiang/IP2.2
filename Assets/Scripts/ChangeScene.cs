@@ -9,10 +9,5 @@ public class ChangeScene : MonoBehaviour
     public void ChangeSceneByIndex(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
-
-        if (sceneIndex == 1)
-        {
-            Database.instance.LinkObjects();
-        }
     }
 }

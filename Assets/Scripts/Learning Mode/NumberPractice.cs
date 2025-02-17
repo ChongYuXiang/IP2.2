@@ -1,3 +1,8 @@
+/* Author: Chong Yu Xiang
+* Filename: NumberPractice
+* Descriptions: For number learning mode
+*/
+
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -32,6 +37,13 @@ public class NumberPractice : MonoBehaviour
         GenerateNumber();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckNumberInput(); });
         nextButton.onClick.AddListener(GenerateNextNumber);
+        nextButton.gameObject.SetActive(false);
+
+        if (GameManager.instance.wordsUnlocked)
+        {
+            barProgress = 10;
+            progressBar.fillAmount = (float)barProgress / 10f;
+        }
     }
 
     void OnDisable()
@@ -46,11 +58,6 @@ public class NumberPractice : MonoBehaviour
         numberDisplay.text = currentNumber.ToString();
         numberExampleImg.SendMessage("ChangeDisplay", currentNumber.ToString());
         progressBar.fillAmount = (float)barProgress / 10f;
-    }
-
-    void SkipNumber()
-    {
-        GenerateNextNumber();
     }
 
     void GenerateNextNumber()
