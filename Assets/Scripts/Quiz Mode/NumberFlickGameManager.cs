@@ -163,9 +163,7 @@ public class NumberFlickGameManager : MonoBehaviour
         scoreDisplay.text = "Score: " + NF_score;
 
         // Find and tell database to create number game data
-        FirebaseWebQuery database;
-        database = FirebaseWebQuery.instance;
-        StartCoroutine(database.PostQuizData("number_game", NF_score));
+        StartCoroutine(FirebaseWebQuery.instance.PostQuizData("number_game", NF_score));
     }
 
     public void RestartGame()

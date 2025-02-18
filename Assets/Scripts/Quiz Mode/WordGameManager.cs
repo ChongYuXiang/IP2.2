@@ -168,9 +168,7 @@ public class WordQuiz : MonoBehaviour
         Debug.Log("Final Score: " + score);
 
         // Find and tell database to create word game data
-        FirebaseWebQuery database;
-        database = FirebaseWebQuery.instance;
-        StartCoroutine(database.PostQuizData("word_game", score));
+        StartCoroutine(FirebaseWebQuery.instance.PostQuizData("word_game", score));
     }
 
     public void RestartGame()

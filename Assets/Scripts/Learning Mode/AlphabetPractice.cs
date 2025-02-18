@@ -1,3 +1,8 @@
+/* Author: Chong Yu Xiang
+* Filename: AlphabetPractice
+* Descriptions: For alphabet learning mode
+*/
+
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -32,6 +37,13 @@ public class AlphabetPractice : MonoBehaviour
         GenerateLetter();  
         inputDisplay.onValueChanged.AddListener(delegate { CheckLetterInput(); });
         nextButton.onClick.AddListener(GenerateNextLetter);
+        nextButton.gameObject.SetActive(false);
+
+        if (GameManager.instance.numbersUnlocked)
+        {
+            progress = 24;
+            progressBar.fillAmount = (float)progress / 24f;
+        }
     }
 
     void OnDisable()
@@ -46,11 +58,6 @@ public class AlphabetPractice : MonoBehaviour
         letterDisplay.text = currentLetter.ToString();
         letterExampleImg.SendMessage("ChangeDisplay", currentLetter.ToString());
         progressBar.fillAmount = (float)progress / 24f;
-    }
-
-    void SkipLetter()
-    {
-        GenerateNextLetter();
     }
 
     void GenerateNextLetter()

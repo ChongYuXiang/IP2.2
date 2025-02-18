@@ -236,7 +236,7 @@ public class FirebaseWebQuery : MonoBehaviour
     public IEnumerator PostQuizData(string mode ,int score)
     {
         int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // Get current UTC time
-        string url = databaseURL + mode + "/" + userId + timestamp.ToString() + ".json?auth=" + idToken;
+        string url = databaseURL + mode + "/" + userId + "/" + timestamp.ToString() + ".json?auth=" + idToken;
 
         Dictionary<string, object> userData = new Dictionary<string, object>
         {
@@ -272,7 +272,7 @@ public class FirebaseWebQuery : MonoBehaviour
     public IEnumerator PostScreenshotData(string ssURL)
     {
         int timestamp = (int)DateTimeOffset.UtcNow.ToUnixTimeSeconds(); // Get current UTC time
-        string url = databaseURL + "screenshots/" + userId + timestamp.ToString() + ".json?auth=" + idToken;
+        string url = databaseURL + "screenshots/" + userId + "/" + timestamp.ToString() + ".json?auth=" + idToken;
 
         Dictionary<string, object> userData = new Dictionary<string, object>
         {

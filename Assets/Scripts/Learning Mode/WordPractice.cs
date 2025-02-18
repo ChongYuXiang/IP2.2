@@ -43,6 +43,13 @@ public class WordPractice : MonoBehaviour
         GetNewWord();  
         inputDisplay.onValueChanged.AddListener(delegate { ValidateWord(); });
         nextButton.onClick.AddListener(GetNewWord);
+        nextButton.gameObject.SetActive(false);
+
+        if (GameManager.instance.wordsComplete)
+        {
+            progress = wordList.Count + 2;
+            progressBar.fillAmount = (float)progress / (wordList.Count + 1);
+        }
     }
 
     void OnDisable()
@@ -73,13 +80,13 @@ public class WordPractice : MonoBehaviour
         wordDisplay.text = currentWord;
 
         progress += 1;
-        progressBar.fillAmount = (float)progress / wordList.Count;
+        progressBar.fillAmount = (float)progress / (wordList.Count + 1);
 
-        if (progress >= wordList.Count && GameManager.instance.numbersUnlocked == false)
+        if (progress >= wordList.Count && GameManager.instance.wordsComplete == false)
         {
             PlayConfetti();
             AudioManager.instance.PlaySFX("Confetti");
-            GameManager.instance.numbersUnlocked = true;
+            GameManager.instance.wordsComplete = true;
             endPopup.SetActive(true);
             popupPage.SetActive(true);
         }

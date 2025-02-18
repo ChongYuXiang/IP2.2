@@ -257,8 +257,7 @@ public class AlphabetGameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         feedbackDisplay.text = "Time's up! Game over!";
         scoreDisplay.text = "Score: " + score;
-        GameObject database = GameObject.Find("Database");
-        database.GetComponent<Database>().WriteAlphaGameData(score);
+        StartCoroutine(FirebaseWebQuery.instance.PostQuizData("alphabet_game", score));
     }
 
     /// <summary>
